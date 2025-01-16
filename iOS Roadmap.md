@@ -1,6 +1,11 @@
 # iOS Roadmap
 
-
+* [Apple Developer Documentation](https://developer.apple.com/documentation)
+* [Swift Documentation](https://www.swift.org/documentation/)
+* [Apple Learn to code](https://developer.apple.com/learn/)
+  * [Develop in Swift Tutorials](https://developer.apple.com/tutorials/develop-in-swift/welcome-to-develop-in-swift-tutorials)
+  * [App Dev Tutorials](https://developer.apple.com/tutorials/app-dev-training/)
+  * [SwiftUI Tutorials](https://developer.apple.com/tutorials/swiftui/)
 
 ## Topics
 
@@ -8,23 +13,29 @@
   * Language. [Reference](https://www.swift.org)
   * UIKit. [Reference](https://developer.apple.com/documentation/uikit)
   * SwiftUI. [Reference](https://developer.apple.com/documentation/swiftui/)
-  * Networking
-  * Concurrency
+  * Networking. [Reference](https://developer.apple.com/documentation/foundation/url_loading_system)
+  * Concurrency. [Apple Reference](https://developer.apple.com/documentation/swift/concurrency) [Swift Reference](https://docs.swift.org/swift-book/documentation/the-swift-programming-language/concurrency/)
   * Persistence
+    * Core Data. [Reference](https://developer.apple.com/documentation/coredata)
+    * Swift Data. [Reference](https://developer.apple.com/documentation/swiftdata/)
   * Security
+    * Key Chain. [Reference](https://developer.apple.com/documentation/security/storing-keys-in-the-keychain)
+    * CryptoKit. [Reference](https://developer.apple.com/documentation/cryptokit/)
   * Testing
+    * XCTest. [Reference](https://developer.apple.com/documentation/xctest)
+    * Swift Testing. [Reference](https://developer.apple.com/documentation/testing/)
   * Documentation
+    * Markdown. [Reference](https://www.markdownguide.org)
+    * Markup. [Reference](https://developer.apple.com/library/archive/documentation/Xcode/Reference/xcode_markup_formatting_ref/)
+    * DocC. [Reference](https://www.swift.org/documentation/docc/)
   
-* Xcode
-  * Debugging
-  * Organizer
-  * Instruments
+* Xcode. [Reference](https://developer.apple.com/documentation/xcode)
 * Source Control
-  * Git
+  * Git. [Reference](https://git-scm.com/doc)
 * Dependency Manager
-  * CocoaPods
-  * Swift Package Manager
-  * Carthage
+  * CocoaPods. [Reference](https://cocoapods.org)
+  * Swift Package Manager. [Reference](https://www.swift.org/documentation/package-manager/)
+  * Carthage. [Reference](https://github.com/Carthage/Carthage)
 
 
 
@@ -91,6 +102,9 @@
         * UIScrollView. [Reference](https://developer.apple.com/documentation/uikit/uiscrollview)
         * UITableViews. [Reference](https://developer.apple.com/documentation/uikit/uitableview)
         * UICollectionViews. [Reference](https://developer.apple.com/documentation/uikit/uicollectionview)
+  * SwiftUI
+    * View Fundamentals. [Reference](https://developer.apple.com/documentation/swiftui/view-fundamentals)
+    * View Configuration. [Reference](https://developer.apple.com/documentation/swiftui/view-configuration)
   * Networking
     * URLSession. [Reference](https://developer.apple.com/documentation/foundation/urlsession)
   * Concurrency
@@ -102,6 +116,9 @@
     * Assertions Tests. [Reference](https://developer.apple.com/documentation/xctest)
   * Documentation
     * Swift Markup. [Reference](https://developer.apple.com/library/archive/documentation/Xcode/Reference/xcode_markup_formatting_ref/)
+* Xcode
+  * Devices and Simulator. [Reference](https://developer.apple.com/documentation/xcode/devices-and-simulator)
+
 
 
 
@@ -127,41 +144,48 @@
     * ViewControllers
       * UIActivityController. [Reference](https://developer.apple.com/documentation/uikit/uiactivityviewcontroller)
 
+  * SwiftUI
+    * Environment Values. [Reference](https://developer.apple.com/documentation/swiftui/environment-values)
+    * Preferences. [Reference](https://developer.apple.com/documentation/swiftui/preferences)
   * AVFoundation
-
+  
     * AVPlayerViewController. [Reference](https://developer.apple.com/documentation/avkit/avplayerviewcontroller)
-
+  
   * Firebase
-
+  
   * Concurrency
-
+  
     * Grand Central Dispatch. [Reference](https://developer.apple.com/documentation/DISPATCH)
       * Dispatch Work Item. [Reference](https://developer.apple.com/documentation/dispatch/dispatchworkitem)
       * Dispatch Group. [Reference](https://developer.apple.com/documentation/dispatch/dispatchgroup)
-
+  
     * Operation. [Reference](https://developer.apple.com/documentation/foundation/operation)
     * Operation Queue. [Reference](https://developer.apple.com/documentation/foundation/operationqueue)
     * Async / Await. [Reference](https://docs.swift.org/swift-book/documentation/the-swift-programming-language/concurrency/#Defining-and-Calling-Asynchronous-Functions)
     * Combine. [Reference](https://developer.apple.com/documentation/combine)
-
+  
   * Persistance
-
+  
     * Core Data. [Reference](https://developer.apple.com/documentation/coredata)
-
+  
   * Security
-
+  
     * Key Chain. [Reference](https://developer.apple.com/documentation/security/keychain-services)
-
+  
   * Testing. 
 
     * UI Tests. [Reference](UITest. [Reference](https://developer.apple.com/documentation/xctest/user_interface_tests))
     * Asynchronous Tests. [Reference](https://developer.apple.com/documentation/xctest/asynchronous_tests_and_expectations)
-
+  
   * Documentation.
-
+  
     * DocC. [Reference](https://www.swift.org/documentation/docc/)
-
+  
 * SFSymbols. [Reference](https://developer.apple.com/sf-symbols/)
+
+* Xcode
+  * Debugging. [Reference](https://developer.apple.com/documentation/xcode/debugging)
+
 
 ## Senior iOS
 
@@ -178,6 +202,9 @@
       * UINib. [Reference](https://developer.apple.com/documentation/uikit/uinib)
     * Compositional Layout. [Reference](https://developer.apple.com/documentation/uikit/uicollectionviewcompositionallayout)
     * Animations. [Reference](https://developer.apple.com/documentation/uikit/uiview#Animate-views)
+  * SwiftUI
+    * Animations. [Reference](https://developer.apple.com/documentation/swiftui/animations)
+    * UIKit integration. [Reference](https://developer.apple.com/documentation/swiftui/uikit-integration)
   * Networking
     * CloudKit. [Reference](https://developer.apple.com/documentation/cloudkit)
   * Concurrency
@@ -188,5 +215,10 @@
     * Grand Central Dispatch. [Reference](https://developer.apple.com/documentation/DISPATCH)
       * Dispatch Semaphore. [Reference](https://developer.apple.com/documentation/dispatch/dispatchsemaphore)
   * Security 
+    * CryptoKit. [Reference](https://developer.apple.com/documentation/cryptokit/)
   * Testing. 
     * Performance Tests. [Reference](https://developer.apple.com/documentation/xctest/performance_tests)
+* Xcode
+  * Performance and metrics. [Reference](https://developer.apple.com/documentation/xcode/performance-and-metrics)
+  * Analyzing the performance of your shipping app. [Reference](https://developer.apple.com/documentation/xcode/analyzing-the-performance-of-your-shipping-app)
+  * Xcode Cloud. [Reference](https://developer.apple.com/documentation/xcode/xcode-cloud)
