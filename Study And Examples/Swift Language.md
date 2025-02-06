@@ -251,13 +251,1314 @@ If you don’t need to refer to the original, optional constant or variable afte
 
 ### Basic Operators
 
+#### Assignment Operator
+
+```swift
+let b = 10
+var a = 5
+a = b
+
+let (x,y) = (1,2)
+```
+
+#### Arithmetic Operatos
+
+```swift
+1 + 2   // Equals 3
+5 - 3   // Equals 2
+2 * 3   // Equals 6
+10.0 / 2.5  //Equals 4
+"Hello, " + "World" // Equals "Hello, World"
+```
+
+#### Remainder operator (a % b)
+
+```swift
+9 % 4   // Equals 1 a = (a = (b * someMultiplier) + remainder)
+-9 % 4  // Equals -1
+```
+
+#### Unary Minus Operator
+
+```swift
+let three = 3
+let minusThree = -three // Equals -3
+let plusThree = -minusThree // Equals 3 or "minus minus three"
+```
+
+#### Unary Plus Operator
+
+```swift
+var minusSix = -6
+let alsoMinusSix = +minusSix    // Also equals -6
+```
+
+#### Compound Assignment Operators
+
+```swift
+a = 1
+a += 2  // a is now equal to 3 (a = a + 2)
+```
+
+#### Comparison Operatos
+
+```swift
+1 == 1   // true because 1 is equal to 1
+2 != 1   // true because 2 is not equal to 1
+2 > 1    // true because 2 is greater than 1
+1 < 2    // true because 1 is less than 2
+1 >= 1   // true because 1 is greater than or equal to 1
+2 <= 1   // false because 2 is not less than or equal to 1
+
+(1, "zebra") < (2, "apple")   // true because 1 is less than 2; "zebra" and "apple" are not compared
+(3, "apple") < (3, "bird")    // true because 3 is equal to 3, and "apple" is less than "bird"
+(4, "dog") == (4, "dog")      // true because 4 is equal to 4, and "dog" is equal to "dog"
+
+("blue", -1) < ("purple", 1)        // OK, evaluates to true
+//("blue", false) < ("purple", true)  // Error because < can't compare Boolean values
+```
+
+#### Ternary Conditional Operator (question ? answer1 : answer2)
+
+```swift
+//if question {
+//    answer1
+//} else {
+//    answer2
+//}
+
+let contentHeight = 40
+let hasHeader = true
+let rowHeight = contentHeight + (hasHeader ? 50 : 20)
+// rowHeight is equal to 90
+```
+
+#### Nil-CoalescingOperator (a ?? b)
+
+```swift
+//a != nil ? a! : b
+
+let defaultColorName = "red"
+var userDefinedColorName: String?   // defaults to nil
+
+var colorNameToUse = userDefinedColorName ?? defaultColorName
+// userDefinedColorName is nil, so colorNameToUse is set to the default of "red"
+```
+
+#### Range Operators
+
+##### Closed Range Operator (a...b)
+Defines a range that runs from a to b, and include the values a and b.
+
+```swift
+for index in 1...5 {
+    print("\(index) times 5 is \(index * 5)")
+}
+
+ #### Half-Open Range Operator (a..<b)
+// Defines a range that runs from a to b, but doesn't include b.
+
+let names = ["Anna", "Alex", "Brian", "Jack"]
+let count = names.count
+for i in 0..<count {
+    print("Person \(i + 1) is called \(names[i])")
+}
+// Person 1 is called Anna
+// Person 2 is called Alex
+// Person 3 is called Brian
+// Person 4 is called Jack
+```
+
+##### One-Sided Ranges
+
+The closed range operator has an alternative form for ranges thath continue as far as possible in one direction
+
+```swift
+for name in names[2...] {
+    print(name)
+}
+// Brian
+// Jack
+
+for name in names[...2] {
+    print(name)
+}
+// Anna
+// Alex
+// Brian
+
+for name in names[..<2] {
+    print(name)
+}
+// Anna
+// Alex
+
+let range = ...5
+range.contains(7)   // false
+range.contains(4)   // true
+range.contains(-1)  // true
+```
+
+#### Logical Operators
+
+##### Logical NOT Operator (!a)
+
+```swift
+let allowedEntry = false
+if !allowedEntry {
+    print("ACCESS DENIED")
+}
+// Prints "ACCESS DENIED"
+```
+
+##### Logical AND Operator (a && b)
+
+```swift
+let enteredDoorCode = true
+let passedRetinaScan = false
+if enteredDoorCode && passedRetinaScan {
+    print("Welcome!")
+} else {
+    print("ACCESS DENIED")
+}
+// Prints "ACCESS DENIED"
+```
+
+##### Logical OR Operator (a || b)
+
+```swift
+let hasDoorKey = false
+let knowsOverridePassword = true
+if hasDoorKey || knowsOverridePassword {
+    print("Welcome!")
+} else {
+    print("ACCESS DENIED")
+}
+// Prints "Welcome!"
+```
+
 ### Strings And Characters
+
+#### String Literal
+
+You can include predefined String values within your code as string literals. A string literal is a sequence of characters surrounded by double quotation marks (")
+ 
+```swift
+let someString = "Some string literal value"
+print("==== SomeString ====")
+print(someString)
+```
+
+#### Multiline String Literals
+
+A sequence of characters surrounded by three double quotation marks
+ 
+```swift
+var quotation = """
+The White Rabbit put on his spectacles.  "Where shall I begin,
+please your Majesty?" he asked.
+
+"Begin at the beginning," the King said gravely, "and go on
+till you come to the end; then stop."
+"""
+print("==== Quotation ====")
+print(quotation)
+
+let singleLineString = "These are the same."
+let multilineString = """
+These are the same.
+"""
+print("==== SingleLineString & MultilineString ====")
+print(singleLineString)
+print(multilineString)
+
+let softWrappedQuotation = """
+The White Rabbit put on his spectacles.  "Where shall I begin, \
+please your Majesty?" he asked.
+
+"Begin at the beginning," the King said gravely, "and go on \
+till you come to the end; then stop."
+"""
+print("==== Soft Wrapped Quotation ====")
+print(softWrappedQuotation)
+
+let lineBreaks = """
+
+This string starts with a line break.
+It also ends with a line break.
+
+"""
+print("==== Line Breaks ====")
+print(lineBreaks)
+```
+
+#### Special Characters in String Literal
+
+String literals can include the following special characters:
+The escaped special characters \0 (null character), \\ (backslash), \t (horizontal tab), \n (line feed), \r (carriage return), \" (double quotation mark) and \' (single quotation mark)
+An arbitrary Unicode scalar value, written as \\u{n}, where n is a 1–8 digit hexadecimal number (Unicode is discussed in Unicode below)
+ 
+```swift
+let wiseWords = "\"Imagination is more important than knowledge\" - Einstein"
+// "Imagination is more important than knowledge" - Einstein
+let dollarSign = "\u{24}"        // $,  Unicode scalar U+0024
+let blackHeart = "\u{2665}"      // ♥,  Unicode scalar U+2665
+let sparklingHeart = "\u{1F496}" // 💖, Unicode scalar U+1F496
+```
+
+Because multiline string literals use three double quotation marks instead of just one, you can include a double quotation mark (") inside of a multiline string literal without escaping it. To include the text """ in a multiline string, escape at least one of the quotation marks.
+ 
+```swift
+//let threeDoubleQuotationMarks = """
+//Escaping the first quotation mark \"""
+//Escaping all three quotation marks \"\"\"
+//"""
+```
+
+#### Extended String Delimiters
+ 
+You can place a string literal within extended delimiters to include special characters in a string without invoking their effect. You place your string within quotation marks (") and surround that with number signs (#). For example, printing the string literal #"Line 1\nLine 2"# prints the line feed escape sequence (\n) rather than printing the string across two lines.
+
+If you need the special effects of a character in a string literal, match the number of number signs within the string following the escape character (\). For example, if your string is #"Line 1\nLine 2"# and you want to break the line, you can use #"Line 1\#nLine 2"# instead. Similarly, ###"Line1\###nLine2"### also breaks the line.
+
+String literals created using extended delimiters can also be multiline string literals. You can use extended delimiters to include the text """ in a multiline string, overriding the default behavior that ends the literal.
+ 
+```swift
+let threeMoreDoubleQuotationMarks = #"""
+Here are three more double quotes: """
+"""#
+```
+
+#### Initializing an Empty String
+
+To create an empty String value as the starting point for building a longer string, either assign an empty string literal to a variable or initialize a new String instance with initializer syntax.
+ 
+```swift
+var emptyString = ""               // empty string literal
+var anotherEmptyString = String()  // initializer syntax
+// these two strings are both empty, and are equivalent to each other
+```
+
+#### String Mutability
+
+You indicate whether a particular String can be modified (or mutated) by assigning it to a variable (in which case it can be modified), or to a constant (in which case it can’t be modified).
+ 
+```swift
+var variableString = "Horse"
+variableString += " and carriage"
+// variableString is now "Horse and carriage"
+
+let constantString = "Highlander"
+//constantString += " and another Highlander"
+// this reports a compile-time error - a constant string cannot be modified
+```
+
+#### String are Value Types
+
+Swift’s String type is a value type. If you create a new String value, that String value is copied when it’s passed to a function or method, or when it’s assigned to a constant or variable. In each case, a new copy of the existing String value is created, and the new copy is passed or assigned, not the original version.
+ 
+```swift
+let stringOne = "Test"
+var stringTwo = stringOne
+print("\(stringOne) is equal to \(stringTwo)")
+stringTwo = "Test Two"
+print("\(stringOne) now is diferent to \(stringTwo)")
+```
+
+#### Working With Characters
+
+You can access the individual Character values for a String by iterating over the string with a for-in loop.
+ 
+```swift
+for character in "Dog!🐶" {
+  print(character)
+}
+```
+
+Alternatively, you can create a stand-alone Character constant or variable from a single-character string literal by providing a Character type annotation.
+ 
+```swift
+let exclamationMark: Character = "!"
+```
+ 
+`String` values can be constructed by passing an array of `Character` values as an argument to its initializer.
+ 
+```swift
+let catCharacters: [Character] = ["C", "a", "t", "!", "🐱"]
+let catString = String(catCharacters)
+print(catString)
+// Prints "Cat!🐱"
+```
+
+#### Concatenating Strings and Characters
+
+`String` values can be added together (or concatenated) with the addition operator (+) to create a new `String` value.
+ 
+```swift
+let string1 = "hello"
+let string2 = " there"
+var welcome = string1 + string2
+// welcome now equals "hello there"
+```
+
+You can also append a String value to an existing String variable with the addition assignment operator (`+=`).
+ 
+```swift
+var instruction = "look over"
+instruction += string2
+// instruction now equals "look over there"
+```
+
+You can append a Character value to a String variable with the String type’s append() method.
+ 
+```swift
+welcome.append(exclamationMark)
+```
+
+#### String Interpolation
+ 
+String interpolation is a way to construct a new String value from a mix of constants, variables, literals, and expressions by including their values inside a string literal. You can use string interpolation in both single-line and multiline string literals.
+ 
+```swift
+let multiplier = 3
+let message = "\(multiplier) times 2.5 is \(Double(multiplier) * 2.5)"
+// message is "3 times 2.5 is 7.5"
+```
+
+To use string interpolation inside a string that uses extended delimiters, match the number of number signs after the backslash to the number of number signs at the beginning and end of the string.
+ 
+```swift
+print(#"6 times 7 is \#(6 * 7)."#)
+// Prints "6 times 7 is 42."
+```
+
+#### Unicode
+ 
+Unicode is an international standard for encoding, representing, and processing text in different writing systems. It enables you to represent almost any character from any language in a standardized form, and to read and write those characters to and from an external source such as a text file or web page.
+ 
+```swift
+let eAcute: Character = "\u{E9}"                         // é
+let combinedEAcute: Character = "\u{65}\u{301}"          // e followed by
+// eAcute is é, combinedEAcute is é
+
+let precomposed: Character = "\u{D55C}"                  // 한
+let decomposed: Character = "\u{1112}\u{1161}\u{11AB}"   // ᄒ, ᅡ, ᆫ
+// precomposed is 한, decomposed is 한
+
+let enclosedEAcute: Character = "\u{E9}\u{20DD}"
+// enclosedEAcute is é⃝
+
+let regionalIndicatorForUS: Character = "\u{1F1FA}\u{1F1F8}"
+// regionalIndicatorForUS is 🇺🇸
+```
+
+#### Counting Characters
+ 
+To retrieve a count of the Character values in a string, use the count property of the string
+ 
+```swift
+let unusualMenagerie = "Koala 🐨, Snail 🐌, Penguin 🐧, Dromedary 🐪"
+print("unusualMenagerie has \(unusualMenagerie.count) characters")
+// Prints "unusualMenagerie has 40 characters"
+```
+ 
+Note that Swift’s use of extended grapheme clusters for Character values means that string concatenation and modification may not always affect a string’s character count.
+ 
+```swift
+var word = "cafe"
+print("the number of characters in \(word) is \(word.count)")
+// Prints "the number of characters in cafe is 4"
+
+word += "\u{301}"    // COMBINING ACUTE ACCENT, U+0301
+
+print("the number of characters in \(word) is \(word.count)")
+// Prints "the number of characters in café is 4"
+```
+
+#### Accessing and Modifying a String
+
+You access and modify a string through its methods and properties, or by using subscript syntax. 
+
+##### String Indices
+
+Each String value has an associated index type, String.Index, which corresponds to the position of each Character in the string.
+ 
+```swift
+var greeting = "Guten Tag!"
+greeting[greeting.startIndex]
+// G
+greeting[greeting.index(before: greeting.endIndex)]
+// !
+greeting[greeting.index(after: greeting.startIndex)]
+// u
+let index = greeting.index(greeting.startIndex, offsetBy: 7)
+greeting[index]
+// a
+```
+
+Use the indices property to access all of the indices of individual characters in a string.
+ 
+```swift
+for index in greeting.indices {
+  print("\(greeting[index]) ", terminator: "")
+}
+```
+
+##### Inserting and Removing
+
+To insert a single character into a string at a specified index, use the insert(_:at:) method, and to insert the contents of another string at a specified index, use the insert(contentsOf:at:) method.
+ 
+```swift
+welcome.remove(at: welcome.index(before: welcome.endIndex))
+// welcome now equals "hello there"
+
+let range = welcome.index(welcome.endIndex, offsetBy: -6)..<welcome.endIndex
+welcome.removeSubrange(range)
+// welcome now equals "hello"
+```
+
+##### Substrings
+
+When you get a substring from a string — for example, using a subscript or a method like prefix(_:) — the result is an instance of Substring, not another string. Substrings in Swift have most of the same methods as strings, which means you can work with substrings the same way you work with strings. However, unlike strings, you use substrings for only a short amount of time while performing actions on a string. When you’re ready to store the result for a longer time, you convert the substring to an instance of String.
+ 
+```swift
+greeting = "Hello, world!"
+let englishGreetingIndex = greeting.firstIndex(of: ",") ?? greeting.endIndex
+let beginning = greeting[..<englishGreetingIndex]
+// beginning is "Hello"
+
+// Convert the result to a String for long-term storage.
+let newString = String(beginning)
+```
+
+##### Comparing Strings
+
+Swift provides three ways to compare textual values: string and character equality, prefix equality, and suffix equality.
+ 
+##### String and Character Equality
+
+String and character equality is checked with the “equal to” operator (==) and the “not equal to” operator (!=).
+ 
+```swift
+quotation = "We're a lot alike, you and I."
+let sameQuotation = "We're a lot alike, you and I."
+if quotation == sameQuotation {
+  print("These two strings are considered equal")
+}
+// Prints "These two strings are considered equal"
+```
+ 
+Two String values (or two Character values) are considered equal if their extended grapheme clusters are canonically equivalent. Extended grapheme clusters are canonically equivalent if they have the same linguistic meaning and appearance, even if they’re composed from different Unicode scalars behind the scenes.
+ 
+```swift
+// "Voulez-vous un café?" using LATIN SMALL LETTER E WITH ACUTE
+let eAcuteQuestion = "Voulez-vous un caf\u{E9}?"
+
+// "Voulez-vous un café?" using LATIN SMALL LETTER E and COMBINING ACUTE ACCENT
+let combinedEAcuteQuestion = "Voulez-vous un caf\u{65}\u{301}?"
+
+if eAcuteQuestion == combinedEAcuteQuestion {
+  print("These two strings are considered equal")
+}
+// Prints "These two strings are considered equal"
+```
+ 
+Conversely, LATIN CAPITAL LETTER A (U+0041, or "A"), as used in English, is not equivalent to CYRILLIC CAPITAL LETTER A (U+0410, or "А"), as used in Russian. The characters are visually similar, but don’t have the same linguistic meaning.
+ 
+```swift
+let latinCapitalLetterA: Character = "\u{41}"
+
+let cyrillicCapitalLetterA: Character = "\u{0410}"
+
+if latinCapitalLetterA != cyrillicCapitalLetterA {
+  print("These two characters aren't equivalent.")
+}
+// Prints "These two characters aren't equivalent."
+```
+
+##### Prefix and Suffix Equality
+
+To check whether a string has a particular string prefix or suffix, call the string’s hasPrefix(_:) and hasSuffix(_:) methods, both of which take a single argument of type String and return a Boolean value.
+ 
+```swift
+let romeoAndJuliet = [
+  "Act 1 Scene 1: Verona, A public place",
+  "Act 1 Scene 2: Capulet's mansion",
+  "Act 1 Scene 3: A room in Capulet's mansion",
+  "Act 1 Scene 4: A street outside Capulet's mansion",
+  "Act 1 Scene 5: The Great Hall in Capulet's mansion",
+  "Act 2 Scene 1: Outside Capulet's mansion",
+  "Act 2 Scene 2: Capulet's orchard",
+  "Act 2 Scene 3: Outside Friar Lawrence's cell",
+  "Act 2 Scene 4: A street in Verona",
+  "Act 2 Scene 5: Capulet's mansion",
+  "Act 2 Scene 6: Friar Lawrence's cell"
+]
+```
+ 
+You can use the hasPrefix(_:) method with the romeoAndJuliet array to count the number of scenes in Act 1 of the play
+ 
+```swift
+var act1SceneCount = 0
+for scene in romeoAndJuliet {
+  if scene.hasPrefix("Act 1 ") {
+      act1SceneCount += 1
+  }
+}
+print("There are \(act1SceneCount) scenes in Act 1")
+// Prints "There are 5 scenes in Act 1"
+```
+
+Similarly, use the hasSuffix(_:) method to count the number of scenes that take place in or around Capulet’s mansion and Friar Lawrence’s cell
+ 
+```swift
+var mansionCount = 0
+var cellCount = 0
+for scene in romeoAndJuliet {
+  if scene.hasSuffix("Capulet's mansion") {
+      mansionCount += 1
+  } else if scene.hasSuffix("Friar Lawrence's cell") {
+      cellCount += 1
+  }
+}
+print("\(mansionCount) mansion scenes; \(cellCount) cell scenes")
+// Prints "6 mansion scenes; 2 cell scenes"
+```
+
+#### UTF-8 Representation
+ 
+You can access a UTF-8 representation of a String by iterating over its utf8 property. This property is of type String.UTF8View, which is a collection of unsigned 8-bit (UInt8) values, one for each byte in the string’s UTF-8 representation
+ 
+```swift
+let dogString = "Dog‼🐶"
+for codeUnit in dogString.utf8 {
+  print("\(codeUnit) ", terminator: "")
+}
+print("")
+// Prints "68 111 103 226 128 188 240 159 144 182 "
+```
+
+#### UTF-16 Representation
+
+You can access a UTF-16 representation of a String by iterating over its utf16 property. This property is of type String.UTF16View, which is a collection of unsigned 16-bit (UInt16) values, one for each 16-bit code unit in the string’s UTF-16 representation.
+ 
+```swift
+for codeUnit in dogString.utf16 {
+  print("\(codeUnit) ", terminator: "")
+}
+print("")
+// Prints "68 111 103 8252 55357 56374 "
+```
+
+#### Unicode Scalar Representation
+
+You can access a Unicode scalar representation of a String value by iterating over its unicodeScalars property. This property is of type UnicodeScalarView, which is a collection of values of type UnicodeScalar.
+Each UnicodeScalar has a value property that returns the scalar’s 21-bit value, represented within a UInt32 value.
+ 
+```swift
+for scalar in dogString.unicodeScalars {
+  print("\(scalar.value) ", terminator: "")
+}
+print("")
+// Prints "68 111 103 8252 128054 "
+
+for scalar in dogString.unicodeScalars {
+  print("\(scalar) ")
+}
+// D
+// o
+// g
+// ‼
+// 🐶
+```
 
 ### Collection Types
 
+Swift provides three primary collection types, known as arrays, sets, and dictionaries, for storing collections of values.
+- Arrays are ordered collections of values.
+- Sets are unordered collections of unique values.
+- Dictionaries are unordered collections of key-value associations.
+
+#### Mutability of Collections
+
+It's good practice to create immutable collections in all cases where the collection doesn't neet to chenge becaouse it enables the Swift compiler to optimize the performance of the collections you create
+
+```swift
+print("\n=====")
+print("Array")
+print("=====\n")
+```
+
+#### Arrays
+
+An array soteres values of the same type in an ordered list. The same value can appear ina an array multiple times at different positions
+
+#### Creating an Empty Array
+
+```swift
+var someInts: [Int] = []
+print("someInts is of type [Int] with \(someInts.count) items.")
+
+someInts.append(3)
+print("someInts is of type [Int] with \(someInts.count) items.")
+someInts = []
+print("someInts is of type [Int] with \(someInts.count) items.")
+```
+
+#### Creating an Array with a Default Value
+
+```swift
+var threeDoubles = Array(repeating: 0.0, count: 3)
+print("threeDoubles is of type [Double] with \(threeDoubles.count) items.")
+```
+
+#### Creating an Array by Adding Two Arrays Together
+
+```swift
+var anotherThreeDoubles = Array(repeating: 2.5, count: 3)
+print("anotherThreeDoubles is of type [Double] with \(anotherThreeDoubles.count) items.")
+
+var sixDoubles = threeDoubles + anotherThreeDoubles
+print("sixDoubles is of type [Double] with \(sixDoubles.count) items.")
+```
+
+#### Creating an Array with an Array Literal
+
+```swift
+var shoppingList: [String] = ["Eggs", "Milk"]
+```
+
+#### Accessing and Modifying an Array
+
+##### Find the number of items
+
+```swift
+print("The shopping list contains \(shoppingList.count) items.")
+```
+
+Use the Bool isEmpty as a shortcut for checking whether the count property is equal to 0
+
+```swift
+if shoppingList.isEmpty {
+  print("The shopping list is empty.")
+} else {
+  print("The shopping list is't empty.")
+}
+```
+
+##### Adding new items
+
+```swift
+shoppingList.append("Flour")
+shoppingList += ["Banking Powder"]
+shoppingList += ["Chocolate Spread", "Cheese", "Butter"]
+```
+
+##### Retrieving values
+
+```swift
+var firstItem = shoppingList[0] // shoppingList.first
+shoppingList[0] = "Six eggs"
+
+print(shoppingList)
+shoppingList[4...6] = ["Bananas", "Apples"]
+print(shoppingList)
+
+shoppingList.insert("Maple Syrup", at: 0)
+print(shoppingList)
+```
+
+##### Removing Items
+
+```swift
+let mapleSyrup = shoppingList.remove(at: 0)
+print(shoppingList)
+
+let apples = shoppingList.removeLast()
+print(shoppingList)
+```
+
+#### Iterating Over an Array
+
+```swift
+for item in shoppingList {
+  print(item)
+}
+
+for (index, value) in shoppingList.enumerated() {
+  print("Item \(index + 1): \(value)")
+}
+
+print("\n====")
+print("Sets")
+print("====\n")
+```
+
+#### Sets
+
+A set stores distinct values of the same type in a collection with no defined ordering. You can use a set instead of an array when the order of items isn't important, or when you need to ensure that an item only appears once
+
+#### Hash Values for Set Types
+
+All of Swift's basic types (such as String, Int, Double and Bool) are hashable by default, you can use your custom types as set value types or dictionary key types by making them conform the Hashable protocol
+
+#### Creating and Initializing an Empty Set
+
+The type of the letters variable is inferred to be Set<Character>, from the type of the initizlizer
+
+```swift
+var letters: Set<Character> = Set<Character>()
+print("letters is of type Set<Character> with \(letters.count) items.")
+```
+
+##### Insertgin new values
+
+```swift
+letters.insert("a")
+print("letters is of type Set<Character> with \(letters.count) items.")
+letters = []
+print("letters is of type Set<Character> with \(letters.count) items.")
+```
+
+#### Creating a Set with an Array Literal
+
+Because of Swit's type inference, you don't have to write the type of the Set's elements if you're initializing it with an array literal that contains values of just one type.
+
+```swift
+var favoriteGenres: Set = ["Rock", "Classical", "Hip Hop"]
+print(favoriteGenres)
+```
+
+#### Accessing and Modifying a Set
+
+##### The Count property
+
+```swift
+print("I have \(favoriteGenres.count) favorite music genres.")
+```
+
+##### The empty shortcut
+
+```swift
+if favoriteGenres.isEmpty {
+  print("As far as music goes, I'm not picky.")
+} else {
+  print("I have particular music preferences.")
+}
+```
+
+##### Adding elements
+
+```swift
+favoriteGenres.insert("Jazz")
+print(favoriteGenres)
+```
+
+##### Removing elements
+
+```swift
+if let removedGenre = favoriteGenres.remove("Rock") {
+  print("\(removedGenre)? I'm over it.")
+} else {
+  print("I never much cared for that.")
+}
+```
+
+##### Looking for elements
+
+```swift
+if favoriteGenres.contains("Funk") {
+  print("I get up on the good foot.")
+} else {
+  print("It's too funky in here.")
+}
+```
+
+##### - Iterating Over a Set
+for genre in favoriteGenres {
+  print(genre)
+}
+
+Swift's Set type doesn't have a defined ordering. To iterate over the values of a set in an specific order, use the sorted() method, wich returns the set's elements as an array sorted using the < operator.
+
+```swift
+for genre in favoriteGenres.sorted() {
+  print(genre)
+}
+```
+
+#### Performing Set Operations
+
+```swift
+let oddDigits: Set = [1, 3, 5, 7, 9]
+let evenDigits: Set = [0, 2, 4, 6, 8]
+let singleDigitPrimeNumbers: Set = [2, 3, 5, 7]
+```
+
+Union method creates a new set with all of the values in both sets
+
+```swift
+let union = oddDigits.union(evenDigits).sorted()
+```
+
+Intersection method creates a new set with only the values common to both sets
+
+```swift
+let intersection = oddDigits.intersection(evenDigits).sorted()
+```
+
+Subtracting method creates a new set with values not in the specified set
+
+```swift
+let subtracting = oddDigits.subtracting(singleDigitPrimeNumbers).sorted()
+```
+
+SymmetricDifference method creates a new sit with values in either set, but not both
+
+```swift
+let symmetricDifference = oddDigits.symmetricDifference(singleDigitPrimeNumbers).sorted()
+```
+
+#### Set Membership and Equality
+
+```swift
+let houseAnimals: Set = ["🐶", "🐱"]
+let farmAnimals: Set = ["🐮", "🐔", "🐑", "🐶", "🐱"]
+let cityAnimals: Set = ["🐦", "🐭"]
+```
+
+Use the isSubset(of:) method to determine whether all of the values of a set are contained in the specified set.
+
+```swift
+houseAnimals.isSubset(of: farmAnimals)
+```
+
+Use the isSuperset(of:) method to determine whether a set contains all of the values in a specified set.
+
+```swift
+farmAnimals.isSuperset(of: houseAnimals)
+```
+
+Use the isStrictSubset(of:) or isStrictSuperset(of:) methods to determine whether a set is a subset or superset, but not equal to, a specified set.
+
+Use the isDisjoint(with:) method to determine whether tow sets have no values in common
+
+```swift
+farmAnimals.isDisjoint(with: cityAnimals)
+```
+
+#### Dictionaries
+
+A dictionary stores associations between keys of the same type and values of the same type in a collection with no defined ordering. Each value is associated with a unique key, wich acts as an identifier for that value withing the dictionary.
+
+The type of a Swift dictionary is written in full as Dictionary<Key, Value> where Key is the type of value that can be used as a dictionary key and must conform to the Hashable protocol, and Value is the type of  value that the dictionary sotres for those keys.
+
+#### Creating an Empty Dictionary
+
+Creating an empty Dictionary
+
+```swift
+var namesOfIntegers: [Int: String] = [:]
+
+namesOfIntegers[16] = "sixteen"
+print(namesOfIntegers)
+namesOfIntegers = [:]
+print(namesOfIntegers)
+```
+
+#### Accessing and Modifying a Dictionary
+
+##### Creating a Dictionary with a Dictionary Literal
+
+```swift
+var airports: [String: String] = ["YYZ": "Toronto Pearson", "DUB": "Dublin"]
+print("The airports dictionary contains \(airports.count) items.")
+```
+
+##### The isEmpty shortcut
+
+```swift
+if airports.isEmpty {
+  print("The airports dictionary is empty.")
+} else {
+  print("The airports dictionary isn't empty.")
+}
+```
+
+##### Adding values
+
+```swift
+airports["LHR"] = "London"
+print(airports)
+
+airports["LHR"] = "London Heathrow"
+print(airports)
+```
+
+##### Updating values
+
+```swift
+if let oldValue = airports.updateValue("Dublin Airport", forKey: "DUB") {
+  print("The old value for DUB was \(oldValue).")
+}
+```
+
+##### Checking for a key
+
+```swift
+if let airportName = airports["DUB"] {
+  print("The name of the airport is \(airportName).")
+} else {
+  print("The aiport isn't in the airports dictionary.")
+}
+
+airports["APL"] = "Apple International"
+print(airports)
+```
+
+##### Removing a Key-Value
+
+```swift
+airports["APL"] = nil
+
+if let removedValue = airports.removeValue(forKey: "DUB") {
+  print("The removed airport's name is \(removedValue).")
+} else {
+  print("The airports dictionary doesn't contain a value for DUB.")
+}
+```
+
+#### Iterating Over a Dictionary
+
+```swift
+for (airportCode, airportName) in airports {
+  print("\(airportCode): \(airportName)")
+}
+
+for airportCode in airports.keys {
+  print("Airport code: \(airportCode)")
+}
+
+for airportName in airports.values {
+  print("Airport name: \(airportName)")
+}
+
+let airportCodes = [String](airports.keys)
+print(airportCodes)
+
+let airportNames = [String](airports.values)
+print(airportNames)
+```
 ### Control Flow
 
 ### Functions
+
+Functions are self-contained chunks of code that perform a specific task.
+
+#### Defining and Calling Functions
+
+When you define a function, you can optionally define one or more named, typed values that the function takes as input, known as parameters. You can also optionally define a type of value that the function will pass back as output when it’s done, known as its return type.
+
+```swift
+func greet(person: String) -> String {
+  let greeting = "Hello, " + person + "!"
+  return greeting
+}
+
+print(greet(person: "Anna"))
+print(greet(person: "Brian"))
+
+func greetAgain(person: String) -> String {
+  return "Hello again, " + person + "!"
+}
+
+print(greetAgain(person: "Anna"))
+```
+
+#### Function Parameters and Return Values
+
+Function parameters and return values are extremely flexible in Swift. You cand define anything from a simple utility function with a single unnamed parameter to a complex function with expressive parameter names and different parameter options.
+
+##### Functions Without Parameters
+
+Functions aren’t required to define input parameters. Here’s a function with no input parameters, which always returns the same String message whenever it’s called
+
+```swift
+func sayHelloWorld() -> String {
+  return "Hello, world"
+}
+
+print(sayHelloWorld())
+```
+
+##### Functions With Multiple Parameters
+
+Functions can have multiple input parameters, which are written within the function’s parentheses, separated by commas.
+
+```swift
+func greet(person: String, alreadyGreeted: Bool) -> String {
+  if alreadyGreeted {
+      return greetAgain(person: person)
+  } else {
+      return greet(person: person)
+  }
+}
+
+print(greet(person: "Tim", alreadyGreeted: true))
+```
+
+##### Functions Without Return Values
+
+Functions aren’t required to define a return type.
+
+```swift
+func greetWithoutReturnAValue(person: String) {
+  print("Hello, \(person)")
+}
+
+greetWithoutReturnAValue(person: "Dave")
+
+func printAndCount(string: String) -> Int {
+  print(string)
+  return string.count
+}
+
+func printWithoutCounting(string: String) {
+  let _ = printAndCount(string: string)
+}
+
+printAndCount(string: "Hello, world")
+printWithoutCounting(string: "Hello, world")
+```
+
+##### Functions with Multiple Return Values
+
+You can use a tuple type as the return type for a function to return multiple values as part of one compound return value.
+
+```swift
+func minMax(array: [Int]) -> (min: Int, max: Int) {
+  var currentMin = array[0]
+  var currentMax = array[0]
+  for value in array[1..<array.count] {
+      if value < currentMin {
+          currentMin = value
+      } else if value > currentMax {
+          currentMax = value
+      }
+  }
+  return (currentMin, currentMax)
+}
+
+let bounds = minMax(array: [8, -6, 109, 3 ,71])
+print("min is \(bounds.min) and max is \(bounds.max)")
+```
+
+##### Optional Tuple Return Types
+
+If the tuple type to be returned from a function has the potential to have “no value” for the entire tuple, you can use an optional tuple return type to reflect the fact that the entire tuple can be nil. You write an optional tuple return type by placing a question mark after the tuple type’s closing parenthesis, such as (Int, Int)? or (String, Int, Bool)?.
+
+```swift
+func optionalMinMax(array: [Int]) -> (min: Int, max: Int)? {
+  if array.isEmpty { return nil }
+  var currentMin = array[0]
+  var currentMax = array[0]
+  for value in array[1..<array.count] {
+      if value < currentMin {
+          currentMin = value
+      } else if value > currentMax {
+          currentMax = value
+      }
+  }
+  return (currentMin, currentMax)
+}
+
+if let optionalBounds = optionalMinMax(array: [8, -6, 2, 109, 3, 71]) {
+  print("min is \(optionalBounds.min) and max is \(optionalBounds.max)")
+}
+```
+
+##### Functions With an Implicit Return
+
+If the entire body of the function is a single expression, the function implicitly returns that expression.
+
+```swift
+func implicitGreeting(for person: String) -> String {
+  "Hello, " + person + "!"
+}
+
+print(implicitGreeting(for: "Dave"))
+
+print("\n============================================")
+print("Function Argument Labels and Parameter Names")
+print("============================================\n")
+```
+
+#### Function Argument Labels and Parameter Names
+
+By default, parameters use ther parameter name as ther argument label
+
+```swift
+func someFunction(firstParameterName: Int, secondParameterName: Int) {
+  // In The function body, firstParameterName and secondParameterName refer to the argument values for the first and second parameters.
+}
+someFunction(firstParameterName: 1, secondParameterName: 2)
+```
+
+##### Specifying Argument Labels
+
+You write an argument label before the parameter name, separated by a space
+
+```swift
+func someFunction(argumentLabel parameterName: Int) {
+  // In the functionbody, parameterName refers to the argument value for that parameter.
+}
+someFunction(argumentLabel: 1)
+
+func greet(person: String, from hometown: String) -> String {
+  return "Hello \(person)! Glad you could visit from \(hometown)."
+}
+print(greet(person: "Bill", from: "Cupertino"))
+```
+
+##### Omitting Argument Labels
+
+If you don’t want an argument label for a parameter, write an underscore (_) instead of an explicit argument label for that parameter.
+
+```swift
+func someFunction(_ firstParameterName: Int, secondParameterName: Int) {
+  // In the function body, firstParameterName and secondParameterName refer to the argument values for the first and second parameters
+}
+someFunction(1, secondParameterName: 2)
+```
+
+##### Default Parameter Values
+
+You can define a default value for any parameter in a function by assigning a value to the parameter after that parameter’s type. If a default value is defined, you can omit that parameter when calling the function.
+
+```swift
+func someFunction(parameterWithoutDefault: Int, parameterWithDefault: Int = 12) {
+  // If you omit the second argument when calling this function, then the value of parameterWithDefault is 12 insed the function body.
+}
+someFunction(parameterWithoutDefault: 3, parameterWithDefault: 6) // parameterWithDefault is 6
+someFunction(parameterWithoutDefault: 4) // parameterWithDefault is 12
+```
+
+##### Variadic Parameters
+
+A variadic parameter accepts zero or more values of a specified type. You use a variadic parameter to specify that the parameter can be passed a varying number of input values when the function is called.
+
+```swift
+func arithmeticMean(_ numbers: Double...) -> Double {
+  var total: Double = 0
+  for number in numbers {
+      total += number
+  }
+  return total / Double(numbers.count)
+}
+print(arithmeticMean(1, 2, 3, 4, 5))
+print(arithmeticMean(3, 8.25, 18.75))
+```
+
+##### In-Out Parameters
+
+Function parameters are constants by default. Trying to change the value of a function parameter from within the body of that function result in a compile-time error. So you can define that parameter as an in-out parameter.
+
+```swift
+func swapTwoInts(_ a: inout Int, _ b: inout Int) {
+  let temporaryA = a
+  a = b
+  b = temporaryA
+}
+
+var someInt = 3
+var anotherInt = 107
+
+swapTwoInts(&someInt, &anotherInt)
+print("someInt is now \(someInt), and anotherInt is now \(anotherInt)")
+```
+
+#### Function Types
+
+Every function has a specific function type, made up of the parameter types and the return type of the function
+
+```swift
+///  It's func has the function type (Int, Int) -> Int
+func addTwoInts(_ a: Int, _ b: Int) -> Int {
+  return a + b
+}
+
+/// It's function also has the function type (Int, Int) -> Int
+func multiplyTwoInts(_ a: Int, _ b: Int) -> Int {
+  return a * b
+}
+
+/// This var also has the function type (Int, Int) -> Int
+var mathFunction: (Int, Int) -> Int
+
+mathFunction = addTwoInts(_:_:)
+var result = mathFunction(2,3)
+print("The result value is \(result) because mathFunction is equal to addTwoInts(_:_:)")
+
+mathFunction = multiplyTwoInts(_:_:)
+result = mathFunction(2,3)
+print("The result value is \(result) because mathFunction is equal to multiplyTwoInts(_:_:)")
+```
+
+##### Function types as Parameter Types
+
+You can use a function type such as (Int, Int) -> Int as a parameter type for another function. This enables you to leave some aspects of a function’s implementation for the function’s caller to provide when the function is called.
+
+```swift
+func printMathResult(_ mathFunction: (Int, Int) -> Int, _ a: Int, _ b: Int) {
+  print("Result: \(mathFunction(a, b))")
+}
+printMathResult(mathFunction, 3, 5)
+```
+
+##### Function Types as Return Types
+
+You can use a function type as the return type of another function. You do this by writing a complete function type immediately after the return arrow (->) of the returning function.
+
+```swift
+func stepForward(_ input: Int) -> Int {
+  return input + 1
+}
+func stepBackward(_ input: Int) -> Int {
+  return input - 1
+}
+func chooseStepFunction(backward: Bool) -> (Int) -> Int {
+  return backward ? stepBackward : stepForward
+}
+var currentValue = 3
+var moveNearerToZero = chooseStepFunction(backward: currentValue > 0)
+print("Counting to zero:")
+while currentValue != 0 {
+  print("\(currentValue)... ")
+  currentValue = moveNearerToZero(currentValue)
+}
+print("zero!")
+```
+
+#### Nested Functions
+
+All of the functions you have encountered so far in this chapter have been examples of global functions, which are defined at a global scope. You can also define functions inside the bodies of other functions, known as nested functions.
+
+```swift
+func chooseNestedStepFunction(backward: Bool) -> (Int) -> Int {
+  func stepForward(input: Int) -> Int { return input + 1 }
+  func stepBackward(input: Int) -> Int { return input - 1 }
+  return backward ? stepBackward : stepForward
+}
+
+currentValue = -4
+moveNearerToZero = chooseNestedStepFunction(backward: currentValue > 0)
+
+while currentValue != 0 {
+  print("\(currentValue)... ")
+  currentValue = moveNearerToZero(currentValue)
+}
+print("zero!")
+```
 
 ### Closures
 
