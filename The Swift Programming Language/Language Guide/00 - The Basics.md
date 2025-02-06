@@ -1,4 +1,4 @@
-# Swift Language
+# The Swift Programming Language
 
 ## The Basics
 Swift is a type-safe language, which means the language helps you to be clear about the types of values your code can work with.
