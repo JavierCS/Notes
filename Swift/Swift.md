@@ -1,6 +1,10 @@
 # Swift
 
+
+
 ## The Swift Programming Language
+
+
 
 ### Language Guide
 
@@ -33,5 +37,7 @@
 27. [Memory Safety](./TheSwiftProgrammingLanguage/LanguageGuide/MemorySafety.md)
 28. [Access Control](./TheSwiftProgrammingLanguage/LanguageGuide/AccessControl.md)
 29. [Advanced Operatos](./TheSwiftProgrammingLanguage/LanguageGuide/AdvancedOperators.md)
+
+
 
 ### Language Reference
