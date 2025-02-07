@@ -3108,3 +3108,1623 @@ This document contains interview questions and answers based on the "Properties"
 
 This concludes the interview questions and answers for the "Properties" section of Swift.
 
+# Swift Methods - Interview Questions and Answers
+
+This document contains interview questions and answers based on the "Methods" section of the Swift documentation.
+
+---
+
+## 1. **What is a method in Swift?**
+   - **Answer:**  
+     A method is a function that is associated with a particular type (class, structure, or enumeration). It can be an **instance method** (called on an instance) or a **type method** (called on the type itself).
+
+---
+
+## 2. **What is the difference between instance methods and type methods?**
+   - **Answer:**  
+     - **Instance Methods:** Operate on an instance of a type and have access to the instance's properties and methods.
+     - **Type Methods:** Operate on the type itself and are declared using the `static` or `class` keyword.
+
+---
+
+## 3. **How do you define an instance method in Swift?**
+   - **Answer:**  
+     An instance method is defined within the body of a type and can access the instance's properties and methods. For example:
+     ```swift
+     class Counter {
+         var count = 0
+         func increment() {
+             count += 1
+         }
+     }
+     ```
+
+---
+
+## 4. **How do you define a type method in Swift?**
+   - **Answer:**  
+     A type method is defined using the `static` keyword (for structures and enumerations) or the `class` keyword (for classes). For example:
+     ```swift
+     struct Math {
+         static func square(_ number: Int) -> Int {
+             return number * number
+         }
+     }
+     ```
+
+---
+
+## 5. **What is the `self` keyword in methods?**
+   - **Answer:**  
+     The `self` keyword refers to the current instance of a type within an instance method. It is used to distinguish between instance properties and method parameters with the same name. For example:
+     ```swift
+     struct Point {
+         var x: Int
+         var y: Int
+         func isToTheRightOf(x: Int) -> Bool {
+             return self.x > x
+         }
+     }
+     ```
+
+---
+
+## 6. **What is the `mutating` keyword in methods?**
+   - **Answer:**  
+     The `mutating` keyword is used in methods of structures and enumerations to indicate that the method modifies the instance's properties. For example:
+     ```swift
+     struct Point {
+         var x: Int
+         var y: Int
+         mutating func moveBy(x deltaX: Int, y deltaY: Int) {
+             x += deltaX
+             y += deltaY
+         }
+     }
+     ```
+
+---
+
+## 7. **What is the difference between `mutating` and non-mutating methods?**
+   - **Answer:**  
+     - **Mutating Methods:** Modify the instance's properties and are marked with the `mutating` keyword.
+     - **Non-Mutating Methods:** Do not modify the instance's properties.
+
+---
+
+## 8. **What is the purpose of the `@discardableResult` attribute in methods?**
+   - **Answer:**  
+     The `@discardableResult` attribute suppresses the compiler warning when the return value of a method is not used. For example:
+     ```swift
+     @discardableResult
+     func greet(name: String) -> String {
+         return "Hello, \(name)!"
+     }
+     greet(name: "Alice") // No warning even though the result is not used
+     ```
+
+---
+
+## 9. **What is the purpose of the `throws` keyword in methods?**
+   - **Answer:**  
+     The `throws` keyword indicates that a method can throw an error. It is used in error-handling with `do-catch` blocks. For example:
+     ```swift
+     enum DivisionError: Error {
+         case divisionByZero
+     }
+     func divide(_ a: Int, _ b: Int) throws -> Int {
+         if b == 0 {
+             throw DivisionError.divisionByZero
+         }
+         return a / b
+     }
+     ```
+
+---
+
+## 10. **What is the purpose of the `rethrows` keyword in methods?**
+   - **Answer:**  
+     The `rethrows` keyword indicates that a method can only throw an error if one of its function parameters throws an error. For example:
+     ```swift
+     func customMap<T>(_ array: [T], transform: (T) throws -> T) rethrows -> [T] {
+         var result = [T]()
+         for item in array {
+             result.append(try transform(item))
+         }
+         return result
+     }
+     ```
+
+---
+
+## 11. **What is the purpose of the `@objc` attribute in methods?**
+   - **Answer:**  
+     The `@objc` attribute makes a method available to Objective-C code. It is often used for interoperability with Objective-C. For example:
+     ```swift
+     class MyClass: NSObject {
+         @objc func greet() {
+             print("Hello, World!")
+         }
+     }
+     ```
+
+---
+
+## 12. **What is the purpose of the `@available` attribute in methods?**
+   - **Answer:**  
+     The `@available` attribute specifies the platform and version availability of a method. For example:
+     ```swift
+     @available(iOS 15, *)
+     func newFeature() {
+         print("This feature is available in iOS 15 and later.")
+     }
+     ```
+
+---
+
+## 13. **What is the purpose of the `@inlinable` attribute in methods?**
+   - **Answer:**  
+     The `@inlinable` attribute allows a method's implementation to be inlined across module boundaries, which can improve performance. For example:
+     ```swift
+     @inlinable
+     func add(_ a: Int, _ b: Int) -> Int {
+         return a + b
+     }
+     ```
+
+---
+
+## 14. **What is the purpose of the `@usableFromInline` attribute in methods?**
+   - **Answer:**  
+     The `@usableFromInline` attribute allows internal methods to be used in `@inlinable` methods. It is used to expose internal implementation details for inlining. For example:
+     ```swift
+     @usableFromInline
+     internal func multiply(_ a: Int, _ b: Int) -> Int {
+         return a * b
+     }
+     ```
+
+---
+
+## 15. **What is the purpose of the `@main` attribute in methods?**
+   - **Answer:**  
+     The `@main` attribute designates a method as the entry point of a Swift program. It is used in command-line tools and apps. For example:
+     ```swift
+     @main
+     struct MyApp {
+         static func main() {
+             print("Hello, World!")
+         }
+     }
+     ```
+
+---
+
+## 16. **What is the purpose of the `@NSApplicationMain` attribute in methods?**
+   - **Answer:**  
+     The `@NSApplicationMain` attribute designates a class as the entry point of a macOS app. It is used in AppKit-based apps. For example:
+     ```swift
+     import AppKit
+     @NSApplicationMain
+     class AppDelegate: NSObject, NSApplicationDelegate {
+         func applicationDidFinishLaunching(_ notification: Notification) {
+             print("App launched")
+         }
+     }
+     ```
+
+---
+
+## 17. **What is the purpose of the `@UIApplicationMain` attribute in methods?**
+   - **Answer:**  
+     The `@UIApplicationMain` attribute designates a class as the entry point of an iOS app. It is used in UIKit-based apps. For example:
+     ```swift
+     import UIKit
+     @UIApplicationMain
+     class AppDelegate: UIResponder, UIApplicationDelegate {
+         func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+             print("App launched")
+             return true
+         }
+     }
+     ```
+
+---
+
+## 18. **What is the purpose of the `@testable` attribute in methods?**
+   - **Answer:**  
+     The `@testable` attribute allows access to internal methods and properties in unit tests. It is used when importing a module for testing. For example:
+     ```swift
+     @testable import MyApp
+     ```
+
+---
+
+## 19. **What is the purpose of the `@autoclosure` attribute in methods?**
+   - **Answer:**  
+     The `@autoclosure` attribute automatically wraps an expression in a closure, allowing you to delay its evaluation. For example:
+     ```swift
+     func logIfTrue(_ condition: @autoclosure () -> Bool) {
+         if condition() {
+             print("True")
+         }
+     }
+     logIfTrue(2 > 1) // Output: "True"
+     ```
+
+---
+
+## 20. **What is the purpose of the `@escaping` attribute in methods?**
+   - **Answer:**  
+     The `@escaping` attribute indicates that a closure can outlive the scope of the method it is passed to. It is often used for asynchronous operations. For example:
+     ```swift
+     func performAsyncTask(completion: @escaping () -> Void) {
+         DispatchQueue.global().async {
+             completion()
+         }
+     }
+     ```
+
+---
+
+## 21. **What is the purpose of the `@nonobjc` attribute in methods?**
+   - **Answer:**  
+     The `@nonobjc` attribute prevents a method from being exposed to Objective-C. It is used to avoid conflicts with Objective-C methods. For example:
+     ```swift
+     class MyClass {
+         @nonobjc func greet() {
+             print("Hello, World!")
+         }
+     }
+     ```
+
+---
+
+## 22. **What is the purpose of the `@objcMembers` attribute in methods?**
+   - **Answer:**  
+     The `@objcMembers` attribute automatically exposes all methods and properties of a class to Objective-C. For example:
+     ```swift
+     @objcMembers
+     class MyClass {
+         func greet() {
+             print("Hello, World!")
+         }
+     }
+     ```
+
+---
+
+## 23. **What is the purpose of the `@dynamicCallable` attribute in methods?**
+   - **Answer:**  
+     The `@dynamicCallable` attribute allows a type to be called like a function. It is used for dynamic language interoperability. For example:
+     ```swift
+     @dynamicCallable
+     struct CallableStruct {
+         func dynamicallyCall(withArguments args: [Int]) -> Int {
+             return args.reduce(0, +)
+         }
+     }
+     let callable = CallableStruct()
+     print(callable(1, 2, 3)) // Output: 6
+     ```
+
+---
+
+## 24. **What is the purpose of the `@dynamicMemberLookup` attribute in methods?**
+   - **Answer:**  
+     The `@dynamicMemberLookup` attribute allows a type to provide dynamic member lookup. It is used for dynamic language interoperability. For example:
+     ```swift
+     @dynamicMemberLookup
+     struct DynamicStruct {
+         var dictionary = [String: String]()
+         subscript(dynamicMember member: String) -> String {
+             return dictionary[member] ?? "Not found"
+         }
+     }
+     let dynamic = DynamicStruct(dictionary: ["name": "John"])
+     print(dynamic.name) // Output: "John"
+     ```
+
+---
+
+## 25. **What is the purpose of the `@resultBuilder` attribute in methods?**
+   - **Answer:**  
+     The `@resultBuilder` attribute allows a type to be used as a result builder, enabling DSL-like syntax. It is used in SwiftUI and other declarative frameworks. For example:
+     ```swift
+     @resultBuilder
+     struct StringBuilder {
+         static func buildBlock(_ components: String...) -> String {
+             return components.joined(separator: " ")
+         }
+     }
+     @StringBuilder func makeSentence() -> String {
+         "Hello,"
+         "World!"
+     }
+     print(makeSentence()) // Output: "Hello, World!"
+     ```
+
+---
+
+This concludes the interview questions and answers for the "Methods" section of Swift.
+
+# Swift Subscripts - Interview Questions and Answers
+
+This document contains interview questions and answers based on the "Subscripts" section of the Swift documentation.
+
+---
+
+## 1. **What is a subscript in Swift?**
+   - **Answer:**  
+     A subscript is a shortcut for accessing elements from a collection, sequence, or custom type using square brackets (`[]`). It allows you to read and write values using an index or key. For example:
+     ```swift
+     struct TimesTable {
+         let multiplier: Int
+         subscript(index: Int) -> Int {
+             return multiplier * index
+         }
+     }
+     let threeTimesTable = TimesTable(multiplier: 3)
+     print(threeTimesTable[6]) // Output: 18
+     ```
+
+---
+
+## 2. **How do you define a subscript in Swift?**
+   - **Answer:**  
+     A subscript is defined using the `subscript` keyword, followed by parameters and a return type. It can have getter and setter blocks. For example:
+     ```swift
+     struct Matrix {
+         var grid: [[Int]]
+         subscript(row: Int, col: Int) -> Int {
+             get {
+                 return grid[row][col]
+             }
+             set {
+                 grid[row][col] = newValue
+             }
+         }
+     }
+     ```
+
+---
+
+## 3. **What is the purpose of the `get` and `set` blocks in a subscript?**
+   - **Answer:**  
+     - **`get` Block:** Retrieves the value for the specified index or key.
+     - **`set` Block:** Assigns a new value for the specified index or key. The `newValue` keyword is used to refer to the value being assigned.
+
+---
+
+## 4. **Can a subscript have multiple parameters?**
+   - **Answer:**  
+     Yes, a subscript can have multiple parameters. For example:
+     ```swift
+     struct Matrix {
+         var grid: [[Int]]
+         subscript(row: Int, col: Int) -> Int {
+             return grid[row][col]
+         }
+     }
+     ```
+
+---
+
+## 5. **Can a subscript be read-only?**
+   - **Answer:**  
+     Yes, a subscript can be read-only by omitting the `set` block. For example:
+     ```swift
+     struct TimesTable {
+         let multiplier: Int
+         subscript(index: Int) -> Int {
+             return multiplier * index
+         }
+     }
+     ```
+
+---
+
+## 6. **What is the purpose of the `newValue` keyword in a subscript?**
+   - **Answer:**  
+     The `newValue` keyword is used in the `set` block of a subscript to refer to the value being assigned. For example:
+     ```swift
+     struct Matrix {
+         var grid: [[Int]]
+         subscript(row: Int, col: Int) -> Int {
+             get {
+                 return grid[row][col]
+             }
+             set {
+                 grid[row][col] = newValue
+             }
+         }
+     }
+     ```
+
+---
+
+## 7. **Can a subscript return an optional value?**
+   - **Answer:**  
+     Yes, a subscript can return an optional value. For example:
+     ```swift
+     struct SafeArray {
+         var array: [Int]
+         subscript(index: Int) -> Int? {
+             return array.indices.contains(index) ? array[index] : nil
+         }
+     }
+     ```
+
+---
+
+## 8. **Can a subscript be overloaded?**
+   - **Answer:**  
+     Yes, a subscript can be overloaded by defining multiple subscripts with different parameter types or counts. For example:
+     ```swift
+     struct Matrix {
+         var grid: [[Int]]
+         subscript(row: Int, col: Int) -> Int {
+             return grid[row][col]
+         }
+         subscript(row: Int) -> [Int] {
+             return grid[row]
+         }
+     }
+     ```
+
+---
+
+## 9. **What is the purpose of the `static` keyword in subscripts?**
+   - **Answer:**  
+     The `static` keyword is used to define a type-level subscript, which is called on the type itself rather than an instance. For example:
+     ```swift
+     enum Planet: Int {
+         case mercury = 1, venus, earth, mars
+         static subscript(index: Int) -> Planet? {
+             return Planet(rawValue: index)
+         }
+     }
+     let planet = Planet[3] // Output: .earth
+     ```
+
+---
+
+## 10. **What is the purpose of the `class` keyword in subscripts?**
+   - **Answer:**  
+     The `class` keyword is used to define a type-level subscript in a class that can be overridden by subclasses. For example:
+     ```swift
+     class BaseClass {
+         class subscript(index: Int) -> String {
+             return "BaseClass: \(index)"
+         }
+     }
+     class SubClass: BaseClass {
+         override class subscript(index: Int) -> String {
+             return "SubClass: \(index)"
+         }
+     }
+     ```
+
+---
+
+## 11. **What is the purpose of the `dynamicMemberLookup` attribute in subscripts?**
+   - **Answer:**  
+     The `@dynamicMemberLookup` attribute allows a type to provide dynamic member lookup using subscripts. It is used for dynamic language interoperability. For example:
+     ```swift
+     @dynamicMemberLookup
+     struct DynamicStruct {
+         var dictionary = [String: String]()
+         subscript(dynamicMember member: String) -> String {
+             return dictionary[member] ?? "Not found"
+         }
+     }
+     let dynamic = DynamicStruct(dictionary: ["name": "John"])
+     print(dynamic.name) // Output: "John"
+     ```
+
+---
+
+## 12. **What is the purpose of the `dynamicCallable` attribute in subscripts?**
+   - **Answer:**  
+     The `@dynamicCallable` attribute allows a type to be called like a function using subscripts. It is used for dynamic language interoperability. For example:
+     ```swift
+     @dynamicCallable
+     struct CallableStruct {
+         func dynamicallyCall(withArguments args: [Int]) -> Int {
+             return args.reduce(0, +)
+         }
+     }
+     let callable = CallableStruct()
+     print(callable(1, 2, 3)) // Output: 6
+     ```
+
+---
+
+## 13. **What is the purpose of the `@inlinable` attribute in subscripts?**
+   - **Answer:**  
+     The `@inlinable` attribute allows a subscript's implementation to be inlined across module boundaries, which can improve performance. For example:
+     ```swift
+     @inlinable
+     subscript(index: Int) -> Int {
+         return array[index]
+     }
+     ```
+
+---
+
+## 14. **What is the purpose of the `@usableFromInline` attribute in subscripts?**
+   - **Answer:**  
+     The `@usableFromInline` attribute allows internal subscripts to be used in `@inlinable` methods. It is used to expose internal implementation details for inlining. For example:
+     ```swift
+     @usableFromInline
+     internal subscript(index: Int) -> Int {
+         return array[index]
+     }
+     ```
+
+---
+
+## 15. **What is the purpose of the `@available` attribute in subscripts?**
+   - **Answer:**  
+     The `@available` attribute specifies the platform and version availability of a subscript. For example:
+     ```swift
+     @available(iOS 15, *)
+     subscript(index: Int) -> Int {
+         return array[index]
+     }
+     ```
+
+---
+
+## 16. **What is the purpose of the `@objc` attribute in subscripts?**
+   - **Answer:**  
+     The `@objc` attribute makes a subscript available to Objective-C code. It is often used for interoperability with Objective-C. For example:
+     ```swift
+     @objc subscript(index: Int) -> Int {
+         return array[index]
+     }
+     ```
+
+---
+
+## 17. **What is the purpose of the `@nonobjc` attribute in subscripts?**
+   - **Answer:**  
+     The `@nonobjc` attribute prevents a subscript from being exposed to Objective-C. It is used to avoid conflicts with Objective-C methods. For example:
+     ```swift
+     @nonobjc subscript(index: Int) -> Int {
+         return array[index]
+     }
+     ```
+
+---
+
+## 18. **What is the purpose of the `@objcMembers` attribute in subscripts?**
+   - **Answer:**  
+     The `@objcMembers` attribute automatically exposes all subscripts and properties of a class to Objective-C. For example:
+     ```swift
+     @objcMembers
+     class MyClass {
+         subscript(index: Int) -> Int {
+             return array[index]
+         }
+     }
+     ```
+
+---
+
+## 19. **What is the purpose of the `@resultBuilder` attribute in subscripts?**
+   - **Answer:**  
+     The `@resultBuilder` attribute allows a type to be used as a result builder, enabling DSL-like syntax. It is used in SwiftUI and other declarative frameworks. For example:
+     ```swift
+     @resultBuilder
+     struct StringBuilder {
+         static func buildBlock(_ components: String...) -> String {
+             return components.joined(separator: " ")
+         }
+     }
+     @StringBuilder func makeSentence() -> String {
+         "Hello,"
+         "World!"
+     }
+     print(makeSentence()) // Output: "Hello, World!"
+     ```
+
+---
+
+## 20. **What is the purpose of the `@testable` attribute in subscripts?**
+   - **Answer:**  
+     The `@testable` attribute allows access to internal subscripts and properties in unit tests. It is used when importing a module for testing. For example:
+     ```swift
+     @testable import MyApp
+     ```
+
+---
+
+This concludes the interview questions and answers for the "Subscripts" section of Swift.
+
+# Swift Inheritance - Interview Questions and Answers
+
+This document contains interview questions and answers based on the "Inheritance" section of the Swift documentation.
+
+---
+
+## 1. **What is inheritance in Swift?**
+   - **Answer:**  
+     Inheritance is a mechanism in Swift that allows a class to inherit properties, methods, and other characteristics from another class. The class that inherits is called the **subclass**, and the class being inherited from is called the **superclass**.
+
+---
+
+## 2. **How do you define a subclass in Swift?**
+   - **Answer:**  
+     A subclass is defined by specifying the superclass after the subclass name, separated by a colon (`:`). For example:
+     ```swift
+     class Vehicle {
+         var speed: Int = 0
+     }
+     class Car: Vehicle {
+         var gear: Int = 1
+     }
+     ```
+
+---
+
+## 3. **What is the purpose of the `super` keyword in Swift?**
+   - **Answer:**  
+     The `super` keyword is used in a subclass to refer to the superclass's properties, methods, or initializers. For example:
+     ```swift
+     class Vehicle {
+         var speed: Int = 0
+     }
+     class Car: Vehicle {
+         func accelerate() {
+             super.speed += 10
+         }
+     }
+     ```
+
+---
+
+## 4. **What is method overriding in Swift?**
+   - **Answer:**  
+     Method overriding allows a subclass to provide a custom implementation of a method that is already defined in its superclass. The `override` keyword is used to indicate overriding. For example:
+     ```swift
+     class Vehicle {
+         func makeSound() {
+             print("Vroom")
+         }
+     }
+     class Car: Vehicle {
+         override func makeSound() {
+             print("Beep Beep")
+         }
+     }
+     ```
+
+---
+
+## 5. **What is the purpose of the `final` keyword in Swift?**
+   - **Answer:**  
+     The `final` keyword prevents a class, method, or property from being overridden or subclassed. For example:
+     ```swift
+     final class Vehicle {
+         var speed: Int = 0
+     }
+     // class Car: Vehicle {} // Error: Cannot inherit from final class
+     ```
+
+---
+
+## 6. **What is the purpose of the `required` keyword in initializers?**
+   - **Answer:**  
+     The `required` keyword indicates that every subclass must implement the designated initializer. For example:
+     ```swift
+     class Vehicle {
+         var speed: Int
+         required init(speed: Int) {
+             self.speed = speed
+         }
+     }
+     class Car: Vehicle {
+         required init(speed: Int) {
+             super.init(speed: speed)
+         }
+     }
+     ```
+
+---
+
+## 7. **What is the purpose of the `convenience` keyword in initializers?**
+   - **Answer:**  
+     The `convenience` keyword is used to define a secondary initializer that calls a designated initializer. It provides additional ways to initialize an instance. For example:
+     ```swift
+     class Vehicle {
+         var speed: Int
+         init(speed: Int) {
+             self.speed = speed
+         }
+         convenience init() {
+             self.init(speed: 0)
+         }
+     }
+     ```
+
+---
+
+## 8. **What is the purpose of the `override` keyword in Swift?**
+   - **Answer:**  
+     The `override` keyword is used to indicate that a subclass is providing a custom implementation of a method, property, or subscript that is already defined in its superclass. For example:
+     ```swift
+     class Vehicle {
+         func makeSound() {
+             print("Vroom")
+         }
+     }
+     class Car: Vehicle {
+         override func makeSound() {
+             print("Beep Beep")
+         }
+     }
+     ```
+
+---
+
+## 9. **What is the purpose of the `super.init()` call in Swift?**
+   - **Answer:**  
+     The `super.init()` call is used in a subclass to initialize the superclass's properties before the subclass's properties are initialized. For example:
+     ```swift
+     class Vehicle {
+         var speed: Int
+         init(speed: Int) {
+             self.speed = speed
+         }
+     }
+     class Car: Vehicle {
+         var gear: Int
+         init(speed: Int, gear: Int) {
+             self.gear = gear
+             super.init(speed: speed)
+         }
+     }
+     ```
+
+---
+
+## 10. **What is the purpose of the `final` keyword in methods?**
+   - **Answer:**  
+     The `final` keyword prevents a method from being overridden by subclasses. For example:
+     ```swift
+     class Vehicle {
+         final func makeSound() {
+             print("Vroom")
+         }
+     }
+     class Car: Vehicle {
+         // override func makeSound() {} // Error: Cannot override final method
+     }
+     ```
+
+---
+
+## 11. **What is the purpose of the `final` keyword in properties?**
+   - **Answer:**  
+     The `final` keyword prevents a property from being overridden by subclasses. For example:
+     ```swift
+     class Vehicle {
+         final var speed: Int = 0
+     }
+     class Car: Vehicle {
+         // override var speed: Int = 10 // Error: Cannot override final property
+     }
+     ```
+
+---
+
+## 12. **What is the purpose of the `class` keyword in methods?**
+   - **Answer:**  
+     The `class` keyword is used to define a type-level method in a class that can be overridden by subclasses. For example:
+     ```swift
+     class Vehicle {
+         class func makeSound() {
+             print("Vroom")
+         }
+     }
+     class Car: Vehicle {
+         override class func makeSound() {
+             print("Beep Beep")
+         }
+     }
+     ```
+
+---
+
+## 13. **What is the purpose of the `static` keyword in methods?**
+   - **Answer:**  
+     The `static` keyword is used to define a type-level method in a class, structure, or enumeration that cannot be overridden. For example:
+     ```swift
+     struct Math {
+         static func square(_ number: Int) -> Int {
+             return number * number
+         }
+     }
+     ```
+
+---
+
+## 14. **What is the purpose of the `dynamic` keyword in Swift?**
+   - **Answer:**  
+     The `dynamic` keyword indicates that a method or property can be dynamically dispatched, which is useful for interoperability with Objective-C. For example:
+     ```swift
+     class Vehicle {
+         dynamic func makeSound() {
+             print("Vroom")
+         }
+     }
+     ```
+
+---
+
+## 15. **What is the purpose of the `@objc` attribute in methods?**
+   - **Answer:**  
+     The `@objc` attribute makes a method available to Objective-C code. It is often used for interoperability with Objective-C. For example:
+     ```swift
+     class Vehicle {
+         @objc func makeSound() {
+             print("Vroom")
+         }
+     }
+     ```
+
+---
+
+## 16. **What is the purpose of the `@nonobjc` attribute in methods?**
+   - **Answer:**  
+     The `@nonobjc` attribute prevents a method from being exposed to Objective-C. It is used to avoid conflicts with Objective-C methods. For example:
+     ```swift
+     class Vehicle {
+         @nonobjc func makeSound() {
+             print("Vroom")
+         }
+     }
+     ```
+
+---
+
+## 17. **What is the purpose of the `@objcMembers` attribute in classes?**
+   - **Answer:**  
+     The `@objcMembers` attribute automatically exposes all methods and properties of a class to Objective-C. For example:
+     ```swift
+     @objcMembers
+     class Vehicle {
+         func makeSound() {
+             print("Vroom")
+         }
+     }
+     ```
+
+---
+
+## 18. **What is the purpose of the `@available` attribute in methods?**
+   - **Answer:**  
+     The `@available` attribute specifies the platform and version availability of a method. For example:
+     ```swift
+     @available(iOS 15, *)
+     func newFeature() {
+         print("This feature is available in iOS 15 and later.")
+     }
+     ```
+
+---
+
+## 19. **What is the purpose of the `@inlinable` attribute in methods?**
+   - **Answer:**  
+     The `@inlinable` attribute allows a method's implementation to be inlined across module boundaries, which can improve performance. For example:
+     ```swift
+     @inlinable
+     func add(_ a: Int, _ b: Int) -> Int {
+         return a + b
+     }
+     ```
+
+---
+
+## 20. **What is the purpose of the `@usableFromInline` attribute in methods?**
+   - **Answer:**  
+     The `@usableFromInline` attribute allows internal methods to be used in `@inlinable` methods. It is used to expose internal implementation details for inlining. For example:
+     ```swift
+     @usableFromInline
+     internal func multiply(_ a: Int, _ b: Int) -> Int {
+         return a * b
+     }
+     ```
+
+---
+
+This concludes the interview questions and answers for the "Inheritance" section of Swift.
+
+# Swift Initialization - Interview Questions and Answers
+
+This document contains interview questions and answers based on the "Initialization" section of the Swift documentation.
+
+---
+
+## 1. **What is initialization in Swift?**
+   - **Answer:**  
+     Initialization is the process of preparing an instance of a class, structure, or enumeration for use. It involves setting initial values for stored properties and performing any other setup.
+
+---
+
+## 2. **What is a designated initializer in Swift?**
+   - **Answer:**  
+     A designated initializer is the primary initializer for a class, structure, or enumeration. It fully initializes all properties and calls the superclass's initializer (if applicable). For example:
+     ```swift
+     class Vehicle {
+         var speed: Int
+         init(speed: Int) {
+             self.speed = speed
+         }
+     }
+     ```
+
+---
+
+## 3. **What is a convenience initializer in Swift?**
+   - **Answer:**  
+     A convenience initializer is a secondary initializer that provides additional ways to initialize an instance. It must call a designated initializer from the same class. For example:
+     ```swift
+     class Vehicle {
+         var speed: Int
+         init(speed: Int) {
+             self.speed = speed
+         }
+         convenience init() {
+             self.init(speed: 0)
+         }
+     }
+     ```
+
+---
+
+## 4. **What is the difference between designated and convenience initializers?**
+   - **Answer:**  
+     - **Designated Initializer:** Fully initializes all properties and is the primary initializer.
+     - **Convenience Initializer:** Provides additional initialization options and must call a designated initializer.
+
+---
+
+## 5. **What is the purpose of the `required` keyword in initializers?**
+   - **Answer:**  
+     The `required` keyword indicates that every subclass must implement the designated initializer. For example:
+     ```swift
+     class Vehicle {
+         var speed: Int
+         required init(speed: Int) {
+             self.speed = speed
+         }
+     }
+     class Car: Vehicle {
+         required init(speed: Int) {
+             super.init(speed: speed)
+         }
+     }
+     ```
+
+---
+
+## 6. **What is the purpose of the `super.init()` call in Swift?**
+   - **Answer:**  
+     The `super.init()` call is used in a subclass to initialize the superclass's properties before the subclass's properties are initialized. For example:
+     ```swift
+     class Vehicle {
+         var speed: Int
+         init(speed: Int) {
+             self.speed = speed
+         }
+     }
+     class Car: Vehicle {
+         var gear: Int
+         init(speed: Int, gear: Int) {
+             self.gear = gear
+             super.init(speed: speed)
+         }
+     }
+     ```
+
+---
+
+## 7. **What is the purpose of the `self.init()` call in Swift?**
+   - **Answer:**  
+     The `self.init()` call is used in a convenience initializer to delegate initialization to a designated initializer in the same class. For example:
+     ```swift
+     class Vehicle {
+         var speed: Int
+         init(speed: Int) {
+             self.speed = speed
+         }
+         convenience init() {
+             self.init(speed: 0)
+         }
+     }
+     ```
+
+---
+
+## 8. **What is the purpose of the `deinit` method in Swift?**
+   - **Answer:**  
+     The `deinit` method is used to perform cleanup tasks before an instance of a class is deallocated. It is only available in classes. For example:
+     ```swift
+     class Vehicle {
+         var speed: Int
+         init(speed: Int) {
+             self.speed = speed
+         }
+         deinit {
+             print("Vehicle is being deallocated")
+         }
+     }
+     ```
+
+---
+
+## 9. **What is the purpose of the `failable initializer` in Swift?**
+   - **Answer:**  
+     A failable initializer can return `nil` if initialization fails. It is defined using `init?`. For example:
+     ```swift
+     struct Animal {
+         let species: String
+         init?(species: String) {
+             if species.isEmpty {
+                 return nil
+             }
+             self.species = species
+         }
+     }
+     ```
+
+---
+
+## 10. **What is the purpose of the `required` keyword in initializers?**
+   - **Answer:**  
+     The `required` keyword indicates that every subclass must implement the designated initializer. For example:
+     ```swift
+     class Vehicle {
+         var speed: Int
+         required init(speed: Int) {
+             self.speed = speed
+         }
+     }
+     class Car: Vehicle {
+         required init(speed: Int) {
+             super.init(speed: speed)
+         }
+     }
+     ```
+
+---
+
+## 11. **What is the purpose of the `convenience` keyword in initializers?**
+   - **Answer:**  
+     The `convenience` keyword is used to define a secondary initializer that calls a designated initializer. It provides additional ways to initialize an instance. For example:
+     ```swift
+     class Vehicle {
+         var speed: Int
+         init(speed: Int) {
+             self.speed = speed
+         }
+         convenience init() {
+             self.init(speed: 0)
+         }
+     }
+     ```
+
+---
+
+## 12. **What is the purpose of the `override` keyword in initializers?**
+   - **Answer:**  
+     The `override` keyword is used to indicate that a subclass is providing a custom implementation of a designated initializer from its superclass. For example:
+     ```swift
+     class Vehicle {
+         var speed: Int
+         init(speed: Int) {
+             self.speed = speed
+         }
+     }
+     class Car: Vehicle {
+         var gear: Int
+         override init(speed: Int) {
+             self.gear = 1
+             super.init(speed: speed)
+         }
+     }
+     ```
+
+---
+
+## 13. **What is the purpose of the `required` keyword in initializers?**
+   - **Answer:**  
+     The `required` keyword indicates that every subclass must implement the designated initializer. For example:
+     ```swift
+     class Vehicle {
+         var speed: Int
+         required init(speed: Int) {
+             self.speed = speed
+         }
+     }
+     class Car: Vehicle {
+         required init(speed: Int) {
+             super.init(speed: speed)
+         }
+     }
+     ```
+
+---
+
+## 14. **What is the purpose of the `convenience` keyword in initializers?**
+   - **Answer:**  
+     The `convenience` keyword is used to define a secondary initializer that calls a designated initializer. It provides additional ways to initialize an instance. For example:
+     ```swift
+     class Vehicle {
+         var speed: Int
+         init(speed: Int) {
+             self.speed = speed
+         }
+         convenience init() {
+             self.init(speed: 0)
+         }
+     }
+     ```
+
+---
+
+## 15. **What is the purpose of the `override` keyword in initializers?**
+   - **Answer:**  
+     The `override` keyword is used to indicate that a subclass is providing a custom implementation of a designated initializer from its superclass. For example:
+     ```swift
+     class Vehicle {
+         var speed: Int
+         init(speed: Int) {
+             self.speed = speed
+         }
+     }
+     class Car: Vehicle {
+         var gear: Int
+         override init(speed: Int) {
+             self.gear = 1
+             super.init(speed: speed)
+         }
+     }
+     ```
+
+---
+
+## 16. **What is the purpose of the `required` keyword in initializers?**
+   - **Answer:**  
+     The `required` keyword indicates that every subclass must implement the designated initializer. For example:
+     ```swift
+     class Vehicle {
+         var speed: Int
+         required init(speed: Int) {
+             self.speed = speed
+         }
+     }
+     class Car: Vehicle {
+         required init(speed: Int) {
+             super.init(speed: speed)
+         }
+     }
+     ```
+
+---
+
+## 17. **What is the purpose of the `convenience` keyword in initializers?**
+   - **Answer:**  
+     The `convenience` keyword is used to define a secondary initializer that calls a designated initializer. It provides additional ways to initialize an instance. For example:
+     ```swift
+     class Vehicle {
+         var speed: Int
+         init(speed: Int) {
+             self.speed = speed
+         }
+         convenience init() {
+             self.init(speed: 0)
+         }
+     }
+     ```
+
+---
+
+## 18. **What is the purpose of the `override` keyword in initializers?**
+   - **Answer:**  
+     The `override` keyword is used to indicate that a subclass is providing a custom implementation of a designated initializer from its superclass. For example:
+     ```swift
+     class Vehicle {
+         var speed: Int
+         init(speed: Int) {
+             self.speed = speed
+         }
+     }
+     class Car: Vehicle {
+         var gear: Int
+         override init(speed: Int) {
+             self.gear = 1
+             super.init(speed: speed)
+         }
+     }
+     ```
+
+---
+
+## 19. **What is the purpose of the `required` keyword in initializers?**
+   - **Answer:**  
+     The `required` keyword indicates that every subclass must implement the designated initializer. For example:
+     ```swift
+     class Vehicle {
+         var speed: Int
+         required init(speed: Int) {
+             self.speed = speed
+         }
+     }
+     class Car: Vehicle {
+         required init(speed: Int) {
+             super.init(speed: speed)
+         }
+     }
+     ```
+
+---
+
+## 20. **What is the purpose of the `convenience` keyword in initializers?**
+   - **Answer:**  
+     The `convenience` keyword is used to define a secondary initializer that calls a designated initializer. It provides additional ways to initialize an instance. For example:
+     ```swift
+     class Vehicle {
+         var speed: Int
+         init(speed: Int) {
+             self.speed = speed
+         }
+         convenience init() {
+             self.init(speed: 0)
+         }
+     }
+     ```
+
+---
+
+This concludes the interview questions and answers for the "Initialization" section of Swift.
+
+# Swift Deinitialization - Interview Questions and Answers
+
+This document contains interview questions and answers based on the "Deinitialization" section of the Swift documentation.
+
+---
+
+## 1. **What is deinitialization in Swift?**
+   - **Answer:**  
+     Deinitialization is the process of cleaning up resources before an instance of a class is deallocated. It is performed by the `deinit` method, which is automatically called when an instance is no longer needed.
+
+---
+
+## 2. **What is the purpose of the `deinit` method in Swift?**
+   - **Answer:**  
+     The `deinit` method is used to perform cleanup tasks, such as releasing resources (e.g., closing files, freeing memory) before an instance of a class is deallocated. For example:
+     ```swift
+     class FileHandler {
+         let filename: String
+         init(filename: String) {
+             self.filename = filename
+             print("File \(filename) opened")
+         }
+         deinit {
+             print("File \(filename) closed")
+         }
+     }
+     ```
+
+---
+
+## 3. **When is the `deinit` method called in Swift?**
+   - **Answer:**  
+     The `deinit` method is called automatically when an instance of a class is no longer in use and is about to be deallocated. This happens when there are no more strong references to the instance.
+
+---
+
+## 4. **Can you define a `deinit` method in a structure or enumeration?**
+   - **Answer:**  
+     No, the `deinit` method is only available for classes. Structures and enumerations are value types and do not support deinitialization.
+
+---
+
+## 5. **What is the difference between `deinit` and `init` in Swift?**
+   - **Answer:**  
+     - **`init`:** Used to set up an instance of a class, structure, or enumeration by initializing its properties.
+     - **`deinit`:** Used to clean up resources before an instance of a class is deallocated.
+
+---
+
+## 6. **Can you manually call the `deinit` method in Swift?**
+   - **Answer:**  
+     No, the `deinit` method is automatically called by Swift when an instance is deallocated. You cannot call it manually.
+
+---
+
+## 7. **What is the purpose of the `deinit` method in memory management?**
+   - **Answer:**  
+     The `deinit` method ensures that resources (e.g., file handles, network connections) are properly released before an instance is deallocated, preventing memory leaks and resource exhaustion.
+
+---
+
+## 8. **What happens if you don't define a `deinit` method in a class?**
+   - **Answer:**  
+     If you don't define a `deinit` method, the instance will still be deallocated when there are no more strong references to it. However, you won't have the opportunity to perform custom cleanup tasks.
+
+---
+
+## 9. **Can you access properties and methods in the `deinit` method?**
+   - **Answer:**  
+     Yes, you can access properties and methods in the `deinit` method. However, you cannot modify properties that are constants (`let`) or call methods that might trigger additional deinitialization.
+
+---
+
+## 10. **What is the order of deinitialization in a class hierarchy?**
+   - **Answer:**  
+     Deinitialization happens in reverse order of initialization:
+     1. The subclass's `deinit` method is called first.
+     2. The superclass's `deinit` method is called next.
+     This ensures that the subclass cleans up its resources before the superclass.
+
+---
+
+## 11. **Can you use `weak` or `unowned` references in the `deinit` method?**
+   - **Answer:**  
+     Yes, you can use `weak` or `unowned` references in the `deinit` method. However, you should avoid creating strong reference cycles, as they can prevent deinitialization.
+
+---
+
+## 12. **What is the purpose of the `deinit` method in reference counting?**
+   - **Answer:**  
+     The `deinit` method is called when the reference count of an instance drops to zero, indicating that the instance is no longer needed and can be deallocated.
+
+---
+
+## 13. **Can you throw errors in the `deinit` method?**
+   - **Answer:**  
+     No, the `deinit` method cannot throw errors. It is used solely for cleanup tasks and must complete without errors.
+
+---
+
+## 14. **What is the purpose of the `deinit` method in resource management?**
+   - **Answer:**  
+     The `deinit` method ensures that resources (e.g., file handles, network connections) are properly released before an instance is deallocated, preventing resource leaks.
+
+---
+
+## 15. **Can you use `defer` inside the `deinit` method?**
+   - **Answer:**  
+     Yes, you can use `defer` inside the `deinit` method to ensure that certain cleanup tasks are performed even if the method exits early. For example:
+     ```swift
+     class FileHandler {
+         let filename: String
+         init(filename: String) {
+             self.filename = filename
+             print("File \(filename) opened")
+         }
+         deinit {
+             defer {
+                 print("File \(filename) closed")
+             }
+             print("Performing cleanup tasks")
+         }
+     }
+     ```
+
+---
+
+## 16. **What is the purpose of the `deinit` method in ARC (Automatic Reference Counting)?**
+   - **Answer:**  
+     The `deinit` method is called when ARC determines that an instance is no longer needed and its reference count drops to zero. It ensures that resources are released before deallocation.
+
+---
+
+## 17. **Can you use `super.deinit()` in the `deinit` method?**
+   - **Answer:**  
+     No, you cannot explicitly call `super.deinit()` in the `deinit` method. The superclass's `deinit` method is automatically called after the subclass's `deinit` method completes.
+
+---
+
+## 18. **What is the purpose of the `deinit` method in singleton patterns?**
+   - **Answer:**  
+     In singleton patterns, the `deinit` method is rarely used because singletons are designed to persist for the lifetime of the application. However, it can be used to clean up resources if the singleton is explicitly deallocated.
+
+---
+
+## 19. **Can you use `deinit` in protocols?**
+   - **Answer:**  
+     No, protocols cannot define `deinit` methods because they are not tied to a specific instance. Only classes can have `deinit` methods.
+
+---
+
+## 20. **What is the purpose of the `deinit` method in observer patterns?**
+   - **Answer:**  
+     In observer patterns, the `deinit` method can be used to remove an instance from observation lists or unsubscribe from notifications before the instance is deallocated.
+
+---
+
+This concludes the interview questions and answers for the "Deinitialization" section of Swift.
+
+# Swift Optional Chaining - Interview Questions and Answers
+
+This document contains interview questions and answers based on the "Optional Chaining" section of the Swift documentation.
+
+---
+
+## 1. **What is optional chaining in Swift?**
+   - **Answer:**  
+     Optional chaining is a feature in Swift that allows you to safely access properties, methods, and subscripts on an optional value that might currently be `nil`. If any part of the chain is `nil`, the entire chain evaluates to `nil`.
+
+---
+
+## 2. **How does optional chaining work in Swift?**
+   - **Answer:**  
+     Optional chaining uses the `?` operator to access properties, methods, or subscripts on an optional value. If the optional is `nil`, the entire chain returns `nil`. For example:
+     ```swift
+     let person: Person? = Person()
+     let name = person?.name // Returns `nil` if `person` is `nil`
+     ```
+
+---
+
+## 3. **What is the difference between optional chaining and force unwrapping?**
+   - **Answer:**  
+     - **Optional Chaining:** Safely accesses properties, methods, or subscripts on an optional value. If the optional is `nil`, the chain returns `nil` without causing a runtime crash.
+     - **Force Unwrapping:** Uses the `!` operator to forcefully unwrap an optional. If the optional is `nil`, it causes a runtime crash.
+
+---
+
+## 4. **Can you use optional chaining with methods that return a value?**
+   - **Answer:**  
+     Yes, you can use optional chaining with methods that return a value. If the optional is `nil`, the method call is skipped, and the entire expression returns `nil`. For example:
+     ```swift
+     let person: Person? = Person()
+     let greeting = person?.sayHello() // Returns `nil` if `person` is `nil`
+     ```
+
+---
+
+## 5. **Can you use optional chaining with methods that do not return a value?**
+   - **Answer:**  
+     Yes, you can use optional chaining with methods that do not return a value. If the optional is `nil`, the method call is skipped. For example:
+     ```swift
+     let person: Person? = Person()
+     person?.sayHello() // Does nothing if `person` is `nil`
+     ```
+
+---
+
+## 6. **What happens if you use optional chaining on a non-optional value?**
+   - **Answer:**  
+     If you use optional chaining on a non-optional value, the compiler will treat it as an optional and allow the chain to proceed. However, it is unnecessary and can lead to confusion.
+
+---
+
+## 7. **Can you use optional chaining with subscripts?**
+   - **Answer:**  
+     Yes, you can use optional chaining with subscripts. If the optional is `nil`, the subscript access returns `nil`. For example:
+     ```swift
+     let array: [Int]? = [1, 2, 3]
+     let firstElement = array?[0] // Returns `nil` if `array` is `nil`
+     ```
+
+---
+
+## 8. **What is the purpose of the `?` operator in optional chaining?**
+   - **Answer:**  
+     The `?` operator is used to safely access properties, methods, or subscripts on an optional value. If the optional is `nil`, the chain returns `nil` without causing a runtime crash.
+
+---
+
+## 9. **What is the purpose of the `!` operator in optional chaining?**
+   - **Answer:**  
+     The `!` operator is used for force unwrapping an optional. It should be used only when you are certain the optional is not `nil`. If the optional is `nil`, it causes a runtime crash.
+
+---
+
+## 10. **Can you chain multiple optional accesses together?**
+   - **Answer:**  
+     Yes, you can chain multiple optional accesses together. If any part of the chain is `nil`, the entire chain evaluates to `nil`. For example:
+     ```swift
+     let person: Person? = Person()
+     let street = person?.address?.street // Returns `nil` if `person` or `address` is `nil`
+     ```
+
+---
+
+## 11. **What is the purpose of optional chaining in Swift?**
+   - **Answer:**  
+     Optional chaining provides a safe way to access properties, methods, or subscripts on an optional value without causing a runtime crash if the optional is `nil`.
+
+---
+
+## 12. **Can you use optional chaining with type casting?**
+   - **Answer:**  
+     Yes, you can use optional chaining with type casting. For example:
+     ```swift
+     let animal: Animal? = Dog()
+     let dog = animal as? Dog
+     let bark = dog?.bark() // Returns `nil` if `animal` is not a `Dog`
+     ```
+
+---
+
+## 13. **What is the purpose of the `nil` coalescing operator (`??`) in optional chaining?**
+   - **Answer:**  
+     The `nil` coalescing operator (`??`) provides a default value if the optional chaining expression evaluates to `nil`. For example:
+     ```swift
+     let person: Person? = Person()
+     let name = person?.name ?? "Unknown" // Returns "Unknown" if `person` or `name` is `nil`
+     ```
+
+---
+
+## 14. **Can you use optional chaining with function calls?**
+   - **Answer:**  
+     Yes, you can use optional chaining with function calls. If the optional is `nil`, the function call is skipped, and the entire expression returns `nil`. For example:
+     ```swift
+     let person: Person? = Person()
+     let greeting = person?.sayHello() // Returns `nil` if `person` is `nil`
+     ```
+
+---
+
+## 15. **What is the purpose of optional chaining in error handling?**
+   - **Answer:**  
+     Optional chaining simplifies error handling by allowing you to safely access properties, methods, or subscripts on an optional value without explicitly checking for `nil`.
+
+---
+
+## 16. **Can you use optional chaining with computed properties?**
+   - **Answer:**  
+     Yes, you can use optional chaining with computed properties. If the optional is `nil`, the computed property access returns `nil`. For example:
+     ```swift
+     let person: Person? = Person()
+     let age = person?.age // Returns `nil` if `person` is `nil`
+     ```
+
+---
+
+## 17. **What is the purpose of optional chaining in SwiftUI?**
+   - **Answer:**  
+     In SwiftUI, optional chaining is used to safely access properties or methods of optional state variables or bindings without causing runtime crashes.
+
+---
+
+## 18. **Can you use optional chaining with closures?**
+   - **Answer:**  
+     Yes, you can use optional chaining with closures. If the optional is `nil`, the closure is not called, and the entire expression returns `nil`. For example:
+     ```swift
+     let person: Person? = Person()
+     let greeting = person?.sayHello { print("Hello") } // Does nothing if `person` is `nil`
+     ```
+
+---
+
+## 19. **What is the purpose of optional chaining in protocol extensions?**
+   - **Answer:**  
+     Optional chaining in protocol extensions allows you to safely access properties or methods of optional conforming types without causing runtime crashes.
+
+---
+
+## 20. **Can you use optional chaining with enums?**
+   - **Answer:**  
+     Yes, you can use optional chaining with enums that have associated values. If the optional is `nil`, the chain returns `nil`. For example:
+     ```swift
+     enum Result {
+         case success(String)
+         case failure
+     }
+     let result: Result? = .success("Hello")
+     let message = result?.success // Returns `nil` if `result` is `nil` or not `.success`
+     ```
+
+---
+
+This concludes the interview questions and answers for the "Optional Chaining" section of Swift.
+
