@@ -8,7 +8,7 @@ Swift is a *type-safe* language, witch means the language helps you to be clear 
 
 If part of your code requires a `String`, type safety prevents you from pasing it an `Int` by mistake.
 
-
+---
 
 ### Constants and Variables
 
@@ -101,7 +101,7 @@ print("The current value of friendlyWelcome is \(wellcomeMessage)")
 // Prints "The current value of friendlyWelcome is Bonjour!"
 ```
 
-
+---
 
 ### Comments
 
@@ -116,7 +116,7 @@ but is written over multiple lines. */
 
 ```
 
-
+---
 
 ### Semicolons
 
@@ -127,7 +127,7 @@ let cat = "🐱"; print(cat)
 // Prints "🐱"
 ```
 
-
+---
 
 ### Integers
 
@@ -149,7 +149,7 @@ Swift provides an integer type, `Int`, which has the same size as the current pl
 - On a 32-bit platform, `Int` is the same size as `Int32`.
 - On a 64-bit platform, `Int` is the same size as `Int64`.
 
-
+---
 
 ### Floating-Point Numbers
 
@@ -158,7 +158,7 @@ Swift provides an integer type, `Int`, which has the same size as the current pl
 *  `Double` can represents a 64-bit floating-point number (`Double` has a precision of at least 15 decimal digits).
 * `Float` represents a 32-bit floating-point number (`Float` has a precision of 6 decimal digits).
 
-
+---
 
 ### Type Safety and Type Inference
 
@@ -179,7 +179,7 @@ let anotherPi = 3 + 0.14159
 // anotherPi is also inferred to be of type Double
 ```
 
-
+---
 
 ### Numeric Literals
 
@@ -216,7 +216,7 @@ let oneMillion = 1_000_000
 let justOverOneMillion = 1_000_000.000_000_1
 ```
 
-
+---
 
 ### Numeric Type Conversion
 
@@ -258,7 +258,7 @@ let integerPi = Int(pi)
 // integerPi equals 3, and is inferred to be of type Int
 ```
 
-
+---
 
 ### Type Aliases
 
@@ -275,7 +275,7 @@ var maxAmplitudeFound = AudioSample.min
 // maxAmplitudeFound is now 0
 ```
 
-
+---
 
 ### Booleans
 
@@ -296,6 +296,8 @@ if turnipsAreDelicious {
 }
 // Prints "Eww, turnips are horrible."
 ```
+
+---
 
 ### Tuples
 
@@ -345,6 +347,8 @@ print("The status code is \(http200Status.statusCode)")
 print("The status message is \(http200Status.description)")
 // Prints "The status message is OK"
 ```
+
+---
 
 ### Optionals
 
