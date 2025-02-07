@@ -471,14 +471,88 @@ print(greeting)
 // Prints "Hello, friend!"
 ```
 
-##  Key Points
+### Forece Unwrapping
 
-- ##### Avoid using *type annotations* when the type is obvios like when you are defining a `String` or `Int` in order to avoid make the code  **verbose and redundant**. But using *type annotations* can help you to:
+When `nil` represents an unrecoverable failure such as a programmer error o corrupted state, you can acces the underlying value by addin an exclamation mark (`!`) to the end of the optional's name.
 
-  - Add clarity and readability.
-  - Avoid ambiguity.
-  - Get performance optimization.
-  - Get better protocol conformance and generic implementation.
+The `!` is a shorter spelling of `fatalError(_:file:line:)`.
+
+```swift
+let possibleNumber = "123"
+let convertedNumber = Int(possibleNumber)
+
+let number = convertedNumber!
+
+guard let number = convertedNumber else {
+    fatalError("The number was invalid")
+}
+```
+
+#### Implicitly Unwrapped Optionals 
+
+Sometimes it's clear from a program's structure that an optional will always have a value, after that value is first set. In these cases, it's useful to remove the need to check and unwrap the optional's value every time it's accessed, because it can safely assumed to have a value all of the time.
+
+These kinds of optionals are defined as *implicitly unwrapped optionals*.You write an implicitly unwrapped optional by placing an exclamation point (`String!`) rather than a question mark (`String?`) after the type that you want to make optional.  
+
+```swift
+let possibleString: String? = "An optional string."
+let forcedString: String = possibleString! // Requires explicit unwrapping
+
+let assumedString: String! = "An implicitly unwrapped optional string."
+let implicitString: String = assumedString // Unwrapped automatically
+```
+
+You can think of an implicitly unwrapped optional as giving permission for the optional to be force-unwrapped if needed.
+
+```swift
+let optionalString = assumedString
+// The type of optionalString is "String?" and assumedString isn't force-unwrapped.
+```
+
+If an implicitly unwrapped optional is `nil` and you try to access its wrapped value, you'll trigger a runtime error. So you can check whether an implicitly unwrapped optional is `nil` the same way you check a normal optiona..
+
+```swift
+if assumedString != nil {
+    print(assumedString!)
+}
+// Prints "An implicitly unwrapped optional string."
+```
+
+You can also use an implicitly unwrapped optional with optional binding.
+
+```swift
+if let definiteString = assumedString {
+    print(definiteString)
+}
+// Prints "An implicitly unwrapped optional string."
+```
+### Error Handling
+
+You use *error handling* to respond to error conditions your program may encounter during execution.
+
+When a function encounters an error condition, it `throws` an error so that function's caller must `catch` that error.
+
+```swift
+func canThrowAnError() throws {
+    // this function may or may not throw an error
+}
+
+do {
+    try canThrowAnError()
+    // no error was thrown
+} catch {
+    // an error was thrown
+}
+```
+
+## Key Points
+
+* Avoid using *type annotations* when the type is obvios like when you are defining a `String` or `Int` in order to avoid make the code  verbose and redundant. But using *type annotations* can help you to:
+
+- Add clarity and readability.
+- Avoid ambiguity.
+- Get performance optimization.
+- Get better protocol conformance and generic implementation.
 
 - If you wan to concatenate two strings it is better to use *string interpolation* due to it is type safety, faster and more optimized than using `+` because the swift compiler precomputes the interpolated string when possible while `+` creates multiple temporary `String` instances.
 
@@ -538,3 +612,4 @@ print(greeting)
   ```
 
 * You can't accidentally treat an optional as if it were non-optional because this mistake produces an error at compile time.
+

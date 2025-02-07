@@ -4728,3 +4728,643 @@ This document contains interview questions and answers based on the "Optional Ch
 
 This concludes the interview questions and answers for the "Optional Chaining" section of Swift.
 
+# Swift Error Handling - Interview Questions and Answers
+
+This document contains interview questions and answers based on the "Error Handling" section of the Swift documentation.
+
+---
+
+## 1. **What is error handling in Swift?**
+   - **Answer:**  
+     Error handling is a mechanism in Swift that allows you to respond to and recover from errors in your program. It involves throwing, catching, and propagating errors using the `throw`, `try`, `catch`, and `do` keywords.
+
+---
+
+## 2. **What is the purpose of the `Error` protocol in Swift?**
+   - **Answer:**  
+     The `Error` protocol is used to represent errors in Swift. Types that conform to `Error` can be thrown and caught using Swift's error-handling mechanisms. For example:
+     ```swift
+     enum NetworkError: Error {
+         case noConnection
+         case serverError(String)
+     }
+     ```
+
+---
+
+## 3. **What is the purpose of the `throw` keyword in Swift?**
+   - **Answer:**  
+     The `throw` keyword is used to throw an error from a function or method. It indicates that an error has occurred and propagates the error to the caller. For example:
+     ```swift
+     func divide(_ a: Int, _ b: Int) throws -> Int {
+         if b == 0 {
+             throw NetworkError.serverError("Division by zero")
+         }
+         return a / b
+     }
+     ```
+
+---
+
+## 4. **What is the purpose of the `throws` keyword in Swift?**
+   - **Answer:**  
+     The `throws` keyword is used in a function or method signature to indicate that it can throw an error. It allows the function to propagate errors to its caller. For example:
+     ```swift
+     func fetchData() throws -> Data {
+         // Code that might throw an error
+     }
+     ```
+
+---
+
+## 5. **What is the purpose of the `try` keyword in Swift?**
+   - **Answer:**  
+     The `try` keyword is used to call a function or method that can throw an error. It must be used within a `do-catch` block or propagated further using `try?` or `try!`. For example:
+     ```swift
+     do {
+         let result = try divide(10, 0)
+     } catch {
+         print("Error: \(error)")
+     }
+     ```
+
+---
+
+## 6. **What is the difference between `try`, `try?`, and `try!` in Swift?**
+   - **Answer:**  
+     - **`try`:** Used within a `do-catch` block to handle errors.
+     - **`try?`:** Converts the result to an optional. If an error is thrown, the result is `nil`.
+     - **`try!`:** Forces unwrapping the result. If an error is thrown, it causes a runtime crash.
+
+---
+
+## 7. **What is the purpose of the `do-catch` block in Swift?**
+   - **Answer:**  
+     The `do-catch` block is used to handle errors thrown by a function or method. The `do` block contains the code that might throw an error, and the `catch` block handles the error. For example:
+     ```swift
+     do {
+         let result = try divide(10, 0)
+     } catch NetworkError.noConnection {
+         print("No network connection")
+     } catch {
+         print("Unknown error: \(error)")
+     }
+     ```
+
+---
+
+## 8. **What is the purpose of the `catch` block in Swift?**
+   - **Answer:**  
+     The `catch` block is used to handle specific errors thrown by a function or method. It can match specific error types or provide a general error handler. For example:
+     ```swift
+     do {
+         let result = try divide(10, 0)
+     } catch NetworkError.noConnection {
+         print("No network connection")
+     } catch {
+         print("Unknown error: \(error)")
+     }
+     ```
+
+---
+
+## 9. **What is the purpose of the `defer` statement in error handling?**
+   - **Answer:**  
+     The `defer` statement is used to execute cleanup code before a function or method exits, regardless of whether an error was thrown. For example:
+     ```swift
+     func processFile() throws {
+         let file = openFile()
+         defer {
+             closeFile(file)
+         }
+         // Code that might throw an error
+     }
+     ```
+
+---
+
+## 10. **What is the purpose of the `rethrows` keyword in Swift?**
+   - **Answer:**  
+     The `rethrows` keyword indicates that a function or method can only throw an error if one of its function parameters throws an error. It is often used in higher-order functions. For example:
+     ```swift
+     func customMap<T>(_ array: [T], transform: (T) throws -> T) rethrows -> [T] {
+         var result = [T]()
+         for item in array {
+             result.append(try transform(item))
+         }
+         return result
+     }
+     ```
+
+---
+
+## 11. **What is the purpose of the `Result` type in error handling?**
+   - **Answer:**  
+     The `Result` type is used to represent the outcome of an operation that can either succeed or fail. It is often used as an alternative to throwing errors. For example:
+     ```swift
+     enum Result<Success, Failure: Error> {
+         case success(Success)
+         case failure(Failure)
+     }
+     ```
+
+---
+
+## 12. **What is the purpose of the `try?` keyword in Swift?**
+   - **Answer:**  
+     The `try?` keyword converts the result of a throwing function or method to an optional. If an error is thrown, the result is `nil`. For example:
+     ```swift
+     let result = try? divide(10, 0) // Returns `nil` if an error is thrown
+     ```
+
+---
+
+## 13. **What is the purpose of the `try!` keyword in Swift?**
+   - **Answer:**  
+     The `try!` keyword forces unwrapping the result of a throwing function or method. If an error is thrown, it causes a runtime crash. For example:
+     ```swift
+     let result = try! divide(10, 2) // Crashes if an error is thrown
+     ```
+
+---
+
+## 14. **What is the purpose of the `failable initializer` in Swift?**
+   - **Answer:**  
+     A failable initializer is an initializer that can return `nil` if initialization fails. It is defined using `init?`. For example:
+     ```swift
+     struct Animal {
+         let species: String
+         init?(species: String) {
+             if species.isEmpty {
+                 return nil
+             }
+             self.species = species
+         }
+     }
+     ```
+
+---
+
+## 15. **What is the purpose of the `defer` statement in error handling?**
+   - **Answer:**  
+     The `defer` statement is used to execute cleanup code before a function or method exits, regardless of whether an error was thrown. For example:
+     ```swift
+     func processFile() throws {
+         let file = openFile()
+         defer {
+             closeFile(file)
+         }
+         // Code that might throw an error
+     }
+     ```
+
+---
+
+## 16. **What is the purpose of the `rethrows` keyword in Swift?**
+   - **Answer:**  
+     The `rethrows` keyword indicates that a function or method can only throw an error if one of its function parameters throws an error. It is often used in higher-order functions. For example:
+     ```swift
+     func customMap<T>(_ array: [T], transform: (T) throws -> T) rethrows -> [T] {
+         var result = [T]()
+         for item in array {
+             result.append(try transform(item))
+         }
+         return result
+     }
+     ```
+
+---
+
+## 17. **What is the purpose of the `Result` type in error handling?**
+   - **Answer:**  
+     The `Result` type is used to represent the outcome of an operation that can either succeed or fail. It is often used as an alternative to throwing errors. For example:
+     ```swift
+     enum Result<Success, Failure: Error> {
+         case success(Success)
+         case failure(Failure)
+     }
+     ```
+
+---
+
+## 18. **What is the purpose of the `try?` keyword in Swift?**
+   - **Answer:**  
+     The `try?` keyword converts the result of a throwing function or method to an optional. If an error is thrown, the result is `nil`. For example:
+     ```swift
+     let result = try? divide(10, 0) // Returns `nil` if an error is thrown
+     ```
+
+---
+
+## 19. **What is the purpose of the `try!` keyword in Swift?**
+   - **Answer:**  
+     The `try!` keyword forces unwrapping the result of a throwing function or method. If an error is thrown, it causes a runtime crash. For example:
+     ```swift
+     let result = try! divide(10, 2) // Crashes if an error is thrown
+     ```
+
+---
+
+## 20. **What is the purpose of the `failable initializer` in Swift?**
+   - **Answer:**  
+     A failable initializer is an initializer that can return `nil` if initialization fails. It is defined using `init?`. For example:
+     ```swift
+     struct Animal {
+         let species: String
+         init?(species: String) {
+             if species.isEmpty {
+                 return nil
+             }
+             self.species = species
+         }
+     }
+     ```
+
+---
+
+This concludes the interview questions and answers for the "Error Handling" section of Swift.
+
+# Swift Concurrency - Interview Questions and Answers
+
+This document contains interview questions and answers based on the "Concurrency" section of the Swift documentation.
+
+---
+
+## 1. **What is concurrency in Swift?**
+   - **Answer:**  
+     Concurrency in Swift refers to the ability to perform multiple tasks simultaneously, improving the responsiveness and performance of applications. Swift provides modern concurrency features like `async/await`, `Task`, and `actors`.
+
+---
+
+## 2. **What is the `async` keyword in Swift?**
+   - **Answer:**  
+     The `async` keyword is used to mark a function or method as asynchronous, meaning it can perform work without blocking the current thread. For example:
+     ```swift
+     func fetchData() async -> Data {
+         // Perform asynchronous work
+     }
+     ```
+
+---
+
+## 3. **What is the `await` keyword in Swift?**
+   - **Answer:**  
+     The `await` keyword is used to call an asynchronous function or method and wait for its result without blocking the current thread. For example:
+     ```swift
+     let data = await fetchData()
+     ```
+
+---
+
+## 4. **What is the difference between synchronous and asynchronous functions?**
+   - **Answer:**  
+     - **Synchronous Functions:** Block the current thread until the function completes.
+     - **Asynchronous Functions:** Perform work without blocking the current thread, allowing other tasks to run concurrently.
+
+---
+
+## 5. **What is a `Task` in Swift concurrency?**
+   - **Answer:**  
+     A `Task` represents a unit of asynchronous work. It can be used to run asynchronous code and manage its lifecycle. For example:
+     ```swift
+     Task {
+         let data = await fetchData()
+         print(data)
+     }
+     ```
+
+---
+
+## 6. **What is the purpose of the `Task.detached` method?**
+   - **Answer:**  
+     The `Task.detached` method creates a new task that runs independently of the current task's context. It is useful for running background work. For example:
+     ```swift
+     Task.detached {
+         let data = await fetchData()
+         print(data)
+     }
+     ```
+
+---
+
+## 7. **What is an `actor` in Swift?**
+   - **Answer:**  
+     An `actor` is a reference type that protects its state from data races by ensuring that only one task can access its mutable state at a time. For example:
+     ```swift
+     actor Counter {
+         private var value = 0
+         func increment() {
+             value += 1
+         }
+     }
+     ```
+
+---
+
+## 8. **What is the purpose of the `actor` keyword in Swift?**
+   - **Answer:**  
+     The `actor` keyword is used to define an actor, which provides thread-safe access to its state by serializing access to its properties and methods.
+
+---
+
+## 9. **What is the difference between a `class` and an `actor` in Swift?**
+   - **Answer:**  
+     - **Class:** A reference type that does not provide thread-safe access to its state.
+     - **Actor:** A reference type that ensures thread-safe access to its state by serializing access.
+
+---
+
+## 10. **What is the `MainActor` in Swift?**
+   - **Answer:**  
+     The `MainActor` is a special actor that runs tasks on the main thread. It is used to update the UI or perform other work that must run on the main thread. For example:
+     ```swift
+     @MainActor
+     func updateUI() {
+         // Update the UI
+     }
+     ```
+
+---
+
+## 11. **What is the purpose of the `@MainActor` attribute in Swift?**
+   - **Answer:**  
+     The `@MainActor` attribute ensures that a function, method, or property is executed on the main thread. It is commonly used for UI updates. For example:
+     ```swift
+     @MainActor
+     func updateUI() {
+         // Update the UI
+     }
+     ```
+
+---
+
+## 12. **What is the `TaskGroup` in Swift?**
+   - **Answer:**  
+     A `TaskGroup` allows you to run multiple tasks concurrently and wait for their results. It is useful for parallel processing. For example:
+     ```swift
+     func processData() async {
+         await withTaskGroup(of: Data.self) { group in
+             for url in urls {
+                 group.addTask {
+                     return await fetchData(from: url)
+                 }
+             }
+             for await data in group {
+                 print(data)
+             }
+         }
+     }
+     ```
+
+---
+
+## 13. **What is the purpose of the `withTaskGroup` function in Swift?**
+   - **Answer:**  
+     The `withTaskGroup` function creates a `TaskGroup` to run multiple tasks concurrently and wait for their results. It is useful for parallel processing. For example:
+     ```swift
+     func processData() async {
+         await withTaskGroup(of: Data.self) { group in
+             for url in urls {
+                 group.addTask {
+                     return await fetchData(from: url)
+                 }
+             }
+             for await data in group {
+                 print(data)
+             }
+         }
+     }
+     ```
+
+---
+
+## 14. **What is the `async let` syntax in Swift?**
+   - **Answer:**  
+     The `async let` syntax allows you to start multiple asynchronous tasks concurrently and await their results later. For example:
+     ```swift
+     async let data1 = fetchData(from: url1)
+     async let data2 = fetchData(from: url2)
+     let result1 = await data1
+     let result2 = await data2
+     ```
+
+---
+
+## 15. **What is the purpose of the `Task.yield` method in Swift?**
+   - **Answer:**  
+     The `Task.yield` method allows a task to voluntarily suspend itself, giving other tasks a chance to run. It is useful for cooperative multitasking. For example:
+     ```swift
+     func processData() async {
+         for item in items {
+             await Task.yield()
+             // Process item
+         }
+     }
+     ```
+
+---
+
+## 16. **What is the purpose of the `Task.sleep` method in Swift?**
+   - **Answer:**  
+     The `Task.sleep` method suspends the current task for a specified duration. It is useful for simulating delays or waiting. For example:
+     ```swift
+     func waitForData() async {
+         await Task.sleep(1_000_000_000) // Sleep for 1 second
+     }
+     ```
+
+---
+
+## 17. **What is the purpose of the `Task.cancel` method in Swift?**
+   - **Answer:**  
+     The `Task.cancel` method cancels a task, stopping its execution and propagating the cancellation to child tasks. For example:
+     ```swift
+     let task = Task {
+         await fetchData()
+     }
+     task.cancel()
+     ```
+
+---
+
+## 18. **What is the purpose of the `Task.isCancelled` property in Swift?**
+   - **Answer:**  
+     The `Task.isCancelled` property checks whether a task has been cancelled. It is useful for handling cancellation in long-running tasks. For example:
+     ```swift
+     func processData() async {
+         while !Task.isCancelled {
+             // Process data
+         }
+     }
+     ```
+
+---
+
+## 19. **What is the purpose of the `Task.checkCancellation` method in Swift?**
+   - **Answer:**  
+     The `Task.checkCancellation` method throws a `CancellationError` if the task has been cancelled. It is useful for handling cancellation in long-running tasks. For example:
+     ```swift
+     func processData() async throws {
+         while true {
+             try Task.checkCancellation()
+             // Process data
+         }
+     }
+     ```
+
+---
+
+## 20. **What is the purpose of the `Task.local` property in Swift?**
+   - **Answer:**  
+     The `Task.local` property provides access to task-local values, which are values specific to a task and its child tasks. For example:
+     ```swift
+     enum TraceID {
+         @TaskLocal static var current: String?
+     }
+     ```
+
+---
+
+This concludes the interview questions and answers for the "Concurrency" section of Swift.
+
+# Swift Macros - Interview Questions and Answers
+
+This document contains interview questions and answers based on the "Macros" section of the Swift documentation.
+
+---
+
+## 1. **What are macros in Swift?**
+   - **Answer:**  
+     Macros in Swift are a way to extend the language by allowing developers to define custom compile-time transformations. They enable code generation, simplification, and abstraction by transforming code during compilation.
+
+---
+
+## 2. **What is the purpose of macros in Swift?**
+   - **Answer:**  
+     Macros allow developers to reduce boilerplate code, enforce coding patterns, and generate repetitive code automatically. They provide a way to extend Swift's syntax and capabilities without modifying the compiler.
+
+---
+
+## 3. **How do macros work in Swift?**
+   - **Answer:**  
+     Macros are expanded at compile time. They take input code, transform it, and produce output code that replaces the original macro invocation. This happens before the code is compiled into binary.
+
+---
+
+## 4. **What is the difference between macros and functions in Swift?**
+   - **Answer:**  
+     - **Functions:** Execute at runtime and operate on data.
+     - **Macros:** Execute at compile time and operate on code, transforming it before runtime.
+
+---
+
+## 5. **What is the syntax for defining a macro in Swift?**
+   - **Answer:**  
+     Macros are defined using the `macro` keyword. For example:
+     ```swift
+     macro MyMacro() = #externalMacro(module: "MyMacros", type: "MyMacroImplementation")
+     ```
+
+---
+
+## 6. **What is the purpose of the `#externalMacro` directive in Swift?**
+   - **Answer:**  
+     The `#externalMacro` directive links a macro definition to its implementation in an external module. It specifies the module and type where the macro's logic is defined.
+
+---
+
+## 7. **What is the role of the `Macro` protocol in Swift?**
+   - **Answer:**  
+     The `Macro` protocol defines the interface for implementing macros. Conforming types must provide a method to transform the input code into output code.
+
+---
+
+## 8. **What is the purpose of the `MacroExpansionContext` in Swift?**
+   - **Answer:**  
+     The `MacroExpansionContext` provides information about the context in which a macro is expanded, such as the source location and diagnostics. It is used during macro expansion.
+
+---
+
+## 9. **What is the difference between declarative and procedural macros in Swift?**
+   - **Answer:**  
+     - **Declarative Macros:** Define transformations using patterns and templates.
+     - **Procedural Macros:** Define transformations using custom logic written in Swift.
+
+---
+
+## 10. **What is the purpose of the `@freestanding` attribute in Swift macros?**
+   - **Answer:**  
+     The `@freestanding` attribute indicates that a macro can be used independently, without being attached to a declaration. For example:
+     ```swift
+     @freestanding(expression)
+     macro MyMacro() -> String
+     ```
+
+---
+
+## 11. **What is the purpose of the `@attached` attribute in Swift macros?**
+   - **Answer:**  
+     The `@attached` attribute indicates that a macro is attached to a declaration, such as a function, property, or type. For example:
+     ```swift
+     @attached(member)
+     macro MyMacro()
+     ```
+
+---
+
+## 12. **What is the purpose of the `expression` macro kind in Swift?**
+   - **Answer:**  
+     The `expression` macro kind is used for macros that generate expressions. They can be used in places where an expression is expected, such as in assignments or function calls.
+
+---
+
+## 13. **What is the purpose of the `declaration` macro kind in Swift?**
+   - **Answer:**  
+     The `declaration` macro kind is used for macros that generate declarations, such as functions, properties, or types.
+
+---
+
+## 14. **What is the purpose of the `member` macro kind in Swift?**
+   - **Answer:**  
+     The `member` macro kind is used for macros that generate members of a type, such as methods or properties.
+
+---
+
+## 15. **What is the purpose of the `peer` macro kind in Swift?**
+   - **Answer:**  
+     The `peer` macro kind is used for macros that generate peer declarations, such as additional functions or types alongside the original declaration.
+
+---
+
+## 16. **What is the purpose of the `accessor` macro kind in Swift?**
+   - **Answer:**  
+     The `accessor` macro kind is used for macros that generate accessors for properties, such as getters and setters.
+
+---
+
+## 17. **What is the purpose of the `conformance` macro kind in Swift?**
+   - **Answer:**  
+     The `conformance` macro kind is used for macros that generate protocol conformances for types.
+
+---
+
+## 18. **What is the purpose of the `extension` macro kind in Swift?**
+   - **Answer:**  
+     The `extension` macro kind is used for macros that generate extensions for types.
+
+---
+
+## 19. **What is the purpose of the `diagnostic` macro kind in Swift?**
+   - **Answer:**  
+     The `diagnostic` macro kind is used for macros that generate compile-time diagnostics, such as warnings or errors.
+
+---
+
+## 20. **What is the purpose of the `compilerPlugin` macro kind in Swift?**
+   - **Answer:**  
+     The `compilerPlugin` macro kind is used for macros that interact with the compiler to provide custom behavior or optimizations.
+
+---
+
+This concludes the interview questions and answers for the "Macros" section of Swift.
+
