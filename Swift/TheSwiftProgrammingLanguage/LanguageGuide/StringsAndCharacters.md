@@ -2,19 +2,23 @@
 
 ## Strings And Characters
 
+A *string* is a series of characters, such as "`hello, world`". Swift strings are represented by the `String` type. The contents of a `String` can be accessed in various ways, including as a collection of `Character` values.
+
+Swift's `String` and `Character` types provide a fast, Unicode-compliant way to work with text in your code.
+
+String concatenation is as simple as combining two strings with the `+` operator, and string mutability is managed by choosing between a constant or a variable.
+
 ### String Literal
 
-You can include predefined String values within your code as string literals. A string literal is a sequence of characters surrounded by double quotation marks (")
+You can include predefined `String` values within your code as string literals. A string literal is a sequence of characters surrounded by double quotation marks (`"`).
  
 ```swift
 let someString = "Some string literal value"
-print("==== SomeString ====")
-print(someString)
 ```
 
 ### Multiline String Literals
 
-A sequence of characters surrounded by three double quotation marks
+If you need a string that spans several lines, yse a multiline string literal - a sequence of characters surrounded by three double quotation marks.
  
 ```swift
 var quotation = """
@@ -24,17 +28,16 @@ please your Majesty?" he asked.
 "Begin at the beginning," the King said gravely, "and go on
 till you come to the end; then stop."
 """
-print("==== Quotation ====")
-print(quotation)
 
 let singleLineString = "These are the same."
 let multilineString = """
 These are the same.
 """
-print("==== SingleLineString & MultilineString ====")
-print(singleLineString)
-print(multilineString)
+```
 
+When your source code includes a line break inside of a multiline string literal, that line break aso appers in the strig's value. If you want to use linebreaks to make your code easier to read, but you don't want the line breaks to be part of the string's value, write a backslash (`\`) at the end of those lines.
+
+```swift
 let softWrappedQuotation = """
 The White Rabbit put on his spectacles.  "Where shall I begin, \
 please your Majesty?" he asked.
@@ -42,24 +45,25 @@ please your Majesty?" he asked.
 "Begin at the beginning," the King said gravely, "and go on \
 till you come to the end; then stop."
 """
-print("==== Soft Wrapped Quotation ====")
-print(softWrappedQuotation)
+```
 
+To make a multiline string literal that begins or ends with a line feed, write a blank linke as the first or last line.
+
+```swift
 let lineBreaks = """
 
 This string starts with a line break.
 It also ends with a line break.
 
 """
-print("==== Line Breaks ====")
-print(lineBreaks)
 ```
 
 ### Special Characters in String Literal
 
 String literals can include the following special characters:
-The escaped special characters \0 (null character), \\ (backslash), \t (horizontal tab), \n (line feed), \r (carriage return), \" (double quotation mark) and \' (single quotation mark)
-An arbitrary Unicode scalar value, written as \\u{n}, where n is a 1–8 digit hexadecimal number (Unicode is discussed in Unicode below)
+
+* The escaped special characters `\0` (null character), `\\` (backslash), `\t` (horizontal tab), `\n` (line feed), `\r` (carriage return), `\"` (double quotation mark) and `\'` (single quotation mark)
+* An arbitrary Unicode scalar value, written as `\\u{n}`, where n is a 1–8 digit hexadecimal number (Unicode is discussed in Unicode below)
  
 ```swift
 let wiseWords = "\"Imagination is more important than knowledge\" - Einstein"
@@ -69,13 +73,13 @@ let blackHeart = "\u{2665}"      // ♥,  Unicode scalar U+2665
 let sparklingHeart = "\u{1F496}" // 💖, Unicode scalar U+1F496
 ```
 
-Because multiline string literals use three double quotation marks instead of just one, you can include a double quotation mark (") inside of a multiline string literal without escaping it. To include the text """ in a multiline string, escape at least one of the quotation marks.
+Because multiline string literals use three double quotation marks instead of just one, you can include a double quotation mark (`"`) inside of a multiline string literal without escaping it. To include the text `"""` in a multiline string, escape at least one of the quotation marks.
  
 ```swift
-//let threeDoubleQuotationMarks = """
-//Escaping the first quotation mark \"""
-//Escaping all three quotation marks \"\"\"
-//"""
+let threeDoubleQuotationMarks = """
+Escaping the first quotation mark \"""
+Escaping all three quotation marks \"\"\"
+"""
 ```
 
 ### Extended String Delimiters
@@ -434,3 +438,7 @@ for scalar in dogString.unicodeScalars {
 // ‼
 // 🐶
 ```
+
+## Key Points
+
+* Swift's `String` type is bridged with Foundation's `NSString` class. `Foundation` also extends `String` to expose methods defined by `NSString`. This means if you import `Foundation`, you can access those `NSString` methods on `String` withoud casting.
