@@ -5368,3 +5368,628 @@ This document contains interview questions and answers based on the "Macros" sec
 
 This concludes the interview questions and answers for the "Macros" section of Swift.
 
+# Swift Type Casting - Interview Questions and Answers
+
+This document contains interview questions and answers based on the "Type Casting" section of the Swift documentation.
+
+---
+
+## 1. **What is type casting in Swift?**
+   - **Answer:**  
+     Type casting is a way to check the type of an instance or to treat it as a different superclass or subclass within its class hierarchy. It is done using the `is` and `as` operators.
+
+---
+
+## 2. **What is the purpose of the `is` operator in Swift?**
+   - **Answer:**  
+     The `is` operator checks whether an instance is of a specific type. It returns `true` if the instance is of the specified type, otherwise `false`. For example:
+     ```swift
+     if someInstance is SomeType {
+         print("someInstance is of type SomeType")
+     }
+     ```
+
+---
+
+## 3. **What is the purpose of the `as` operator in Swift?**
+   - **Answer:**  
+     The `as` operator is used to cast an instance to a specific type. It comes in three forms:
+     - `as`: For upcasting (guaranteed to succeed).
+     - `as?`: For conditional downcasting (returns an optional).
+     - `as!`: For forced downcasting (may crash if the cast fails).
+
+---
+
+## 4. **What is the difference between `as`, `as?`, and `as!` in Swift?**
+   - **Answer:**  
+     - **`as`:** Used for upcasting (e.g., casting a subclass to a superclass). It is guaranteed to succeed.
+     - **`as?`:** Used for conditional downcasting. It returns an optional, which is `nil` if the cast fails.
+     - **`as!`:** Used for forced downcasting. It crashes if the cast fails.
+
+---
+
+## 5. **What is upcasting in Swift?**
+   - **Answer:**  
+     Upcasting is the process of casting an instance of a subclass to its superclass. It is always safe and can be done using the `as` operator. For example:
+     ```swift
+     let dog: Dog = Dog()
+     let animal: Animal = dog as Animal
+     ```
+
+---
+
+## 6. **What is downcasting in Swift?**
+   - **Answer:**  
+     Downcasting is the process of casting an instance of a superclass to its subclass. It can fail, so it is done using `as?` or `as!`. For example:
+     ```swift
+     let animal: Animal = Dog()
+     if let dog = animal as? Dog {
+         print("Downcast to Dog succeeded")
+     }
+     ```
+
+---
+
+## 7. **What is the purpose of the `Any` type in Swift?**
+   - **Answer:**  
+     The `Any` type can represent an instance of any type, including functions. It is used when the specific type is unknown or can vary. For example:
+     ```swift
+     var items: [Any] = [1, "Hello", 3.14]
+     ```
+
+---
+
+## 8. **What is the purpose of the `AnyObject` type in Swift?**
+   - **Answer:**  
+     The `AnyObject` type can represent an instance of any class type. It is often used when working with Objective-C APIs. For example:
+     ```swift
+     var objects: [AnyObject] = [Dog(), Cat()]
+     ```
+
+---
+
+## 9. **What is the difference between `Any` and `AnyObject` in Swift?**
+   - **Answer:**  
+     - **`Any`:** Can represent an instance of any type, including value types, reference types, and functions.
+     - **`AnyObject`:** Can represent an instance of any class type (reference types only).
+
+---
+
+## 10. **What is the purpose of the `as?` operator in Swift?**
+   - **Answer:**  
+     The `as?` operator is used for conditional downcasting. It returns an optional, which is `nil` if the cast fails. For example:
+     ```swift
+     let animal: Animal = Dog()
+     if let dog = animal as? Dog {
+         print("Downcast to Dog succeeded")
+     }
+     ```
+
+---
+
+## 11. **What is the purpose of the `as!` operator in Swift?**
+   - **Answer:**  
+     The `as!` operator is used for forced downcasting. It crashes if the cast fails. For example:
+     ```swift
+     let animal: Animal = Dog()
+     let dog = animal as! Dog
+     ```
+
+---
+
+## 12. **What is the purpose of the `is` operator in Swift?**
+   - **Answer:**  
+     The `is` operator checks whether an instance is of a specific type. It returns `true` if the instance is of the specified type, otherwise `false`. For example:
+     ```swift
+     if someInstance is SomeType {
+         print("someInstance is of type SomeType")
+     }
+     ```
+
+---
+
+## 13. **What is the purpose of the `as` operator in Swift?**
+   - **Answer:**  
+     The `as` operator is used to cast an instance to a specific type. It comes in three forms:
+     - `as`: For upcasting (guaranteed to succeed).
+     - `as?`: For conditional downcasting (returns an optional).
+     - `as!`: For forced downcasting (may crash if the cast fails).
+
+---
+
+## 14. **What is the purpose of the `Any` type in Swift?**
+   - **Answer:**  
+     The `Any` type can represent an instance of any type, including functions. It is used when the specific type is unknown or can vary. For example:
+     ```swift
+     var items: [Any] = [1, "Hello", 3.14]
+     ```
+
+---
+
+## 15. **What is the purpose of the `AnyObject` type in Swift?**
+   - **Answer:**  
+     The `AnyObject` type can represent an instance of any class type. It is often used when working with Objective-C APIs. For example:
+     ```swift
+     var objects: [AnyObject] = [Dog(), Cat()]
+     ```
+
+---
+
+## 16. **What is the difference between `Any` and `AnyObject` in Swift?**
+   - **Answer:**  
+     - **`Any`:** Can represent an instance of any type, including value types, reference types, and functions.
+     - **`AnyObject`:** Can represent an instance of any class type (reference types only).
+
+---
+
+## 17. **What is the purpose of the `as?` operator in Swift?**
+   - **Answer:**  
+     The `as?` operator is used for conditional downcasting. It returns an optional, which is `nil` if the cast fails. For example:
+     ```swift
+     let animal: Animal = Dog()
+     if let dog = animal as? Dog {
+         print("Downcast to Dog succeeded")
+     }
+     ```
+
+---
+
+## 18. **What is the purpose of the `as!` operator in Swift?**
+   - **Answer:**  
+     The `as!` operator is used for forced downcasting. It crashes if the cast fails. For example:
+     ```swift
+     let animal: Animal = Dog()
+     let dog = animal as! Dog
+     ```
+
+---
+
+## 19. **What is the purpose of the `is` operator in Swift?**
+   - **Answer:**  
+     The `is` operator checks whether an instance is of a specific type. It returns `true` if the instance is of the specified type, otherwise `false`. For example:
+     ```swift
+     if someInstance is SomeType {
+         print("someInstance is of type SomeType")
+     }
+     ```
+
+---
+
+## 20. **What is the purpose of the `as` operator in Swift?**
+   - **Answer:**  
+     The `as` operator is used to cast an instance to a specific type. It comes in three forms:
+     - `as`: For upcasting (guaranteed to succeed).
+     - `as?`: For conditional downcasting (returns an optional).
+     - `as!`: For forced downcasting (may crash if the cast fails).
+
+---
+
+This concludes the interview questions and answers for the "Type Casting" section of Swift.
+
+# Swift Nested Types - Interview Questions and Answers
+
+This document contains interview questions and answers based on the "Nested Types" section of the Swift documentation.
+
+---
+
+## 1. **What are nested types in Swift?**
+   - **Answer:**  
+     Nested types are types (e.g., classes, structures, enumerations) defined within the scope of another type. They are used to logically group related types and provide better encapsulation.
+
+---
+
+## 2. **Why use nested types in Swift?**
+   - **Answer:**  
+     Nested types are used to:
+     - Group related types together.
+     - Improve code organization and readability.
+     - Encapsulate implementation details within a type.
+
+---
+
+## 3. **How do you define a nested type in Swift?**
+   - **Answer:**  
+     A nested type is defined within the body of another type (class, structure, or enumeration). For example:
+     ```swift
+     struct Outer {
+         struct Inner {
+             let value: Int
+         }
+     }
+     ```
+
+---
+
+## 4. **Can you nest a class inside a structure in Swift?**
+   - **Answer:**  
+     Yes, you can nest a class inside a structure. For example:
+     ```swift
+     struct Outer {
+         class Inner {
+             let value: Int
+             init(value: Int) {
+                 self.value = value
+             }
+         }
+     }
+     ```
+
+---
+
+## 5. **Can you nest an enumeration inside a class in Swift?**
+   - **Answer:**  
+     Yes, you can nest an enumeration inside a class. For example:
+     ```swift
+     class Outer {
+         enum Inner {
+             case case1, case2
+         }
+     }
+     ```
+
+---
+
+## 6. **How do you access a nested type in Swift?**
+   - **Answer:**  
+     A nested type is accessed using dot notation, starting from the outer type. For example:
+     ```swift
+     let innerInstance = Outer.Inner(value: 42)
+     ```
+
+---
+
+## 7. **Can a nested type access the properties and methods of its outer type?**
+   - **Answer:**  
+     No, a nested type cannot directly access the properties and methods of its outer type. It is a separate type with its own scope.
+
+---
+
+## 8. **What is the scope of a nested type in Swift?**
+   - **Answer:**  
+     The scope of a nested type is limited to the outer type in which it is defined. It cannot be accessed outside the outer type unless explicitly referenced.
+
+---
+
+## 9. **Can you nest multiple levels of types in Swift?**
+   - **Answer:**  
+     Yes, you can nest types multiple levels deep. For example:
+     ```swift
+     struct Outer {
+         struct Middle {
+             struct Inner {
+                 let value: Int
+             }
+         }
+     }
+     ```
+
+---
+
+## 10. **What is the purpose of nested types in Swift?**
+   - **Answer:**  
+     Nested types are used to logically group related types, improve code organization, and encapsulate implementation details within a type.
+
+---
+
+## 11. **Can you nest a protocol inside a type in Swift?**
+   - **Answer:**  
+     Yes, you can nest a protocol inside a type. For example:
+     ```swift
+     struct Outer {
+         protocol Inner {
+             func doSomething()
+         }
+     }
+     ```
+
+---
+
+## 12. **Can you nest a type alias inside a type in Swift?**
+   - **Answer:**  
+     Yes, you can nest a type alias inside a type. For example:
+     ```swift
+     struct Outer {
+         typealias Inner = Int
+     }
+     ```
+
+---
+
+## 13. **What is the difference between a nested type and a global type in Swift?**
+   - **Answer:**  
+     - **Nested Type:** Defined within the scope of another type. It is only accessible through the outer type.
+     - **Global Type:** Defined at the top level of a file or module. It is accessible throughout the module.
+
+---
+
+## 14. **Can you nest a type inside an extension in Swift?**
+   - **Answer:**  
+     Yes, you can nest a type inside an extension. For example:
+     ```swift
+     extension Outer {
+         struct Inner {
+             let value: Int
+         }
+     }
+     ```
+
+---
+
+## 15. **What is the purpose of nesting types in Swift?**
+   - **Answer:**  
+     Nesting types helps to logically group related types, improve code organization, and encapsulate implementation details within a type.
+
+---
+
+## 16. **Can you nest a type inside a protocol in Swift?**
+   - **Answer:**  
+     Yes, you can nest a type inside a protocol. For example:
+     ```swift
+     protocol Outer {
+         struct Inner {
+             let value: Int
+         }
+     }
+     ```
+
+---
+
+## 17. **Can you nest a type inside a function in Swift?**
+   - **Answer:**  
+     No, you cannot nest a type inside a function in Swift. Types must be defined at the top level or within another type.
+
+---
+
+## 18. **What is the purpose of nested types in Swift?**
+   - **Answer:**  
+     Nested types are used to logically group related types, improve code organization, and encapsulate implementation details within a type.
+
+---
+
+## 19. **Can you nest a type inside a type alias in Swift?**
+   - **Answer:**  
+     No, you cannot nest a type inside a type alias. Type aliases are used to create alternative names for existing types, not to define new types.
+
+---
+
+## 20. **What is the purpose of nested types in Swift?**
+   - **Answer:**  
+     Nested types are used to logically group related types, improve code organization, and encapsulate implementation details within a type.
+
+---
+
+This concludes the interview questions and answers for the "Nested Types" section of Swift.
+
+# Swift Extensions - Interview Questions and Answers
+
+This document contains interview questions and answers based on the "Extensions" section of the Swift documentation.
+
+---
+
+## 1. **What is an extension in Swift?**
+   - **Answer:**  
+     An extension is a way to add new functionality to an existing class, structure, enumeration, or protocol. It allows you to extend types without modifying their original implementation.
+
+---
+
+## 2. **What can you add to a type using an extension?**
+   - **Answer:**  
+     Using an extension, you can add:
+     - Computed properties.
+     - Instance and type methods.
+     - Initializers.
+     - Subscripts.
+     - Nested types.
+     - Protocol conformances.
+
+---
+
+## 3. **How do you define an extension in Swift?**
+   - **Answer:**  
+     An extension is defined using the `extension` keyword, followed by the type you want to extend. For example:
+     ```swift
+     extension Int {
+         func squared() -> Int {
+             return self * self
+         }
+     }
+     ```
+
+---
+
+## 4. **Can you add stored properties using an extension?**
+   - **Answer:**  
+     No, you cannot add stored properties using an extension. Extensions can only add computed properties.
+
+---
+
+## 5. **What is the purpose of adding computed properties in an extension?**
+   - **Answer:**  
+     Computed properties allow you to add new properties to a type without storing additional data. They compute their value dynamically. For example:
+     ```swift
+     extension Double {
+         var km: Double { return self * 1_000.0 }
+         var m: Double { return self }
+         var cm: Double { return self / 100.0 }
+     }
+     ```
+
+---
+
+## 6. **Can you add initializers to a class using an extension?**
+   - **Answer:**  
+     Yes, you can add convenience initializers to a class using an extension. However, you cannot add designated initializers or deinitializers.
+
+---
+
+## 7. **What is the purpose of adding methods in an extension?**
+   - **Answer:**  
+     Adding methods in an extension allows you to add new functionality to a type. For example:
+     ```swift
+     extension String {
+         func greet() -> String {
+             return "Hello, \(self)!"
+         }
+     }
+     ```
+
+---
+
+## 8. **Can you add subscripts using an extension?**
+   - **Answer:**  
+     Yes, you can add subscripts using an extension. For example:
+     ```swift
+     extension Int {
+         subscript(digitIndex: Int) -> Int {
+             var decimalBase = 1
+             for _ in 0..<digitIndex {
+                 decimalBase *= 10
+             }
+             return (self / decimalBase) % 10
+         }
+     }
+     ```
+
+---
+
+## 9. **Can you add nested types using an extension?**
+   - **Answer:**  
+     Yes, you can add nested types (e.g., classes, structures, enumerations) using an extension. For example:
+     ```swift
+     extension Int {
+         enum Kind {
+             case negative, zero, positive
+         }
+         var kind: Kind {
+             switch self {
+             case 0: return .zero
+             case let x where x > 0: return .positive
+             default: return .negative
+             }
+         }
+     }
+     ```
+
+---
+
+## 10. **Can you conform to a protocol using an extension?**
+   - **Answer:**  
+     Yes, you can conform to a protocol using an extension. For example:
+     ```swift
+     protocol Describable {
+         var description: String { get }
+     }
+     extension Int: Describable {
+         var description: String {
+             return "This is the number \(self)"
+         }
+     }
+     ```
+
+---
+
+## 11. **What is the purpose of protocol extensions in Swift?**
+   - **Answer:**  
+     Protocol extensions allow you to provide default implementations for methods, computed properties, and subscripts defined in a protocol. This makes protocols more powerful and flexible.
+
+---
+
+## 12. **Can you override existing methods using an extension?**
+   - **Answer:**  
+     No, you cannot override existing methods using an extension. Extensions can only add new functionality, not modify existing behavior.
+
+---
+
+## 13. **What is the difference between extensions and subclasses?**
+   - **Answer:**  
+     - **Extensions:** Add new functionality to existing types without modifying their original implementation. They cannot override existing methods or add stored properties.
+     - **Subclasses:** Create a new type that inherits from an existing class. They can override methods and add stored properties.
+
+---
+
+## 14. **Can you add stored properties to a structure using an extension?**
+   - **Answer:**  
+     No, you cannot add stored properties to a structure (or any type) using an extension. Extensions can only add computed properties.
+
+---
+
+## 15. **What is the purpose of adding initializers in an extension?**
+   - **Answer:**  
+     Adding initializers in an extension allows you to provide additional ways to initialize a type. For example:
+     ```swift
+     extension String {
+         init(repeating character: Character, count: Int) {
+             self = String(repeating: character, count: count)
+         }
+     }
+     ```
+
+---
+
+## 16. **Can you add deinitializers using an extension?**
+   - **Answer:**  
+     No, you cannot add deinitializers using an extension. Deinitializers are only defined within the original class definition.
+
+---
+
+## 17. **What is the purpose of adding protocol conformances using an extension?**
+   - **Answer:**  
+     Adding protocol conformances using an extension allows you to retroactively make existing types conform to a protocol. For example:
+     ```swift
+     protocol Describable {
+         var description: String { get }
+     }
+     extension Int: Describable {
+         var description: String {
+             return "This is the number \(self)"
+         }
+     }
+     ```
+
+---
+
+## 18. **Can you add instance methods using an extension?**
+   - **Answer:**  
+     Yes, you can add instance methods using an extension. For example:
+     ```swift
+     extension Int {
+         func isEven() -> Bool {
+             return self % 2 == 0
+         }
+     }
+     ```
+
+---
+
+## 19. **Can you add type methods using an extension?**
+   - **Answer:**  
+     Yes, you can add type methods (static methods) using an extension. For example:
+     ```swift
+     extension Int {
+         static func random(in range: ClosedRange<Int>) -> Int {
+             return Int.random(in: range)
+         }
+     }
+     ```
+
+---
+
+## 20. **What is the purpose of adding subscripts using an extension?**
+   - **Answer:**  
+     Adding subscripts using an extension allows you to provide custom indexing behavior for a type. For example:
+     ```swift
+     extension Int {
+         subscript(digitIndex: Int) -> Int {
+             var decimalBase = 1
+             for _ in 0..<digitIndex {
+                 decimalBase *= 10
+             }
+             return (self / decimalBase) % 10
+         }
+     }
+     ```
+
+---
+
+This concludes the interview questions and answers for the "Extensions" section of Swift.
+
