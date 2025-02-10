@@ -2,8 +2,6 @@
 
 ## Swift The Basics
 
----
-
 ### 1. **What are the basic data types in Swift?**
    - **Answer:**  
      Swift provides several basic data types, including:
@@ -506,8 +504,6 @@
 
 ## Swift Strings and Characters
 
----
-
 ### 1. **What is a string in Swift?**
    - **Answer:**  
      A string is a collection of characters, such as `"Hello, World!"`. In Swift, strings are represented by the `String` type, which is Unicode-compliant and provides powerful methods for working with text.
@@ -769,8 +765,6 @@
 ---
 
 ## Swift Collection Types
-
----
 
 ### 1. **What are the primary collection types in Swift?**
    - **Answer:**  
@@ -1075,8 +1069,6 @@
 ---
 
 ## Swift Control Flow
-
----
 
 ### 1. **What are the primary control flow statements in Swift?**
    - **Answer:**  
@@ -1426,8 +1418,6 @@
 
 ## Swift Functions
 
----
-
 ### 1. **What is a function in Swift?**
    - **Answer:**  
      A function is a reusable block of code that performs a specific task. It can take input parameters, return values, and be called multiple times. For example:
@@ -1714,8 +1704,6 @@
 
 ## Swift Closures
 
----
-
 ### 1. **What is a closure in Swift?**
    - **Answer:**  
      A closure is a self-contained block of functionality that can be passed around and used in your code. It is similar to a function but can capture and store references to variables and constants from the surrounding context. For example:
@@ -1998,8 +1986,6 @@
 ---
 
 ## Swift Enumerations
-
----
 
 ### 1. **What is an enumeration in Swift?**
    - **Answer:**  
@@ -2338,8 +2324,6 @@
 ---
 
 ## Swift Classes and Structures
-
----
 
 ### 1. **What is a class in Swift?**
    - **Answer:**  
@@ -2694,8 +2678,6 @@
 ---
 
 ## Swift Properties
-
----
 
 ### 1. **What is a property in Swift?**
    - **Answer:**  
@@ -3070,8 +3052,6 @@
 
 ## Swift Methods
 
----
-
 ### 1. **What is a method in Swift?**
    - **Answer:**  
      A method is a function that is associated with a particular type (class, structure, or enumeration). It can be an **instance method** (called on an instance) or a **type method** (called on the type itself).
@@ -3406,8 +3386,6 @@
 
 ## Swift Subscripts
 
----
-
 ### 1. **What is a subscript in Swift?**
    - **Answer:**  
      A subscript is a shortcut for accessing elements from a collection, sequence, or custom type using square brackets (`[]`). It allows you to read and write values using an index or key. For example:
@@ -3695,8 +3673,6 @@
 ---
 
 ## Swift Inheritance
-
----
 
 ### 1. **What is inheritance in Swift?**
    - **Answer:**  
@@ -3990,8 +3966,6 @@
 ---
 
 ## Swift Initialization
-
----
 
 ### 1. **What is initialization in Swift?**
    - **Answer:**  
@@ -4337,8 +4311,6 @@
 
 ## Swift Deinitialization
 
----
-
 ### 1. **What is deinitialization in Swift?**
    - **Answer:**  
      Deinitialization is the process of cleaning up resources before an instance of a class is deallocated. It is performed by the `deinit` method, which is automatically called when an instance is no longer needed.
@@ -4491,8 +4463,6 @@
 ---
 
 ## Swift Optional Chaining
-
----
 
 ### 1. **What is optional chaining in Swift?**
    - **Answer:**  
@@ -4665,8 +4635,6 @@
 ---
 
 ## Swift Error Handling
-
----
 
 ### 1. **What is error handling in Swift?**
    - **Answer:**  
@@ -4918,8 +4886,6 @@
 
 ## Swift Concurrency
 
----
-
 ### 1. **What is concurrency in Swift?**
    - **Answer:**  
      Concurrency in Swift refers to the ability to perform multiple tasks simultaneously, improving the responsiveness and performance of applications. Swift provides modern concurrency features like `async/await`, `Task`, and `actors`.
@@ -5157,8 +5123,6 @@
 
 ## Swift Macros
 
----
-
 ### 1. **What are macros in Swift?**
    - **Answer:**  
      Macros in Swift are a way to extend the language by allowing developers to define custom compile-time transformations. They enable code generation, simplification, and abstraction by transforming code during compilation.
@@ -5293,8 +5257,6 @@
 ---
 
 ## Swift Type Casting
-
----
 
 ### 1. **What is type casting in Swift?**
    - **Answer:**  
@@ -5488,8 +5450,6 @@
 
 ## Swift Nested Types
 
----
-
 ### 1. **What are nested types in Swift?**
    - **Answer:**  
      Nested types are types (e.g., classes, structures, enumerations) defined within the scope of another type. They are used to logically group related types and provide better encapsulation.
@@ -5677,10 +5637,6 @@
 ---
 
 ## Swift Extensions
-
- contains interview questions and answers based on the "Extensions" section of the Swift documentation.
-
----
 
 ### 1. **What is an extension in Swift?**
    - **Answer:**  
@@ -5909,8 +5865,6 @@
 
 ## Swift Protocols
 
----
-
 ### 1. **What is a protocol in Swift?**
    - **Answer:**  
      A protocol defines a blueprint of methods, properties, and other requirements that conforming types must implement. It enables polymorphism and code reuse.
@@ -6116,8 +6070,6 @@
 ---
 
 ## Swift Generics
-
----
 
 ### 1. **What are generics in Swift?**
    - **Answer:**  
@@ -6343,8 +6295,6 @@
 
 ## Swift Opaque Types
 
----
-
 ### 1. **What is an opaque type in Swift?**
    - **Answer:**  
      An opaque type is a way to hide the specific type of a value while still providing information about its capabilities. It is declared using the `some` keyword and is often used to return a value that conforms to a protocol without exposing the underlying type.
@@ -6478,8 +6428,6 @@
 
 ## Swift Automatic Reference Counting (ARC)
 
----
-
 ### 1. **What is Automatic Reference Counting (ARC) in Swift?**
    - **Answer:**  
      ARC is a memory management system in Swift that automatically tracks and manages the memory usage of class instances. It ensures that objects are deallocated when they are no longer needed.
@@ -6608,8 +6556,6 @@
 ---
 
 ## Swift Memory Safety
-
----
 
 ### 1. **What is memory safety in Swift?**
    - **Answer:**  
@@ -6754,8 +6700,6 @@
 
 ## Swift Access Control
 
----
-
 ### 1. **What is access control in Swift?**
    - **Answer:**  
      Access control restricts access to parts of your code from other source files and modules. It helps encapsulate implementation details and enforce boundaries between different parts of your code.
@@ -6887,8 +6831,6 @@
 ---
 
 ## Swift Advanced Operators
-
----
 
 ### 1. **What are advanced operators in Swift?**
    - **Answer:**  
