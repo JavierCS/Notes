@@ -116,4 +116,12 @@ This instrument collects data from important areas of your app that you can high
 
 A hang refers to a situation where an app becomes unresponsive, meaning the UI stops updating, and user interactions (like taps and gestures) do not trigger any response. This usually happens when the main thread (UI thread) is blocked for too long.
 
+![](./Resources/Hangs/TimePerception.png)
+
+![](./Resources/Hangs/HangTypes.png)
+
+![](./Resources/Hangs/HangLookup.png)
+
+![](./Resources/Hangs/HangSamples.png)
+
 You can check more information about hangs [here](./Hangs/Hangs.md).
