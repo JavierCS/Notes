@@ -40,7 +40,7 @@ An app that uses the SwiftUI app life cycle has a structure that conforms to the
 
 **`#Preview`**: Creates a preview of a SwiftUI view.
 
-``````swift
+```swift
 #Preview("Preview Name") {
 	SomeView()
 }
@@ -55,7 +55,7 @@ An app that uses the SwiftUI app life cycle has a structure that conforms to the
     SomeView(state: .someState)we
   }
 }
-``````
+```
 
 
 
@@ -63,29 +63,29 @@ An app that uses the SwiftUI app life cycle has a structure that conforms to the
 
 * `VStack`: Stack's elements vertically.
 
-  ``````swift
+  ```swift
   // By default, stacks center their contents along their axis
   VStack(alignment: .leading) {
   	Text("Turtle Rock")
   		.font(.title)
   	Text("Joshua Tree National Park")
   }
-  ``````
+  ```
 
 * `HStack`: Stack´s elements horizontally.
 
-  ``````swift
+  ```swift
   HStack {
   	Text("Joshua Tree National Park")
   		.font(.subheadline)
   	Text("California")
   		.font(.subheadline)
   }
-  ``````
+  ```
 
 * `Spacer`: Expands to make its containig view use all of the space of its parent view.
 
-  ``````swift
+  ```swift
   HStack {
   	Text("Joshua Tree National Park")
   		.font(.subheadline)
@@ -93,27 +93,27 @@ An app that uses the SwiftUI app life cycle has a structure that conforms to the
   	Text("California")
   		.font(.subheadline)
   }
-  ``````
+  ```
 
 * `Image`: Draw images.
 
-  ``````swift
+  ```swift
   Image("turtlerock")
-  ``````
+  ```
 
 * `Divider`: A visual element that can be used to separate other content.
 
-  ``````swift
+  ```swift
   VStack {
     SomeContentView()
     Divider()
     OtherContentView()t
   }
-  ``````
+  ```
 
 * `List`:
 
-  ``````swift
+  ```swift
   import SwiftUI
   import CoreLocation
   
@@ -149,11 +149,11 @@ An app that uses the SwiftUI app life cycle has a structure that conforms to the
           }
       }
   }
-  ``````
+  ```
 
 * `NavigationSplitView`: A view that presents views in two or three columns, where selections in leading columns control presentations in subsequent columns.
 
-  ``````swift
+  ```swift
   import SwiftUI
   
   struct LandmarkList: View {
@@ -168,11 +168,11 @@ An app that uses the SwiftUI app life cycle has a structure that conforms to the
           }
       }
   }
-  ``````
+  ```
 
 * `NavigationLink`: A view that controls a navigation presentation.
 
-  ``````swift
+  ```swift
   List(landmarks) { landmark in
   	NavigationLink {
   		LandmarkDetail(landmark: landmark)
@@ -180,13 +180,13 @@ An app that uses the SwiftUI app life cycle has a structure that conforms to the
   		LandmarkRow(landmark: landmark)
   	}
   }
-  ``````
+  ```
 
   Text that you pass as the label for a navigation link renders using the environment’s accent color, and images may render as template images. You can modify either behavior to best suit your design using the `.renderingMode()` modifier for images and the `.foregroundStyle()` modifier for texts.
 
 * `ScrollView`: A scrollable view. The scroll view displays its content within the scrollable content region. 
 
-  ``````swift
+  ```swift
   import SwiftUI
   
   struct LandmarkDetail: View {
@@ -222,23 +222,23 @@ An app that uses the SwiftUI app life cycle has a structure that conforms to the
           .navigationBarTitleDisplayMode(.inline)
       }
   }
-  ``````
+  ```
 
 
 * `Path`: The outline of a 2D shape.
 
-  ``````
-  ``````
+  ```
+  ```
 
 * `GeometryReader`: A container view that defines its content as a function of its own size and coordinate space.
 
-  ``````swift
+  ```swift
   GeometryReader { geometry in
   	badgeSymbols
   		.scaleEffect(1.0 / 4.0, anchor: .top)
   		.position(x: geometry.size.width / 2, y: (3.0 / 4.0) * geometry.size.height)
   }
-  ``````
+  ```
 
   
 
@@ -248,32 +248,32 @@ An app that uses the SwiftUI app life cycle has a structure that conforms to the
 
 * `.padding()`: Adds an equal padding amount to specific edges of this view. You can give a view more space around their outer edges.
 
-  ``````swift
+  ```swift
   SomeView()
   	.padding()
-  ``````
+  ```
 
 * `.clipShape()`: Clips the view into a shape.
 
-  ``````swift
+  ```swift
   Image("turtlerock")
   	.clipShape(Circle())
-  ``````
+  ```
 
 * `.overlay()`: Layers the views that you specify in front of this view. 
 
-  ``````swift
+  ```swift
   Image("turtlerock")
   	.clipShape(Circle())
   	.overlay {
   		Circle()
   			.stroke(.gray, lineWidth: 4)
   	}
-  ``````
+  ```
 
 * `.shadow()`: Adds a shadow to this view.
 
-  ``````swift
+  ```swift
   Image("turtlerock")
   	.clipShape(Circle())
   	.overlay {
@@ -281,37 +281,37 @@ An app that uses the SwiftUI app life cycle has a structure that conforms to the
   			.stroke(.gray, lineWidth: 4)
   	}
   	.shadow(radius: 10)
-  ``````
+  ```
 
 * `.frame()`: Positions this view within an invisible frame with the specified size.
 
-  ``````swift
+  ```swift
   MapView()
   	.frame(height: 300)
-  ``````
+  ```
 
 * `.offset()`: Offset this view by the specified horizontal and vertical distances.
 
-  ``````swift
+  ```swift
   CircleImage()
   	.offset(y: -130)
-  ``````
+  ```
 
 * `.navigationTitle()`: Configures the view’s title for purposes of navigation, using a string.
 
-  ``````swift
+  ```swift
   SomeView()
   	.navigationTitle("SomeNavigationBarTitleForThisView")
-  ``````
+  ```
 
   
 
 * `.navigationBarTitleDisplayMode()`: Configures the title display mode for this view.
 
-  ``````swift
+  ```swift
   SomeView()
   	.navigationBarTitleDisplayMode(.inline)
-  ``````
+  ```
 
   
 
@@ -321,14 +321,14 @@ An app that uses the SwiftUI app life cycle has a structure that conforms to the
 
 * `.stroke()`: Traces the outline of this shape with a color or gradient.
 
-  ``````swift
+  ```swift
   Image("turtlerock")
   	.clipShape(Circle())
   	.overlay {
   		Circle()
   			.stroke(.gray, lineWidth: 4)
     }
-  ``````
+  ```
 
 * `.fill()`: Turn the shape into a view.
 
@@ -338,14 +338,14 @@ An app that uses the SwiftUI app life cycle has a structure that conforms to the
 
 * `.font()`: Changes the text's font.
 
-  ``````swift
+  ```swift
   Text("Hello, world!")
   	.font(.title)
-  ``````
+  ```
 
 * `.foregroundColor()`: Changes the text´s color. This function will be deprecated, so you must use the `.foregroundStyle()` modifier.
 
-  ``````swift
+  ```swift
   // Using `.foregroundColor()`
   Text("Hello, world!")
   	.foregroundColor(.blue)
@@ -353,7 +353,7 @@ An app that uses the SwiftUI app life cycle has a structure that conforms to the
   // Using `.foregroundStyle()`
   Text("Hello, world!")
   	.foregroundStyle(.blue)
-  ``````
+  ```
 
 
 
@@ -361,16 +361,16 @@ An app that uses the SwiftUI app life cycle has a structure that conforms to the
 
 * `.resizable()`: Sets the mode by which SwiftUI resizes an image to fit its space.
 
-  ``````swift
+  ```swift
   Image("someImageName")
   	.resizable()
-  ``````
+  ```
 
   
 
 ## MapKit
 
-``````swift
+```swift
 import SwiftUI
 import MapKit
 
@@ -391,5 +391,5 @@ struct MapView: View {
     MapView()
 }
 
-``````
+```
 

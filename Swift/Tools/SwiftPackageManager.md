@@ -101,7 +101,7 @@ Package.resolved is a file that Swift Package Manager (SPM) generates inside the
 * watchOS
 * Linux
 
-``````swift
+```swift
 #if os(Linux)
 // Code specific to Linux
 #endif
@@ -109,7 +109,7 @@ Package.resolved is a file that Swift Package Manager (SPM) generates inside the
 #if canImport(Network)
 // Code specific to platforms where Network framework is available
 #endif
-``````
+```
 
 
 

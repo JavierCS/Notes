@@ -1,5 +1,7 @@
 # The Swift Programming Language
 
+
+
 ## Concurrency
 
 Swift has built-in support for writing asynchronous and parallel code in a structured way. 
@@ -10,29 +12,31 @@ Swift has built-in support for writing asynchronous and parallel code in a struc
 
 A program that uses parrallel and asynchronous code carries out multiple operations at time, and it suspends operations that are waiting for an external system.
 
+
+
 ### Defining and Calling Asynchronous Functions
 
 To indicate that a function or method is asynchronous, you write the `async` keyword in its declaration after its parameters.
 
-``````swift
+```swift
 func listPhotos(inGallery name: String) async -> [String] {
   let result = // ... some asynchronous networking code ...
   return result
 }
-``````
+```
 
 > :bulb: **Note** 
 > For a function or method that's both asynchronous and throwing, you write `async` before `throws`.
 
 When calling an asyncrhonous method, execution suspends until that method returns. You write `await` in front of the call to mark the possible suspension point. That supension is never implicit or preemptive which means every possible suspension point must be marked with `await.`
 
-``````swift
+```swift
 let photoNames = await listPhotos(inGallery: "Summer Vacation")
 let sortedNames = photoNames.sorted()
 let name = sortedNames[0]
 let photo = await downloadPhoto(named: name)
 show(photo)
-``````
+```
 
 > :warning: **Important**
 > Because code with `await` needs to be able to suspend execution, only certain places in your program can call asynchronous functions of methods:
@@ -42,7 +46,7 @@ show(photo)
 
 Also you can insert a suspension by calling the `Task.yield()` method.
 
-``````swift
+```swift
 func generateSlideshow(forGallery gallery: String) async {
   let photos = await listPhotos(inGallery: gallery)
   for photo in photos {
@@ -50,7 +54,7 @@ func generateSlideshow(forGallery gallery: String) async {
       await Task.yield()
   }
 }
-``````
+```
 
 Assuming the code that renders video is synchronous, it doesn't contain any suspension points. The work to render video could also take a long time. However, you can periodically call `Task.yield()`. Structuring long-running code this way lets Swift balance between making progress on this task and letting other tasks ins your program make progress on their work.
 
@@ -71,6 +75,31 @@ func listPhotos(inGallery name: String) async throws -> [String] {
 > let photos = try await listPhotos(inGallery: "A Rainy Weekend")
 > ```
 
+
+
+### Defining Async Properties
+
+As functions, you can define async properties.
+
+```swift
+extension UIImage {
+  var thumbnail: UIImage? {
+    get async throws {
+      let size = GCSize(width: 40, height: 40)
+      return await self.byPreparingThumbnail(ofSize: size)
+    }
+  }
+}
+```
+
+> :warning: **Warning**
+>
+> You must use an explicit getter to make a property marked as `async`.
+>
+> Only read-only properties can be `async` .
+
+
+
 ### Asynchronous Sequences
 
 Instead of using an ordinary `for-in` loop, you car write `for` with `await` after it. Like when you call an asynchonous function or method. A `for-await-in` loop potentially sispends execution at the beginning of each iteration, when it´s wating for the next element to ba vailable.
@@ -87,6 +116,10 @@ for try await line in handle.bytes.lines {
 > :bulb: **Note**
 > In the same way that you can use your own types in a `for-in` loop by adding conformance to the `Sequence` protocol, you can use your won tipes in a `for-await-in` loop by adding conformance to the `AsyncSequence` protocol.
 
+[WWDC21 - Meet AsyncSequence](https://developer.apple.com/videos/play/wwdc2021/10058)
+
+
+
 ### Calling asynchronous Functions in Parallel
 
 Calling an asynchronous function with `await` runs only one piece of code at a time. While asynchronous code is running, the caller waits for that code to finish before moving on to run the next line of code.
@@ -102,7 +135,7 @@ let photos = [firstPhoto, secondPhoto, thirdPhoto]
 show(photos)
 ```
 
-To call an asynchornos function and let it run in parallel with code around it, write `async` in front of `let` when you define a constant, an then write `await` each time you use the constant.
+To call an asynchornos function and let it run in parallel with code around it, write `async` in front of `let` (async let binding ) when you define a constant, an then write `await` each time you use the constant.
 
 ```swift
 async let firstPhoto = downloadPhoto(named: photoNames[0])
@@ -118,6 +151,8 @@ show(photos)
 > :warning: **Important**
 > 
 > None of these function calls are marked with `await` because the code doesn't suspend to wait for the function's result. Instead, execution continues until the line where `photos` is defined. At that point, the program nneds the result from these asynchronous calls, so you write `await` to pause execution until all three photos finish downloading.
+
+
 
 ### Task and Task Groups
 
@@ -168,6 +203,8 @@ let photos = await withTaskGroup(of: Data.self) { group in
 > *  When setting a higher priority on a child task, the parent task's priority is atumatically escalated.
 > * When parent task is canceled, each of its child tasks is also automatically canceled.
 > * Tas-local values propagate to child tasks efficiently and automatically 
+
+
 
 ### Task Cancellation
 
@@ -225,6 +262,8 @@ task.cancel() // Prints "Canceled!"
 > :warning: **Warning**
 > Avoid sharing state between the task and its cancellation handler. Which could create a race condition.
 
+
+
 ### Unstructured Concurrency
 
 Swift also supports unstructured concurrency. Unlike tasks that are part of a task group, an *unstructured task* doesn't have a parent task. You have complete flexibility to manage unstructured tasks in whatever way your program needs, but you're also completely responsible for ther correctness.
@@ -246,6 +285,8 @@ let result = await handle.value
 > Both of these operations return a task that you can interact with.
 
 For mor information about managing detached tasks, see [Tasks](https://developer.apple.com/documentation/swift/task).
+
+
 
 ### Actors
 
@@ -322,6 +363,8 @@ extension TemperatureLogger {
 > :warning: **Warning**
 > In the futire, if you try to add concurrent code to a *synchronous* method inside an actor like the `convertFahrenheitToCelsius()`, you'll get compile-time error instead of introducing a bug.
 
+
+
 ### Sendable Types
 
 Inside of a task or an instance of an actor, the part of a program that contains mutable state, like variables and properties, si called a ***concurrency domain***, and some kinds of data can't be shared between concurreency domains, because the data constains mutable state, but it doesn't protect against overlapping access.
@@ -373,4 +416,4 @@ struct FileDescriptor {
 extension FileDescriptor: Sendable {}
 ```
 
-In the code above, the `FileDescriptor` is a structure that meets the criteria to be implicitly sendable. However, the extension makes its conformance to `Sendable` unavailable, preventing the type from being sendable.
+In the code above, the `FileDescriptor` is a structure that meets the criteria to be implicitly sendable. However, the extension makes its conformance to `Sendable` unavailable, preventing the type from being sendable. 

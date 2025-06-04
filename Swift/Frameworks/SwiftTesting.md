@@ -88,27 +88,27 @@ Test functions are ordinary swift functions with a `@Test` attribute.
 * May be `async` or `throws`.
 * May be global actor-isolated (such as `@MainActor`).
 
-``````swift
+```swift
 import Testing
 
 @Test func functionName() {
 	// Make here your validations
 }
-``````
+```
 
 > :bulb: **Tip**: Do not forget using `@testable` for your imports due to the default access level for your code is Internal so you'll need it to test your code.
 
 You can also provide a display name in the `@Test` attribute.
 
-``````swift
+```swift
 @Test("Here you can set your custom display name") func test() {
 	// Test Body
 }
-``````
+```
 
 Soak two or more tests inside a `struct` to create a group.
 
-``````swift
+```swift
 import Testing
 @testable import YourProyectOrFrameworkName
 
@@ -121,7 +121,7 @@ struct SomeTopicTests {
 		// Test Body
 	}
 }
-``````
+```
 
 > :bulb: **Tip**: This group will be reflected in the Test Navigatior.
 
@@ -136,7 +136,7 @@ The `#expect()` macro performs an expectation to validate that an expected condi
 * Accepts ordirary expressions and operators.
 * Captures source code and subexpression values upon failure.
 
-``````swift
+```swift
 // Expectation examples
 
 #expect(1 == 2) // Expectation failed: 1 == 2
@@ -146,23 +146,23 @@ The `#expect()` macro performs an expectation to validate that an expected condi
 #expect(!array.isEmpty) // Expectation failed: !((array -> []).isEmpty -> true)
 
 #expect(numbers.contains(4)) // Expectation failed: (numbers -> [1,2,3]).contains(4)
-``````
+```
 
 ### Require
 
 Use `try #require(...)` to stop the test if the condition is `false`.
 
-``````swift
+```swift
 try #require(session.isValid()) // Expectation failed: (session -> Session(id: 45678)).isValid -> false
 session.invalidate() // not extecuted 
-``````
+```
 
 This macro can also unwrap optional values, and stopt test when `nil`.
 
-``````swift
+```swift
 let method = try #require(paymentMethods.first) // Expectation failed: (paymentMethods -> []).first -> nil
 #expect(method.isDefault) // not executed
-``````
+```
 
 ## Traits
 
@@ -172,7 +172,7 @@ The third building block.
 * Customize whether a test runs.
 * Modify how a test behaves.
 
-``````swift
+```swift
 @Test("Custom name") // Customize the display name of a test.
 @Test(.bug("example.com/issues/99999", "Title")) // Reference an issue from a bug tracker.
 @Test(.tags(.critical)) // Add a custom tag to a test
@@ -181,7 +181,7 @@ The third building block.
 @Test(...) @available(macOS 15, *) // Limit a test to certain OS versions
 @Test(.timeLimit(.minutes(3))) // Set a maximum time limit for a test
 @Suite(.serialized) // Run the tests in a suite one at time, without parallelization
-``````
+```
 
 ## Common Workflows
 
@@ -189,18 +189,18 @@ The third building block.
 
 Specify a runtime-evaluated condition for a test using `.enabled(if: ...).    
 
-``````swift
+```swift
 @Test(.enabled(if: AppFeatures.isCommentingEnabled))
 func test() {
 	// ...
 }
-``````
+```
 
 > :memo: **​Note**: If the condition is `false` the test will be marked as  skipped.
 
 Also you can unconditionaly disable a test using `.disabled(...)`
 
-``````swift
+```swift
 @Test(.disabled("Due to a known crash"))
 func example() {
 	// ...
@@ -211,13 +211,13 @@ func example() {
 func exampleTwo() {
   // ...
 }
-``````
+```
 
 > :memo: **Note**: Disabling a test is preferable over other techniques, like commenting out the test function.
 
 Use `@available(...)` to specify an OS availability condition.
 
-``````swift
+```swift
 @Test func hasRuntimeVersionCheck() {
   guard #available(macOS 15, *) else { return } // Avoid this
   // ...
@@ -228,7 +228,7 @@ Use `@available(...)` to specify an OS availability condition.
 func usesNewAPIs() {
 	// ...
 }
-``````
+```
 
 > :warning: **Warning**: Use the `@available(...)` instead of checking at runtime using `#available(...)`
 

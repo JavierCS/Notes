@@ -32,7 +32,7 @@ DocC (Documentation Compiler) is Apple's documentation tool designed specificall
 
 ## Syntax
 
-``````swift
+```swift
 /// Symbol's summary
 ///
 /// Symbol's discussion
@@ -50,7 +50,7 @@ DocC (Documentation Compiler) is Apple's documentation tool designed specificall
 public struct SomeSymbol {
   
 }
-``````
+```
 
 
 
