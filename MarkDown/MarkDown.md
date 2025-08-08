@@ -1,623 +1,708 @@
-# Markup Formatting
+# MarkDown
 
-```swift
-/*
- Little description for the function
+1. [Heading](#heading)
+2. [Emphasis](#emphasis)
+3. [Blockquote](#blockquote)
+4. [Lists](#lists)
+5. [Code](#code)
+6. [Horizontal Rules](#horizontal-rules)
+7. [Links](#links)
+8. [Images](#images)
+9. [Escaping Characters](#escaping-characters)
+10. [Tables](#tables)
+11. [Footnotes](#footnotes)
+12. [Definition Lists](#definition-lists)
+13. [Task Lists](#task-lists)
+14. [Emoji Shortcodes](#emoji-shortcodes)
+15. [Highlight](#highlight)
+16. [Subscript](#subscript)
+17. [Superscript](#superscript)
+18. [Underline](#underline)
+19. [Center](#center)
+20. [Color](#color)
+21. [Comments](#comments)
+22. [Amonitions](#admonitions)
 
- Add a block of markup using these special opening and closing comment markers.
+---
 
- - Parameters:
-     - parameterOne: First Parameter
-     - parameterTwo: Second Parameter
- - Returns: Return Value
- - Throws: `Error.Type`
-*/
-func blockComent() throws {}
+## Heading
+
+```markdown
+# Heading 1
+## Heading 2
+### Heading 3
+#### Heading 4
+##### Heading 5
+###### Heading 6
 ```
 
+![Headings](./Resources/heading.png)
 
+---
 
-## Formatting a Line of Text
-
- ### Headings
-
-```swift
-/*
- Little description for the function
-     
- Display a line of text formatted as a heading.
-     
- # This is a Heading 1
- ===================
- ## This is a Heading 2
-*/
-func headings() {}
-```
-
-### Horizontal Rules
-
-```swift
-/*
- Little description for the function
- 
- Display a horizontal rule on the page.
- 
- An example of using a *horizontal rule*
- 
- This text is above the horizontal rule
- 
- *  *  *  *  *
- 
- And this is below
-*/
-func horizontalRules() {}
-```
-
-## Formatting Multiple Lines of Text
-
-### Bulleted List
-
-```swift
-/*
- Little description for the function
- 
- Display text as a bulleted list.
- 
- An example of using a *bulleted list*
- 
- * item 1
- * item 2
- * item 2.1
- * item 3
-*/  
-func bulletedLists() {}
-```
-
-### Numbered List
-
-```swift
-/*
- Little description for the function
- 
- Display text in a numbered list.
- 
- An example of using a *numbered list*
- 
- 1. Cat
- 2. Dog
- 1. Golden Retriever
- 3. Llama
-*/ 
-func numberedLists() {}
-```
-
-### Code Blocks
-
-```swift
-/*
- Little description for the function
- 
- Display the text as a block of code.
- 
- An example of using a *code block*
- 
- A loop to print each character on a seperate line 
- 
- ```swift
- for character in "Aesop" {
-     print(character)}
- }
- ```
-*/
-func codeBlock() {}
-```
-
-## Formatting a Span of Characters
-
-### Code Voice
-
-```swift
-/*
- Little description for the function
- 
- Render a span of text using the font for code voice.
- 
- An example of using a *code voice*
- 
- Show Swift elements such as `for` and `let` as monspaced code font
-*/  
-func codeVoice() {}
-```
-
-### Italics
-
-```swift
-/*
- Little description for the function
-
- Render a span of text using the font face for emphasis.
-
- This line has a word with *emphasis*.
-
- This line uses _emphasis for the last six words_.
-*/
-func italics() {}
-```
+## Emphasis
 
 ### Bold
 
-```swift
-/*
- Little description for the function
-
- Render a span of text using the strong font face.
-
- An example of using *strong*
-
- A **strong * (asterisk)** is on this line.
-
- __A strong line__.
-*/ 
-func bold() {}
+```markdown
+**This is a bold text**
 ```
 
-## Inserting Links
+**This is a bold text**
 
-### Inserting Links
+### Italic
 
-```swift
-/*
- Little description for the function
-
- Add a link to a text-based resource such as a web URL or email.
-
- - seealso: [The Swift Standard Library Reference](https://developer.apple.com/library/prerelease/ios//documentation/General/Reference/SwiftStandardLibraryReference/index.html)
-*/
-func insertingLinks() {}
+```markdown
+*This is an italic text*
 ```
 
-### Inserting Links Reference
+*This is an italic text*
 
-```swift
-/*
- Little description for the function
+### Bold and Italic
 
- Add a named reference to a URL that can be used in multiple places.
-
- [The Swift Programming Language]: http://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/ "Some hover text"
-
- For light summer reading we suggest [The Swift Programming Language].
-
- ### Useful books
- * [The Swift Programming Language]
-*/
-func insertingLinksReference() {}
+```markdown
+***This is a bold/italic text***
 ```
 
-## Inserting Assets
+***This is a bold/italic text***
 
-### Inserting Image
+---
 
-```swift
-/*
- Little description for the function
+## Blockquote
 
- Include inline images.
+To create a blockquote, add a > in front of a paragraph.
 
- ![Xcode icon](http://devimages.apple.com.edgekey.net/assets/elements/icons/128x128/xcode.png "Some hover text")
-*/
-func insertingImage() {}
+```markdown
+> Dorothy followed her through many of the beautiful rooms in her castle.
 ```
 
-## Inserting Callouts
+> Dorothy followed her through many of the beautiful rooms in her castle.
 
-### Simple Comment
+### Blockquotes with Multiple Paragraphs
 
-```swift
-/// markupDemoSimpleFunc description.
-func markupDemoSimpleFunc() {}
+Blockquotes can contain multiple paragraphs. Add a > on the blank lines between the paragraphs.
+
+```markdown
+> Dorothy followed her through many of the beautiful rooms in her castle.
+>
+> The Witch bade her clean the pots and kettles and sweep the floor and keep the fire fed with wood.
 ```
 
-### Attention Delimiter
+> Dorothy followed her through many of the beautiful rooms in her castle.
+>
+> The Witch bade her clean the pots and kettles and sweep the floor and keep the fire fed with wood.
 
-```swift
-/*
- Little description for the function
+### Neested Blockquotes
 
- Add an Attention callout to the Quick Help for a symbol using the Attention delimiter. Multiple Attention callouts appear in the description section in the same order as they do in the markup.
+Blockquotes can be nested. Add a >> in front of the paragraph you want to nest.
 
- - Attention: AttentionText
-*/
-func attentionDelimiterUsage() {}
+```markdown
+> Dorothy followed her through many of the beautiful rooms in her castle.
+>
+>> The Witch bade her clean the pots and kettles and sweep the floor and keep the fire fed with wood.
 ```
 
-### Author Delimiter
+> Dorothy followed her through many of the beautiful rooms in her castle.
+>
+>> The Witch bade her clean the pots and kettles and sweep the floor and keep the fire fed with wood.
 
-```swift
-/*
- Little description for the function
+### Blockquotes with Other Elements
 
- Add an Author callout with a single name to the Quick Help for a symbol using the Author delimiter. Multiple Author callouts appear in the description section in the same order as they do in the markup.
+Blockquotes can contain other Markdown formatted elements. Not all elements can be used — you’ll need to experiment to see which ones work.
 
- - Author: Javier Cruz Santiago
-*/
-func authorDelimiterUsage() {}
+```markdown
+> #### The quarterly results look great!
+>
+> - Revenue was off the chart.
+> - Profits were higher than ever.
+>
+>  *Everything* is going according to **plan**.
 ```
 
-### Authors Delimiter
+> #### The quarterly results look great!
+>
+> - Revenue was off the chart.
+> - Profits were higher than ever.
+>
+>  *Everything* is going according to **plan**.
 
-```swift
-/*
- Little description for the function
+---
 
- Add an Authors callout with a list of authors to the Quick Help for a symbol. The order of the authors in Quick Help is the same as the order they appear in the delimiter. Multiple Authors delimiters are added to Quick Help in the order that they appear in the markup.
+## Lists
 
- - Authors: Javier Cruz Santiago\
- \
- Nombre De Otra Persona
-*/  
-func authorsDelimiterUsage() {}
+You can organize items into ordered and unordered lists.
+
+### Ordered Lists
+
+To create an ordered list, add line items with numbers followed by periods. The numbers don’t have to be in numerical order, but the list should start with the number one.
+
+```markdown
+1. Second item
+2. Third item
+3. Fourth item
+4. First item
+
+5. First item
+6. Second item
+7. Third item
+8. Fourth item
+
+9. First item
+10. Second item
+11. Third item
+12. Fourth item
 ```
 
-### Bug Delimiter
+1. First item
+2. Second item
+3. Third item
+4. Fourth item
 
-```swift
-/*
- Little description for the function
-
- Adds a Bug callout to the Quick Help for a symbol using the Bug delimiter. Multiple Bug callouts appear in the description section in the same order as they do in the markup.
-
- - Bug: Simple description for a bug
- - Bug: [Passing a `UIViewController` crashes *bugExample*](BugDB://problem/2274610)
-*/
-func bugDelimiterUsage() {}
+```markdown
+1. First item
+2. Second item
+3. Third item
+    1. Indented item
+    2. Indented item
+4. Fourth item
 ```
 
-### Complexity Delimiter
+1. First item
+2. Second item
+3. Third item
+    1. Indented item
+    2. Indented item
+4. Fourth item
 
-```swift
-/*
- Little description for the function
+### Unordered Lists
 
- Add a Complexity callout to the Quick Help for a symbol using the Complexity delimiter. Multiple Complexity callouts appear in the description section in the same order as they do in the markup.
+To create an unordered list, add dashes (-), asterisks (*), or plus signs (+) in front of line items. Indent one or more items to create a nested list.
 
- - Complexity: The method demonstrates an inefficient way to sort using an O(N\*N\*N) (order N-cubed) algorithm
-*/
-func complexityDelimiterUsage() {}
+```markdown
+- First item
+- Second item
+- Third item
+- Fourth item
+
+* First item
+* Second item
+* Third item
+* Fourth item
+
++ First item
++ Second item
++ Third item
++ Fourth item
 ```
 
-### Copyright Delimiter
+- First item
+- Second item
+- Third item
+- Fourth item
 
-```swift
-/*
- Little description for the function
-
- Add a Copyright callout to the Quick Help for a symbol using the Copyright delimiter. Multiple Copyright callouts appear in the description section in the same order as they do in the markup.
-
- - Copyright: Copyright © 1215 by The Group of Barrons
-*/
-func copyrightDelimiterUsage() {}
+```markdown
+- First item
+- Second item
+- Third item
+    - Indented item
+    - Indented item
+- Fourth item
 ```
 
-### Date Delimiter
+- First item
+- Second item
+- Third item
+    - Indented item
+    - Indented item
+- Fourth item
 
-```swift
-/*
- Little description for the function
+### Starting Unordered List Items With Numbers
 
- Add a Date callout to the Quick Help for a symbol using the Date delimiter. Multiple Date callouts appear in the description section in the same order as they do in the markup.
+If you need to start an unordered list item with a number followed by a period, you can use a backslash ( \ ) to escape the period.
 
- Last date this example was changed
- - Date: August 19, 2015
-
- Days the method produces special results
- - Date: 12/31
- - Date: 03/17
-*/
-func dateDelimiterUsage() {}
+```markdown
+- 1968\. A great year!
+- I think 1969 was second best.
 ```
 
-### Experiment Delimiter
+- 1968\. A great year!
+- I think 1969 was second best.
 
-```swift
-/*
- Little description for the function
+### Adding Elements in Lists
 
- Add an Experiment callout to a playground or to the Quick Help for a symbol using the Experiment delimiter. Multiple Experiment callouts appear in the description section in the same order as they do in the markup.
+To add another element in a list while preserving the continuity of the list, indent the element four spaces or one tab, as shown in the following examples.
 
- - Experiment: Pass in a string in the present tense
- - Experiment: Pass in a string with no vowels
- - Experiment: Change the third case statement to work only with consonants
-*/
-func experimentDelimiterUsage() {}
+#### Paragraphs
+
+```markdown
+* This is the first list item.
+* Here's the second list item.
+
+    I need to add another paragraph below the second list item.
+
+* And here's the third list item.
 ```
 
-### Important Delimiter
+* This is the first list item.
+* Here's the second list item.
 
-```swift
-/*
- Little description for the function
+    I need to add another paragraph below the second list item.
 
- Add an Important callout to a playground or to the Quick Help for a symbol using the Important delimiter. Multiple Important callouts in Quick Help appear in the description section in the same order as they do in the markup.
+* And here's the third list item.
 
- Use the callout to highlight information that can have adverse effects on the tasks a user is trying to accomplish.
+#### Blockquotes
 
- - Important: "The beginning is the most important part of the work."  
-*/
-func importantDelimiterUsage() {}
+```markdown
+* This is the first list item.
+* Here's the second list item.
+
+    > A blockquote would look great below the second list item.
+
+* And here's the third list item.
 ```
 
-### Invariant Delimiter
+* This is the first list item.
+* Here's the second list item.
 
-```swift
-/*
- Little description for the function
+    > A blockquote would look great below the second list item.
 
- Add an Invariant callout to the description of a symbol using the Invariant delimiter. Multiple Invariant callouts appear in the description section in the same order as they do in the markup.
+* And here's the third list item.
 
- Use the callout to display a condition that is guaranteed to be true during the execution of the documented symbol.
+#### Code Blocks
 
- - Invariant: The person reference will not change during the execution of this method
-*/
-func invariantDelimiterUsage() {}
+Code blocks are normally indented four spaces or one tab. When they’re in a list, indent them eight spaces or two tabs.
+
+```markdown
+1. Open the file.
+2. Find the following code block on line 21:
+
+    `// ... some swift code`
+
+3. Update the title to match the name of your website.
 ```
 
-### Note Delimiter
+1. Open the file.
+2. Find the following code block on line 21:
 
-```swift
-/*
- Little description for the function
+    `// ... some swift code`
 
- Add a Note callout to a playground or to the Quick Help for a symbol using the Note delimiter. Multiple Note callouts in Quick Help appear in the description section in the same order as they do in the markup.
+3. Update the title to match the name of your website.
 
- - Note: This method returns an estimate.
- Use `reallyAccurateReading` to get the best results.
-*/
-func noteDelimiterUsage() {}
+#### Images
+
+```markdown
+1. Open the file containing the Linux mascot.
+2. Marvel at its beauty.
+
+    ![Tux, the Linux mascot](./Resources/tux.png)
+
+3. Close the file.
 ```
 
-### Precondition Delimiter
+1. Open the file containing the Linux mascot.
+2. Marvel at its beauty.
 
-```swift
-/*
- Little description for the function
+    ![Tux, the Linux mascot](./Resources/tux.png)
 
- Adds a Precondition callout to the Quick Help for a symbol. Multiple Precondition callouts appear in the description section in the same order as they do in the markup.
+3. Close the file.
 
- Use the callout to document any conditions that are held for the documented symbol to work.
+#### Lists
 
- - Precondition: The `person` property must be non-nil.
- - Precondition: `updatedAddress` must be a valid address.
-*/
-func preconditionDelimiterUsage() {}
+You can nest an unordered list in an ordered list, or vice versa.
+
+```markdown
+1. First item
+2. Second item
+3. Third item
+    - Indented item
+    - Indented item
+4. Fourth item
 ```
 
-### Postcondition Delimiter
+1. First item
+2. Second item
+3. Third item
+    - Indented item
+    - Indented item
+4. Fourth item
 
-```swift
-/*
- Little description for the function
+---
 
- Add a Postcondition callout to the Quick Help for a symbol using the Postcondition delimiter. Multiple Postcondition callouts appear in the description section in the same order as they do in the markup.
+## Code
 
- Use the callout to document conditions which have guaranteed values upon completion of the execution of the symbol.
+To denote a word or phrase as code, enclose it in backticks ( ` ).
 
- - Postcondition: After completing this method the billing address for the person will be set to `updatedAddress` if it is valid. Otherwise the billing address will not be changed.
-*/ 
-func postconditionDelimiterUsage() {}
+```markup
+At the command prompt, type `nano`.
 ```
 
-### Remark Delimiter
+At the command prompt, type `nano`.
 
-```swift
-/*
- Little description for the function
+### Escaping Backticks
 
- Add a Remark callout to the Quick Help for a symbol using the Remark delimiter. Multiple Remark callouts appear in the description section in the same order as they do in the markup.
+If the word or phrase you want to denote as code includes one or more backticks, you can escape it by enclosing the word or phrase in double backticks (``).
 
- - Remark: The performance could be reduced from N-squared to N-log-N by switching patterns.
-*/
-func remarkDelimiterUsage() {}
+```markdown
+``Use `code` in your Markdown file.``
 ```
 
-### Requires Delimiter
+``Use `code` in your Markdown file.``
 
-```swift
-/*
- Little description for the function
+## Horizontal Rules
 
- Add a Requires callout to the Quick Help for a symbol using the Requires delimiter. See Precondition for usage.
+To create a horizontal rule, use three or more asterisks (***), dashes (---), or underscores (___) on a line by themselves.
 
- - Requires: `start <= end`.
- - Requires: `count > 0`.
-*/
-func requiresDelimiterUsage() {}
+```markdown
+***
+---
+___
 ```
 
-### See Also Delimiter
+***
+---
+___
 
-```swift
-/*
- Little description for the function
+## Links
 
- Adds a See also callout to the Quick Help for a symbol using the See Also delimiter. Multiple See also callouts appear in the description section in the same order as they do in the markup.
+To create a link, enclose the link text in brackets (e.g., [Duck Duck Go]) and then follow it immediately with the URL in parentheses (e.g., (https://duckduckgo.com)).
 
- Use the callout to add references to other information.
-
- - SeeAlso: [My Library Reference](https://example.com)
-*/
-func seeAlsoDelimiterUsage() {}
+```markdown
+My favorite search engine is [Duck Duck Go](https://duckduckgo.com).
 ```
 
-### Since Delimiter
+My favorite search engine is [Duck Duck Go](https://duckduckgo.com).
 
-```swift
-/*
- Little description for the function
+### Adding Titles
 
- Add a Since callout to the Quick Help for a symbol using the Since delimiter. Multiple Since callouts appear in the description section in the same order as they do in the markup.
+You can optionally add a title for a link. This will appear as a tooltip when the user hovers over the link. To add a title, enclose it in quotation marks after the URL.
 
- Use the callout to add information about when the symbol became available. Some example of the types of information include dates, framework versions, and operating system versions.
-
- - Since: First available in Mac OS 7
-*/
-func sinceDelimiterUsage() {}
+```markdown
+My favorite search engine is [Duck Duck Go](https://duckduckgo.com "The best search engine for privacy").
 ```
 
-### Version Delimiter
+My favorite search engine is [Duck Duck Go](https://duckduckgo.com "The best search engine for privacy").
 
-```swift
-/*
- Little description for the function
+### URLs and Email Addresses
 
- Add a Version callout to the Quick Help for a symbol using the Version delimiter. Multiple Version callouts appear in the description section in the same order as they do in the markup.
+To quickly turn a URL or email address into a link, enclose it in angle brackets.
 
- - Version: 0.1 (61A329)
-*/
-func versionDelimiterUsage() {}
+```markdown
+<https://www.markdownguide.org>
+<fake@example.com>
 ```
 
-### Warning Delimiter
+<https://www.markdownguide.org>
+<fake@example.com>
 
-```swift
-/*
- Little description for the function
+### Formatting Links
 
- Add a Warning callout to the Quick Help for a symbol using the Warning delimiter. Multiple Warning callouts appear in the description section in the same order as they do in the markup.
+To emphasize links, add asterisks before and after the brackets and parentheses. To denote links as code, add backticks in the brackets.
 
- - Warning: Not all code paths for this method have been tested
-*/
-func warningDelimiterUsage() {}
+```markdown
+I love supporting the **[EFF](https://eff.org)**.
+This is the *[Markdown Guide](https://www.markdownguide.org)*.
+See the section on [`code`](#code).
 ```
 
-## Escaping Special Characters
+I love supporting the **[EFF](https://eff.org)**.
+This is the *[Markdown Guide](https://www.markdownguide.org)*.
+See the section on [`code`](#code).
 
-### Escapes
+---
 
-```swift
-/*
- Little description for the function
+## Images
 
- Treat the following character as a plain charactere instead of a markup delimiter.
+To add an image, add an exclamation mark (!), followed by alt text in brackets, and the path or URL to the image asset in parentheses. You can optionally add a title in quotation marks after the path or URL.
 
- A simple example of using *display delimiter*
-
- Do not show the first line as a bullet item
-
- \* This is not a bullet item
-
- * This is a bullet item
-
- Display a special character with formatting
-
- Show the *middle asterisk\* with emphasis*
-
- These two lines
- wrap
-
- These two lines\
- do not
-*/
-func scapes() {}
+```markdown
+![The San Juan Mountains are beautiful!](./Resources/san-juan-mountains.jpg "San Juan Mountains")
 ```
 
-## Integral Example
+![The San Juan Mountains are beautiful!](./Resources/san-juan-mountains.jpg "San Juan Mountains")
 
-```swift
-/*
- Little description for the function
+### Linking Images
 
- Complete Summary for this function
+To add a link to an image, enclose the Markdown for the image in brackets, and then add the link in parentheses.
 
- - Parameters:
-     - parameterOne: First Parameter
-     - parameterTwo: Second Parameter
- - Returns: Return Value
-
- - Attention: AttentionText
-
- - Authors: Javier Cruz Santiago\
- Nombre De Otra Persona
-
- - Bug: Simple description for a bug
- - Bug: [Passing a `UIViewController` crashes *bugExample*](BugDB://problem/2274610)
-
- - Complexity: The method demonstrates an inefficient way to sort using an O(N\*N\*N) (order N-cubed) algorithm
-
- - Copyright: Copyright © 1215 by The Group of Barrons
-
- Last date this example was changed
- - Date: August 19, 2015
-
- Days the method produces special results
- - Date: 12/31
- - Date: 03/17
-
- - Experiment: Pass in a string in the present tense
- - Experiment: Pass in a string with no vowels
- - Experiment: Change the third case statement to work only with consonants
-
- - Important: "The beginning is the most important part of the work."
- \
- –Plato
-
- - Invariant: The person reference will not change during the execution of this method
-
- - Note: This method returns an estimate. Use `reallyAccurateReading` to get the best results.
-
- - Precondition: The `person` property must be non-nil.
- - Precondition: `updatedAddress` must be a valid address.
-
- - Postcondition: After completing this method the billing address for the person will be set to `updatedAddress` if it is valid. Otherwise the billing address will not be changed.
-
- - Remark: The performance could be reduced from N-squared to N-log-N by switching patterns.
-
- - Requires: `start <= end`.
- - Requires: `count > 0`.
-
- - SeeAlso: [My Library Reference](https://example.com)
-
- - Since: First available in Mac OS 7
-
- - Version: 0.1 (61A329)
-
- - Warning: Not all code paths for this method have been tested
-*/
-func completeExample() {}
+```markdown
+[![An old rock in the desert](./Resources/shiprock.jpg "Shiprock, New Mexico by Beau Rogers")](https://www.flickr.com/photos/beaurogers/31833779864/in/photolist-Qv3rFw-34mt9F-a9Cmfy-5Ha3Zi-9msKdv-o3hgjr-hWpUte-4WMsJ1-KUQ8N-deshUb-vssBD-6CQci6-8AFCiD-zsJWT-nNfsgB-dPDwZJ-bn9JGn-5HtSXY-6CUhAL-a4UTXB-ugPum-KUPSo-fBLNm-6CUmpy-4WMsc9-8a7D3T-83KJev-6CQ2bK-nNusHJ-a78rQH-nw3NvT-7aq2qf-8wwBso-3nNceh-ugSKP-4mh4kh-bbeeqH-a7biME-q3PtTf-brFpgb-cg38zw-bXMZc-nJPELD-f58Lmo-bXMYG-bz8AAi-bxNtNT-bXMYi-bXMY6-bXMYv)
 ```
 
-## Xcode Annotations
+[![An old rock in the desert](./Resources/shiprock.jpg "Shiprock, New Mexico by Beau Rogers")](https://www.flickr.com/photos/beaurogers/31833779864/in/photolist-Qv3rFw-34mt9F-a9Cmfy-5Ha3Zi-9msKdv-o3hgjr-hWpUte-4WMsJ1-KUQ8N-deshUb-vssBD-6CQci6-8AFCiD-zsJWT-nNfsgB-dPDwZJ-bn9JGn-5HtSXY-6CUhAL-a4UTXB-ugPum-KUPSo-fBLNm-6CUmpy-4WMsc9-8a7D3T-83KJev-6CQ2bK-nNusHJ-a78rQH-nw3NvT-7aq2qf-8wwBso-3nNceh-ugSKP-4mh4kh-bbeeqH-a7biME-q3PtTf-brFpgb-cg38zw-bXMZc-nJPELD-f58Lmo-bXMYG-bz8AAi-bxNtNT-bXMYi-bXMY6-bXMYv)
 
-```swift
-import UIKit
+---
 
-// FIXME: Leaking memory
+## Escaping Characters
 
-// TODO: -
-// TODO: Refactor data source and navigation
-// TODO: Need to localize strings
-// TODO: -
+To display a literal character that would otherwise be used to format text in a Markdown document, add a backslash ( \ ) in front of the character.
 
-class TaskTableViewController: UITableViewController {
-
-   #### UITableViewDataSource -
-  ...
-
-   #### Storyboard Seque -
-  ...
-}
+```markdown
+\* Without the backslash, this would be a bullet in an unordered list.
 ```
 
-## Swift Compiler Directives
+\* Without the backslash, this would be a bullet in an unordered list.
 
-```swift
-func viewSetup() {
-    #warning("Strings are not localized")
-    ...
-}
+### Characters You Can Escape
 
-func updateView() {
-    #error("Accessing UI on wrong thread")
-    ...
-}
+You can use a backslash to escape the following characters.
+
+| Character | Name |
+|-----------|------|
+| \ | backslash |
+| ` | backtick |
+| * | asterisk |
+| _ | underscore |
+| {} | curly braces |
+| [] | brackets |
+| <> | angle brackets |
+| () | parentheses |
+| # | pound sign |
+| + | plus sign |
+| - | minus sign (hyphen) |
+| . | dot |
+| ! | exclamation mark |
+| \| | pipe |
+
+---
+
+## Tables
+
+> :warning: **Warning:** Tables are part of the Markdown Extended Syntax.
+
+To add a table, use three or more hyphens (---) to create each column’s header, and use pipes (|) to separate each column. For compatibility, you should also add a pipe on either end of the row.
+
+```markdown
+| Syntax      | Description |
+| ----------- | ----------- |
+| Header      | Title       |
+| Paragraph   | Text        |
 ```
+
+| Syntax      | Description |
+| ----------- | ----------- |
+| Header      | Title       |
+| Paragraph   | Text        |
+
+### Alignment
+
+You can align text in the columns to the left, right, or center by adding a colon (:) to the left, right, or on both side of the hyphens within the header row.
+
+```markdown
+| Syntax      | Description | Test Text     |
+| :---        |    :----:   |          ---: |
+| Header      | Title       | Here's this   |
+| Paragraph   | Text        | And more      |
+```
+
+| Syntax      | Description | Test Text     |
+| :---        |    :----:   |          ---: |
+| Header      | Title       | Here's this   |
+| Paragraph   | Text        | And more      |
+
+### Formatting Text in Tables
+
+You can format the text within tables. For example, you can add links, code (words or phrases in backticks (`) only, not code blocks), and emphasis.
+
+You can’t use headings, blockquotes, lists, horizontal rules, images, or most HTML tags.
+
+### Escaping Pipe Characters in Tables
+
+You can display a pipe (|) character in a table by using its HTML character code (&#124;).
+
+---
+
+## Footnotes
+
+> :warning: **Warning:** Footnotes are part of the Markdown Extended Syntax.
+
+Footnotes allow you to add notes and references without cluttering the body of the document. When you create a footnote, a superscript number with a link appears where you added the footnote reference. Readers can click the link to jump to the content of the footnote at the bottom of the page.
+
+To create a footnote reference, add a caret and an identifier inside brackets ([^1]). Identifiers can be numbers or words, but they can’t contain spaces or tabs. Identifiers only correlate the footnote reference with the footnote itself — in the output, footnotes are numbered sequentially.
+
+Add the footnote using another caret and number inside brackets with a colon and text ([^1]: My footnote.). You don’t have to put footnotes at the end of the document. You can put them anywhere except inside other elements like lists, block quotes, and tables.
+
+```markdown
+Here's a simple footnote,[^1] and here's a longer one.[^bignote]
+
+[^1]: This is the first footnote.
+
+[^bignote]: Here's one with multiple paragraphs and code.
+
+    Indent paragraphs to include them in the footnote.
+
+    `{ my code }`
+
+    Add as many paragraphs as you like.
+```
+
+Here's a simple footnote,[^1] and here's a longer one.[^bignote]
+
+[^1]: This is the first footnote.
+
+[^bignote]: Here's one with multiple paragraphs and code.
+
+    Indent paragraphs to include them in the footnote.
+
+    `{ my code }`
+
+    Add as many paragraphs as you like.
+
+---
+
+## Definition Lists
+
+> :warning: **Warning:** Definition Lists are part of the Markdown Extended Syntax.
+
+Some Markdown processors allow you to create definition lists of terms and their corresponding definitions. To create a definition list, type the term on the first line. On the next line, type a colon followed by a space and the definition.
+
+First Term
+: This is the definition of the first term.
+
+Second Term
+: This is one definition of the second term.
+: This is another definition of the second term.
+
+---
+
+## Task Lists
+
+> :warning: **Warning:** Task Lists are part of the Markdown Extended Syntax.
+
+Task lists (also referred to as checklists and todo lists) allow you to create a list of items with checkboxes. In Markdown applications that support task lists, checkboxes will be displayed next to the content. To create a task list, add dashes (-) and brackets with a space ([ ]) in front of task list items. To select a checkbox, add an x in between the brackets ([x]).
+
+```markdown
+- [x] Write the press release
+- [ ] Update the website
+- [ ] Contact the media
+```
+
+- [x] Write the press release
+- [ ] Update the website
+- [ ] Contact the media
+
+---
+
+## Emoji Shortcodes
+
+> :warning: **Warning:** Emoji Shortcodes are part of the Markdown Extended Syntax.
+
+Some Markdown applications allow you to insert emoji by typing emoji shortcodes. These begin and end with a colon and include the name of an emoji.
+
+```markdown
+Gone camping! :tent: Be back soon.
+
+That is so funny! :joy:
+```
+
+Gone camping! :tent: Be back soon.
+
+That is so funny! :joy:
+
+---
+
+## Highlight
+
+> :warning: **Warning:** Highlight is part of the Markdown Extended Syntax.
+
+This isn’t common, but some Markdown processors allow you to highlight text. The result looks like this. To highlight words, use two equal signs (==) before and after the words.
+
+I need to highlight these ==very important words==.
+
+---
+
+## Subscript
+
+> :warning: **Warning:** Subscript is part of the Markdown Extended Syntax.
+
+This isn’t common, but some Markdown processors allow you to use subscript to position one or more characters slightly below the normal line of type. To create a subscript, use one tilde symbol (~) before and after the characters.
+
+```markdown
+H~2~O
+```
+
+H~2~O
+
+--- 
+
+## Superscript
+
+> :warning: **Warning:** Superscript is part of the Markdown Extended Syntax.
+
+This isn’t common, but some Markdown processors allow you to use superscript to position one or more characters slightly above the normal line of type. To create a superscript, use one caret symbol (^) before and after the characters.
+
+```markdown
+X^2^
+```
+
+X^2^
+
+---
+
+## Underline
+
+Underlined text is not something you typically see in web writing, probably because underlined text is nearly synonymous with links. However, if you’re writing a paper or a report, you may need the ability to underline words and phrases. A couple of applications like Bear and Simplenote provide support for underlining text, but Markdown doesn’t natively support underlining. If your Markdown processor supports HTML, you can use the <ins> HTML tag to underline text in your document.
+
+```markdown
+Some of these words <ins>will be underlined</ins>.
+```
+
+Some of these words <ins>will be underlined</ins>.
+
+---
+
+## Center
+Having the ability to center text is a necessity when writing a paper or a report. Unfortunately, Markdown doesn’t have any concept of text alignment (one possible exception is when using tables). The good news is that there’s an HTML tag you can use: `<center>`. If your Markdown processor supports HTML, you can place these tags around whatever text you want to center align.
+
+```markdown
+<center>This text is centered.</center>
+```
+
+<center>This text is centered.</center>
+
+---
+
+## Color
+
+Markdown doesn’t allow you to change the color of text, but if your Markdown processor supports HTML, you can use the <font> HTML tag. The color attribute allows you to specify the font color using a color’s name or the hexadecimal #RRGGBB code.
+
+```markdown
+<font color="red">This text is red!</font>
+```
+
+<font color="red">This text is red!</font>
+
+---
+
+## Comments
+
+Some people need the ability to write sentences in their Markdown files that will not appear in the rendered output. These comments are essentially hidden text. The text is viewable by the author of the document, but it’s not printed on the webpage or PDF. Markdown doesn’t natively support comments, but several enterprising individuals have devised a solution.
+
+To add a comment, place text inside brackets followed by a colon, a space, and a pound sign (e.g., [comment]: #). You should put blank lines before and after a comment.
+
+```markdown
+Here's a paragraph that will be visible.
+
+[This is a comment that will be hidden.]: # 
+
+And here's another paragraph that's visible.
+```
+
+Here's a paragraph that will be visible.
+
+[This is a comment that will be hidden.]: # 
+
+And here's another paragraph that's visible.
+
+---
+
+## Admonitions
+
+Admonitions are frequently used in documentation to call attention to warnings, notes, and tips. Markdown doesn’t provide special syntax for admonitions, and most Markdown applications don’t provide support for admonitions (one exception is MkDocs).
+
+However, if you need to add admonitions, you might be able to use blockquotes with emoji and emphasis to create something that looks similar to the admonitions you see on other websites.
+
+> :warning: **Warning:** Do not push the big red button.
+
+> :memo: **Note:** Sunrises are beautiful.
+
+> :bulb: **Tip:** Remember to appreciate the little things in life.

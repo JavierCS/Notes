@@ -28,8 +28,6 @@ DocC (Documentation Compiler) is Apple's documentation tool designed specificall
    - Makes your open source projects more accessible
    - Encourages better adoption of your libraries
 
-
-
 ## Syntax
 
 ```swift
@@ -52,12 +50,15 @@ public struct SomeSymbol {
 }
 ```
 
-
-
 ## Documentation Archive
-
-
 
 ## Commands
 
 `xcodebuild docbuild`
+
+## References
+
+1. [Meet DocC Documentation in Xcode](https://developer.apple.com/videos/play/wwdc2021/10166)
+2. [Elevate your DocC documentation in Xcode]()
+3. [Build interactive tutorials using DocC]()
+4. [Host and automate your DocC documentation]()
