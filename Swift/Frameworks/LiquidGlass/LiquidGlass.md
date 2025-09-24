@@ -26,4 +26,3 @@ If you want to imbue color into your app, do it in the content layer instead.
 Avoid intersections between content and Liquid Glass
 
 Instead, reposition or scale the content to mantain separation.
-
