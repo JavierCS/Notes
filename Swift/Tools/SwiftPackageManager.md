@@ -76,8 +76,6 @@ For the `1.2.4` (MAJOR.MINOR.PATCH)version.
   * Adding methods
 * `4` (the patch version) will be incremented for bug fixes
 
-
-
 ## Package.resolved
 
 Package.resolved is a file that Swift Package Manager (SPM) generates inside the .swiftpm directory of your project. It records the exact versions of all dependencies used in the project.
@@ -128,4 +126,3 @@ SwiftPM consists of four command line tools
   * `--parallel`
   * `--filter`
     * `ByteBufferTest`
-

@@ -15,9 +15,11 @@ For navigation items,
 
 Avoid tinting all your elements because when evey element is tinted, nothing stands out, and it can be confusing.
 
-
+![](./Resources/wrongTintedToolBar.PNG)
 
 If you want to imbue color into your app, do it in the content layer instead.
+
+![](./Resources/tintedToolBar.PNG)
 
 > :warning: **Warning:**
 >
@@ -25,4 +27,12 @@ If you want to imbue color into your app, do it in the content layer instead.
 
 Avoid intersections between content and Liquid Glass
 
+![](./Resources/wrongButtonPadding.PNG)
+
 Instead, reposition or scale the content to mantain separation.
+
+<div style="display: flex; justify-content: center; gap: 10px;">
+  <img src="./Resources/buttonPadding.PNG" alt="Imagen 1" style="width: 50%;">
+  <img src="./Resources/buttonPaddingAlternative.PNG" alt="Imagen 2" style="width: 50%;">
+</div>
+
