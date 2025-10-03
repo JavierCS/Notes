@@ -1,0 +1,91 @@
+@Tutorial(time: 60) {
+    @Intro(title: "Título del Tutorial 1") {
+        Descripción del Tutorial
+        
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nunc mi ipsum faucibus vitae aliquet nec. Cursus eget nunc scelerisque viverra mauris. Vestibulum sed arcu non odio euismod lacinia at quis risus. Accumsan sit amet nulla facilisi morbi tempus iaculis urna id. Nulla facilisi morbi tempus iaculis urna id volutpat lacus laoreet. Mi proin sed libero enim. Nam libero justo laoreet sit amet cursus sit amet dictum. Ultricies integer quis auctor elit sed vulputate mi. Vestibulum rhoncus est pellentesque elit ullamcorper dignissim. Sit amet commodo nulla facilisi. Viverra nam libero justo laoreet sit amet. Curabitur gravida arcu ac tortor dignissim convallis aenean et. Felis eget velit aliquet sagittis. At risus viverra adipiscing at in tellus integer feugiat. Pretium viverra suspendisse potenti nullam ac tortor vitae purus.
+        
+        @Image(source: "Swift.png", alt: "swiftLogo")
+    }
+    
+    @Section(title: "Título de Primer Sección") {
+        @ContentAndMedia {
+            Content And Media de la primer sección
+            
+            @Image(source: "Apple.png", alt: "appleLogo")
+        }
+        
+        @Steps {
+            @Step {
+                Descripción del Paso 1
+                
+                Anotaciones importantes del paso 1
+                
+                @Image(source: "Swift.png", alt: "swiftLogo")
+            }
+            
+            @Step {
+                Descripción del Paso 2
+                
+                Anotaciones importantes del paso 2
+
+                @Code(name: "Paso 2", file: TutorialDemoStep2.swift)
+            }
+        }
+    }
+    
+    @Section(title: "Título de Segunda Sección") {
+        @ContentAndMedia {
+            Content And Media de la segunda sección
+            
+            @Image(source: "Apple.png", alt: "appleLogo")
+        }
+        
+        @Steps {
+            @Step {
+                Descripción del Paso 1
+                
+                Anotaciones importantes del paso 1
+                
+                @Image(source: "Swift.png", alt: "swiftLogo")
+            }
+            
+            @Step {
+                Descripción del Paso 2
+                
+                Anotaciones importantes del paso 2
+
+                @Code(name: "Paso 2", file: TutorialDemoStep2.swift)
+            }
+        }
+    }
+    
+    @Assessments {
+        @MultipleChoice {
+            Write here your question
+            
+            @Choice(isCorrect: false) {
+                Wrong Answer One
+                
+                @Justification(reaction: "Try Again!") {
+                    Remember why this is not correct.
+                }
+            }
+            
+            @Choice(isCorrect: true) {
+                Right Answer
+                
+                @Justification(reaction: "Well Done!") {
+                    Justification why this answer is the right answer
+                }
+            }
+            
+            @Choice(isCorrect: false) {
+                Wrong Answer Two
+                
+                @Justification(reaction: "Try Again!") {
+                    Remember why this is not correct.
+                }
+            }
+        }
+    }
+}
